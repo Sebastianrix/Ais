@@ -1,4 +1,4 @@
-This is Master-Thesis by Sebastian Rix and Neha Shamaa.
+This is Master-Thesis by Sebastian Rix and Neha Sharma.
 Both Comp.Sc master graduates at Roskilde University (RUC)
 Suporvisor Line Reinhard. 
 
