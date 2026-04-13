@@ -18,7 +18,7 @@ function App() {
         <div>
           <h1>Welcome to AIS_Map_Denmark</h1>
           <p>
-            Edit <code>src/App.tsx</code> and save to test <code>HMR</code>
+           This site displays AIS data for Denmark. The data is sourced from the Danish Maritime Authorities and avaliable at: http://aisdata.ais.dk/
           </p>
         </div>
         <button
