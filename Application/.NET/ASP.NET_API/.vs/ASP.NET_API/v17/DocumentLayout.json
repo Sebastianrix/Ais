@@ -35,7 +35,7 @@
               "RelativeDocumentMoniker": "Properties\\launchSettings.json",
               "ToolTip": "C:\\Users\\sebas\\Desktop\\Thesis\\Ais\\Application\\.NET\\ASP.NET_API\\Properties\\launchSettings.json",
               "RelativeToolTip": "Properties\\launchSettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAbAAAAAAAAAA==",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAAUAAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2026-04-13T17:19:15.439Z",
               "EditorCaption": ""
@@ -50,8 +50,7 @@
               "RelativeToolTip": "..\\..\\..\\..\\..\\..\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.22.1\\build\\Container.targets",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAANkAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
-              "WhenOpened": "2026-04-13T17:14:46.437Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-13T17:14:46.437Z"
             },
             {
               "$type": "Document",
@@ -63,8 +62,7 @@
               "RelativeToolTip": "Controllers\\WeatherForecastController.cs",
               "ViewState": "AgIAAAwAAAAAAAAAAAAAACEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-13T17:10:22.577Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-13T17:10:22.577Z"
             }
           ]
         }
