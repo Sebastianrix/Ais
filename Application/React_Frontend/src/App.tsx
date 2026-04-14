@@ -30,7 +30,7 @@ function App() {
       </section>
 
       <div className="ticks"></div>
-        /*
+       {/*
       <section id="next-steps">
         <div id="docs">
           <svg className="icon" role="presentation" aria-hidden="true">
@@ -53,6 +53,7 @@ function App() {
             </li>
           </ul>
         </div>
+        
         <div id="social">
           <svg className="icon" role="presentation" aria-hidden="true">
             <use href="/icons.svg#social-icon"></use>
@@ -111,7 +112,7 @@ function App() {
           </ul>
         </div>
       </section>
-      */
+      */}
       <div className="ticks"></div>
       <section id="spacer"></section>
     </>
