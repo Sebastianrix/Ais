@@ -33,3 +33,4 @@ C:\Users\sebas\Desktop\Thesis\Ais\Application\.NET\ASP.NET_API\obj\Debug\net8.0\
 C:\Users\sebas\Desktop\Thesis\Ais\Application\.NET\ASP.NET_API\obj\Debug\net8.0\ASP.NET_API.pdb
 C:\Users\sebas\Desktop\Thesis\Ais\Application\.NET\ASP.NET_API\obj\Debug\net8.0\ASP.NET_API.genruntimeconfig.cache
 C:\Users\sebas\Desktop\Thesis\Ais\Application\.NET\ASP.NET_API\obj\Debug\net8.0\ref\ASP.NET_API.dll
+C:\Users\sebas\Desktop\Thesis\Ais\Application\.NET\ASP.NET_API\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
