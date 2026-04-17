@@ -2,14 +2,15 @@ import { } from 'react'
 import './Navbar.css'
 
 const Navbar = () => {
-  retirn (
+  return (
+
+<nav className="navbar">    
+    {/**    feafeafafs */}
 
 
 
-
-
-
-
-
+</nav>
   )
 };
+
+export default Navbar;
