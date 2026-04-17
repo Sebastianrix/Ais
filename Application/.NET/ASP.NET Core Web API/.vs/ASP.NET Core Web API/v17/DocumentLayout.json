@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\sebas\\Desktop\\Thesis\\Ais\\Application\\.NET\\ASP.NET Core Web API\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{8FDB7FA2-3972-4597-961B-96AE97E50470}|ASP.NET Core Web API.csproj|c:\\users\\sebas\\desktop\\thesis\\ais\\application\\.net\\asp.net core web api\\weatherforecast.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8FDB7FA2-3972-4597-961B-96AE97E50470}|ASP.NET Core Web API.csproj|solutionrelative:weatherforecast.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{8FDB7FA2-3972-4597-961B-96AE97E50470}|ASP.NET Core Web API.csproj|c:\\users\\sebas\\desktop\\thesis\\ais\\application\\.net\\asp.net core web api\\.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}",
       "RelativeMoniker": "D:0:0:{8FDB7FA2-3972-4597-961B-96AE97E50470}|ASP.NET Core Web API.csproj|solutionrelative:.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}"
     },
@@ -27,6 +31,19 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "WeatherForecast.cs",
+              "DocumentMoniker": "C:\\Users\\sebas\\Desktop\\Thesis\\Ais\\Application\\.NET\\ASP.NET Core Web API\\WeatherForecast.cs",
+              "RelativeDocumentMoniker": "WeatherForecast.cs",
+              "ToolTip": "C:\\Users\\sebas\\Desktop\\Thesis\\Ais\\Application\\.NET\\ASP.NET Core Web API\\WeatherForecast.cs",
+              "RelativeToolTip": "WeatherForecast.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-16T16:07:25.493Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": ".gitignore",
               "DocumentMoniker": "C:\\Users\\sebas\\Desktop\\Thesis\\Ais\\Application\\.NET\\ASP.NET Core Web API\\.gitignore",
               "RelativeDocumentMoniker": ".gitignore",
@@ -34,12 +51,11 @@
               "RelativeToolTip": ".gitignore",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2026-04-16T15:45:38.535Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-16T15:45:38.535Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\sebas\\Desktop\\Thesis\\Ais\\Application\\.NET\\ASP.NET Core Web API\\appsettings.json",
               "RelativeDocumentMoniker": "appsettings.json",
@@ -47,8 +63,7 @@
               "RelativeToolTip": "appsettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-04-16T15:43:01.711Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-16T15:43:01.711Z"
             }
           ]
         }
