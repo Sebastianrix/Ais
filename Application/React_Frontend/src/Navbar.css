@@ -56,3 +56,19 @@
 .navbar-center .nav-links a:hover {
   color: red;
 }
+
+@media (max-width: 768){
+    .navbar-center .nav-links {
+        display: none;
+    }
+    .navbar-right {
+        display: flex;
+        align-items: center;
+    }
+    .navbar-right .hamburger-menu {
+        display: black;
+        color: #fff;
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+}

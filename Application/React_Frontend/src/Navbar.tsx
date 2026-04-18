@@ -7,7 +7,7 @@ const Navbar = () => {
 <nav className="navbar" role="navigation">
   <div className= "navbar-left">
     <a href="/" className="logo">   
-    AisMapDanmarkLogo
+    Logo
     </a>
   </div>
   
