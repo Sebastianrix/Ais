@@ -10,7 +10,9 @@ const Navbar = () => {
     AisMapDanmarkLogo
     </a>
   </div>
+  
 
+  
 <div className="navbar-center">
   <ul className="nav-links">
     <li>
@@ -27,6 +29,8 @@ const Navbar = () => {
     </li>
   </ul>
 </div>
+
+
 <div className="navbar-right">
   <a href="/search" className="search-logo">
     <i className="fas fa-search"></i>
@@ -36,6 +40,10 @@ const Navbar = () => {
     <i className="fas fa-user"></i>
   </a>
 </div>
+
+
+
+
 </nav>
   )
 };
