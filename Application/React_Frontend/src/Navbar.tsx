@@ -11,6 +11,22 @@ const Navbar = () => {
     </a>
   </div>
 
+<div className="navbar-center">
+  <ul className="nav-links">
+    <li>
+      <a href="/map">Map</a>
+    </li>
+    <li>
+      <a href="/landing">Landing Page</a>
+    </li>
+    <li>
+      <a href="/about">About Us</a>
+    </li>
+    <li>
+      <a href="/faq">FAQ</a>
+    </li>
+  </ul>
+</div>
   
 
 
