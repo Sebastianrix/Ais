@@ -4,7 +4,7 @@ import './Navbar.css'
 const Navbar = () => {
   return (
 
-<nav className="navbar">
+<nav className="navbar" role="navigation">
   <div className= "navbar-left">
     <a href="/" className="logo">   
     AisMapDanmarkLogo
@@ -12,7 +12,7 @@ const Navbar = () => {
   </div>
   
 
-  
+
 <div className="navbar-center">
   <ul className="nav-links">
     <li>
