@@ -15,15 +15,15 @@ function App() {
   return (
     <>
       <section id="center">
+        <div>
+          <Navbar></Navbar>
+        </div>
         <div className="hero">
           <img src={heroImg} className="base" width="170" height="179" alt="" />
           <img src={reactLogo} className="framework" alt="React logo" />
           <img src={viteLogo} className="vite" alt="Vite logo" />
         </div>
-        <div>
-          <Navbar></Navbar>
-             <h1>NEW STUFF INC</h1>
-        </div>
+      
         <div>
           <h1>Welcome to AIS_Map_Denmark</h1>
           <p>
