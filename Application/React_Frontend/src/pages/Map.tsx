@@ -2,9 +2,7 @@ import { useState, useEffect} from 'react'
 import Navbar from '../Components/Navbar';
 import '../css/Map.css';
 
-
 function Map(){
-  
   return (
 <>  
  <div>
@@ -14,6 +12,7 @@ function Map(){
           <h1>Map page</h1>
           <p>
           This is surpose to display the map!
+          </p>
         </div>
 </>
     )

@@ -13,7 +13,7 @@ function FAQ(){
  <div>
           <h1>FAQ page</h1>
           <p>
-           Quest and answers list coming soon
+           Questions and answers list coming soon
           </p>
         </div>
 </>
