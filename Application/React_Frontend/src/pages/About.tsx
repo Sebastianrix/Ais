@@ -1,6 +1,6 @@
 import { useState, useEffect} from 'react'
 import Navbar from '../Navbar';
-import '../About.css';
+import '../css/About.css';
 
 
 function About(){
