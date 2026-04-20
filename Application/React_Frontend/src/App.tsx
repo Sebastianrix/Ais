@@ -4,14 +4,19 @@ import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
 
 import Navbar from './Components/Navbar';
+import getWeather from './Components/ApiService';
 import './css/App.css'
 
 function App() {
   const [count, setCount] = useState(0)
-/*
+
   useEffect(() => { 
+    fetch("https://localhost:5001/weatherforecast")
+    .then(res => res.json())
+    .then(data => console.log("HEJ HEJ HJE HJEJHEJHJEJHEJHEJHEJ : ",data));
+   // getWeather().then(data => console.log("HEJ HEJ HJE HJEJHEJHJEJHEJHE : ",data));
 }, [] )
-*/
+
   return (
     <>
          <div>
