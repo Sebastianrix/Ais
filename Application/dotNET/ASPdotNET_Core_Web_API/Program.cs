@@ -7,6 +7,28 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+
+
+// This is the allowed IP adresses for Response.
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowClientFrontend", policy =>
+    {
+
+        policy.WithOrigins("http://localhost:5173", "https://localhost:5173")
+       
+        .AllowAnyMethod()
+        .AllowAnyHeader();
+    });
+});
+
+
+
+
+
+
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -19,6 +41,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+app.UseCors("AllowClientFrontend");
 
 app.MapControllers();
 

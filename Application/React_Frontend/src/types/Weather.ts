@@ -1,5 +1,5 @@
 export interface Weather {
-  data: number;
+  date: number;
   temperatureC: number;
   temperatureF: number;
   summary: string;
