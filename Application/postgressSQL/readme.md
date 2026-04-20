@@ -1,21 +1,25 @@
 # AIS Tanker Database
 
-## Purpose
-This database supports tanker-focused AIS analysis for anomaly detection and explainable AI.
+http://aisdata.ais.dk/ (This is data source where from we downloaded data)
+
+A one-day AIS dataset was used as a proof of concept to test the database design, cleaning, duplicate handling, and anomaly preservation.
 
 ## Files
-- 01_schema.sql -> creates all database tables and indexes
-- 02_load_data.sql -> loads cleaned tanker data from tanker_staging
-- 03_queries.sql -> verification and API helper queries
 
-## Tables
-- tanker_staging -> raw AIS CSV import
-- tracked_tankers -> unique valid tanker IMO shortlist
-- tankers -> clean tanker metadata
-- tanker_positions -> valid and unknown tanker positions
+* 01_schema.sql = creates database tables and indexes
+* 02_Load_data.sql = loads cleaned tanker data from tanker_staging
+* 03_queries.sql = contains verification and helper queries
 
-## Important design choices
-- tanker_id is the primary key
-- imo is a unique external identifier
-- unknown IMO rows are preserved for anomaly/spoofing analysis
-- database is used as a support tool, while AI/XAI remains the main project focus
+## Main Tables
+
+* tanker_staging -> stores raw AIS CSV data
+* tracked_tankers -> stores valid tanker IMO numbers
+* tankers -> stores clean tanker metadata
+* tanker_positions -> stores tanker movement and position history
+
+## Important Design Choices
+
+* tanker_id is the primary key
+* imo is used as a unique external identifier
+* unknown IMO rows are preserved for anomaly and spoofing analysis
+
