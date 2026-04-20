@@ -24,3 +24,11 @@ Prediction-model-Pretrained {Needs GPU}(
 Frontend {client-side}(
   - React-APP with BEAUTIFUL map and ML features.
       )
+    Setup React-TypeScript app commands bellow:
+    - npm create vite@latest 
+    - npm install
+    - npm install react-router-dom
+    - npm run dev
+   
+
+
