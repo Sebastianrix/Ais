@@ -28,6 +28,7 @@ Frontend {client-side}(
     - npm create vite@latest 
     - npm install
     - npm install react-router-dom
+    - npm install axios
     - npm run dev
    
 
