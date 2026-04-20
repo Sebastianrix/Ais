@@ -26,8 +26,8 @@ Frontend {client-side}(
       )
     Setup React-TypeScript app commands bellow:
     - npm create vite@latest 
-    - npm install react-router-dom
     - npm install
+    - npm install react-router-dom
     - npm run dev
    
 
