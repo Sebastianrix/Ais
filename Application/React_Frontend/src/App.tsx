@@ -27,7 +27,7 @@ function App() {
       <section id="center">
    
         <div className="hero">
-          <img src={aisDKlogo} className="base" width="200" height="170" alt="" />
+          <img src={aisDKlogo} className="base"  alt="" />
        {/*   <img src={reactLogo} className="framework" alt="React logo" />
           <img src={viteLogo} className="vite" alt="Vite logo" />
            */}

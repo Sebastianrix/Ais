@@ -1,13 +1,14 @@
 import { } from 'react'
 import '../css/Navbar.css'
+import aisDKlogo from '../assets/3kpxl_Logo.png'
 
 const Navbar = () => {
   return (
 
 <nav className="navbar" role="navigation">
-  <div className= "navbar-left">
+  <div className= "navbar-left" >
     <a href="/" className="logo">   
-    Logo
+   <img src={aisDKlogo}  width="auto" height="70" alt="" />
     </a>
   </div>
   
