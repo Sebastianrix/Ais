@@ -13,11 +13,6 @@ function Map(){
           This is surpose to display the map!
           </p>
         </div>
-
-
-      
-  
-
 </>
     )
 }

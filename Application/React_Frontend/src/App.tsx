@@ -45,8 +45,9 @@ function App() {
         </button>
       </section>
 
-      <div className="ticks"></div>
+     
        {/*
+        <div className="ticks"></div>
       <section id="next-steps">
         <div id="docs">
           <svg className="icon" role="presentation" aria-hidden="true">
@@ -128,11 +129,11 @@ function App() {
           </ul>
         </div>
       </section>
-      */}
+      
       <div className="ticks"></div>
       
   
-
+*/}
   
 
     </>
