@@ -18,6 +18,7 @@ const Footbar = () => {
                 <h4>Contacts</h4>
                 <ul className="list-unstyled">
                     <li>Sebastian Rix</li>
+                   <li>Neha Sharma</li>
                     <li>Sebastianrix11@gmail.com</li>
                     <li>Roskilde Universitet</li>               
                 </ul>
