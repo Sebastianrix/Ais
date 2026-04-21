@@ -6,6 +6,7 @@ import heroImg from './assets/hero.png'
 import aisDKlogo from './assets/3kpxl_Logo.png'
 
 import Navbar from './Components/Navbar';
+import Footbar from './Components/Footbar';
 import getWeather from './Components/ApiService';
 import './css/App.css'
 
@@ -132,7 +133,11 @@ function App() {
       </section>
       */}
       <div className="ticks"></div>
+      
+  
+
       <section id="spacer"></section>
+          <Footbar></Footbar>
     </>
   )
 }

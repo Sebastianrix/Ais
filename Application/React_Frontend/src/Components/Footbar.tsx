@@ -3,9 +3,9 @@ import '../css/Footbar.css'
 
 const Footbar = () => {
     return (
-<nav className="footbar">
-
-</nav>
+<div className="footbar">
+<p> This is footer bar at bottom </p>
+</div>
 
     )
 };
