@@ -3,6 +3,8 @@ import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
 
+import aisDKlogo from './assets/3kpxl_Logo.png'
+
 import Navbar from './Components/Navbar';
 import getWeather from './Components/ApiService';
 import './css/App.css'
@@ -25,9 +27,10 @@ function App() {
       <section id="center">
    
         <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
+          <img src={aisDKlogo} className="base" width="200" height="170" alt="" />
+       {/*   <img src={reactLogo} className="framework" alt="React logo" />
           <img src={viteLogo} className="vite" alt="Vite logo" />
+           */}
         </div>
       
         <div>
