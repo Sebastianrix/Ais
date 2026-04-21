@@ -1,6 +1,6 @@
 import { useState, useEffect} from 'react'
-import Navbar from '../Components/Navbar';
-import Footbar from '../Components/Footbar';
+
+
 import '../css/APIpage.css';
 
 
@@ -9,8 +9,7 @@ function APIpage(){
   return (
 <>  
 
- {/*<div>   </div>*/}
-          <Navbar></Navbar>
+
     
      
 
@@ -31,7 +30,7 @@ function APIpage(){
 </div>
 </section>
 
-          <Footbar></Footbar>
+
 </>
     )
 }

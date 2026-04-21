@@ -1,21 +1,19 @@
 import { useState, useEffect} from 'react'
-import Navbar from '../Components/Navbar';
+
 import '../css/Map.css';
-import Footbar from '../Components/Footbar';
+
 
 function Map(){
   return (
 <>  
- <div>
-          <Navbar></Navbar>
-        </div>
+
  <div>
           <h1>Map page</h1>
           <p>
           This is surpose to display the map!
           </p>
         </div>
-            <Footbar></Footbar>
+
 </>
     )
 }

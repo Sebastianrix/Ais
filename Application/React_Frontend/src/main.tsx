@@ -8,13 +8,19 @@ import FAQ from './pages/FAQ.tsx'
 import APIpage from './pages/APIpage.tsx'
 import Map from './pages/Map.tsx'
 
+import Navbar from './Components/Navbar';
+import Footbar from './Components/Footbar';
 
 createRoot(document.getElementById('root')!).render(
 //  <StrictMode>
   //  <App />
  // </StrictMode>,
-
+ 
 <StrictMode>
+      <div className="page-container">
+    <div className="content-wrap">
+          <Navbar></Navbar>
+       
   <BrowserRouter>
     <Routes>  
       <Route path = "/" element={<App />} />
@@ -24,6 +30,10 @@ createRoot(document.getElementById('root')!).render(
       <Route path = "/Map" element={<Map />} />
     </Routes>
   </BrowserRouter>
+ 
+  </div>
+   <Footbar></Footbar>
+  </div>
 </StrictMode>
 
 

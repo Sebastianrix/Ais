@@ -5,8 +5,7 @@ import heroImg from './assets/hero.png'
 
 import aisDKlogo from './assets/3kpxl_Logo.png'
 
-import Navbar from './Components/Navbar';
-import Footbar from './Components/Footbar';
+
 import getWeather from './Components/ApiService';
 import './css/App.css'
 
@@ -22,9 +21,7 @@ function App() {
 
   return (
     <>
-         <div>
-          <Navbar></Navbar>
-        </div>
+  
       <section id="center">
    
         <div className="hero">
@@ -137,7 +134,7 @@ function App() {
   
 
       <section id="spacer"></section>
-          <Footbar></Footbar>
+
     </>
   )
 }
