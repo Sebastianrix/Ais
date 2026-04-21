@@ -33,6 +33,12 @@ const Footbar = () => {
                 </ul>
             </div>
         </div>
+            <div className="row">
+                <p className="col-sm">
+                    &copy;{new Date().getFullYear()} Sebastian Rix, Neha Sharma | All rights reserved | Terms of Service | Privacy
+                </p>
+                
+            </div>
     </div>
 </div>
 
