@@ -42,8 +42,7 @@
               "RelativeToolTip": "dotNET\\ASPdotNET_Core_Web_API\\ASP.NET Core Web API.http",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
-              "WhenOpened": "2026-04-20T20:02:54.361Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-20T20:02:54.361Z"
             },
             {
               "$type": "Document",
@@ -53,7 +52,7 @@
               "RelativeDocumentMoniker": "dotNET\\ASPdotNET_Core_Web_API\\Program.cs",
               "ToolTip": "C:\\Users\\sebas\\Desktop\\Thesis\\Ais\\Application\\dotNET\\ASPdotNET_Core_Web_API\\Program.cs",
               "RelativeToolTip": "dotNET\\ASPdotNET_Core_Web_API\\Program.cs",
-              "ViewState": "AgIAACQAAAAAAAAAAAAAADEAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-20T19:03:48.014Z",
               "EditorCaption": ""
@@ -68,8 +67,7 @@
               "RelativeToolTip": "docker-compose.yml",
               "ViewState": "AgIAAAQAAAAAAAAAAAAQwAgAAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003775|",
-              "WhenOpened": "2026-04-20T18:56:03.838Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-20T18:56:03.838Z"
             },
             {
               "$type": "Document",
@@ -81,8 +79,7 @@
               "RelativeToolTip": "dotNET\\ASPdotNET_Core_Web_API\\Dockerfile",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2026-04-20T18:55:10.005Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-20T18:55:10.005Z"
             }
           ]
         }
