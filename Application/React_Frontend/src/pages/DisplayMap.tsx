@@ -11,10 +11,10 @@ function DisplayMap(){
   return (
 <>  
 
- <div>
+ <div className='myMapClass1'>
        
-          <Card className="w-[1000px] h-[1000px] p-0 overflow-hidden">
-      <Map center={[-74.006, 40.7128]} zoom={11}>
+          <Card className="w-[800px] h-[800px] p-0 overflow-hidden">
+      <Map center={[11.000000,56.00000]} zoom={6}>
         <MapControls />
       </Map>
     </Card>
