@@ -5,12 +5,12 @@ import { Map, MapControls } from "@/components/ui/map";
 import { Card } from "@/components/ui/card";
 
 import '../css/DisplayMap.css';
-
+import Navbar from '../components/Navbar'
 
 function DisplayMap(){
   return (
 <>  
-
+<Navbar></Navbar>
  <div className='myMapClass1'>
        
           <Card className="w-[850px] h-[700px] p-0 overflow-hidden">

@@ -1,14 +1,14 @@
 import { useState, useEffect} from 'react'
 
 import '../css/About.css';
-
+import Navbar from '../components/Navbar'
 
 
 function About(){
   
   return (
 <>  
- 
+ <Navbar></Navbar>
      
  <div>
           <h1>About page</h1>

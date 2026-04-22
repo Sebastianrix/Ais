@@ -9,8 +9,6 @@ import About from './pages/About.tsx'
 import FAQ from './pages/FAQ.tsx'
 import APIpage from './pages/APIpage.tsx'
 import Map from './pages/DisplayMap.tsx'
-
-import Navbar from './components/Navbar.tsx';
 import Footbar from './components/Footbar.tsx';
 
 createRoot(document.getElementById('root')!).render(
@@ -21,7 +19,7 @@ createRoot(document.getElementById('root')!).render(
 <StrictMode>
       <div className="page-container">
     <div className="content-wrap">
-          <Navbar></Navbar>
+          
        
   <BrowserRouter>
     <Routes>  

@@ -1,5 +1,5 @@
 import { useState, useEffect} from 'react'
-
+import Navbar from '@/components/Navbar';
 
 import '../css/FAQ.css';
 
@@ -8,7 +8,7 @@ function FAQ(){
   
   return (
 <>  
- 
+ <Navbar></Navbar>
 
        
  <div>

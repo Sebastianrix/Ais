@@ -2,13 +2,13 @@ import { useState, useEffect} from 'react'
 
 
 import '../css/APIpage.css';
-
+import Navbar from '@/components/Navbar';
 
 
 function APIpage(){
   return (
 <>  
-
+<Navbar></Navbar>
 
     
      

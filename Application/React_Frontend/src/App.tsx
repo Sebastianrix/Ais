@@ -23,8 +23,9 @@ function App() {
     <>
   
       <section id="center">
-   
+   <h1>Welcome to <b>aismap.dk</b></h1>   
         <div className="hero">
+            
           <img src={aisDKlogo} className="base"  alt="" />
        {/*   <img src={reactLogo} className="framework" alt="React logo" />
           <img src={viteLogo} className="vite" alt="Vite logo" />
@@ -32,17 +33,14 @@ function App() {
         </div>
       
         <div>
-          <h1>Welcome to AIS_Map_Denmark</h1>
+        
           <p>
            This site displays AIS data for Denmark. The data is sourced from the Danish Maritime Authorities and avaliable at: http://aisdata.ais.dk/
           </p>
         </div>
-        <button
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
+        <a href="/map">
+        <button className="counter">Proceed to Map</button>
+        </a>
       </section>
 
      
