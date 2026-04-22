@@ -6,7 +6,7 @@ import heroImg from './assets/hero.png'
 import aisDKlogo from './assets/3kpxl_Logo.png'
 
 
-import getWeather from './Components/ApiService';
+import getWeather from './components/ApiService';
 import './css/App.css'
 
 function App() {

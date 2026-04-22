@@ -10,8 +10,8 @@ import FAQ from './pages/FAQ.tsx'
 import APIpage from './pages/APIpage.tsx'
 import Map from './pages/DisplayMap.tsx'
 
-import Navbar from './Components/Navbar';
-import Footbar from './Components/Footbar';
+import Navbar from './components/Navbar.tsx';
+import Footbar from './components/Footbar.tsx';
 
 createRoot(document.getElementById('root')!).render(
 //  <StrictMode>
