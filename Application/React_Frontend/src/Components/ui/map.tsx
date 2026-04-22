@@ -779,9 +779,9 @@ function ControlButton({
 function MapControls({
   position = "bottom-right",
   showZoom = true,
-  showCompass = false,
-  showLocate = false,
-  showFullscreen = false,
+  showCompass = true,
+  showLocate = true,
+  showFullscreen = true,
   className,
   onLocate,
 }: MapControlsProps) {
