@@ -8,7 +8,7 @@ import App from './App.tsx'
 import About from './pages/About.tsx'
 import FAQ from './pages/FAQ.tsx'
 import APIpage from './pages/APIpage.tsx'
-import Map from './pages/Map.tsx'
+import Map from './pages/DisplayMap.tsx'
 
 import Navbar from './Components/Navbar';
 import Footbar from './Components/Footbar';
