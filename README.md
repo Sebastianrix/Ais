@@ -25,12 +25,21 @@ Frontend {client-side}(
   - React-APP with BEAUTIFUL map and ML features.
       )
     Setup React-TypeScript app commands bellow:
-    - npm create vite@latest 
+    Created with
+    - npm create vite@latest
+   
+    Depentencies
     - npm install
     - npm install react-router-dom
     - npm install axios
-    - npm run dev
+    - npm install bootstrap
+    - npm install @radix-ui/themes
+    - npm install -D tailwindcss @tailwindcss/vite
+    - npx shadcn@latest add @mapcn/map
+    - npx shadcn@latest add card (this might not be nessesary, but try if the map (mapcn) is compile error.)
 
+    Run
+    - npm run dev
 
    Docker {Container Orchestration} (
    docker-compose up --build
