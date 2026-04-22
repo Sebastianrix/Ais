@@ -10,7 +10,6 @@ function APIpage(){
 <>  
 <Navbar></Navbar>
 
-    
      
 
  <div>
