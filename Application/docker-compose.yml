@@ -1,9 +1,0 @@
-services:
-  asp.netcorewebapi:
-    image: ${DOCKER_REGISTRY-}aspnetcorewebapi
-    build:
-      context: dotNET/ASPdotNET_Core_Web_API
-      dockerfile: Dockerfile
-    ports:
-      - "5000:8080"
-      - "5001:8081"

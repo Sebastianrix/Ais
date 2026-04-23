@@ -1,7 +1,7 @@
-yourdomain.com {
+aismap.dk {
     reverse_proxy frontend:80
 }
 
-api.yourdomain.com {
+api.aismap.dk {
     reverse_proxy api:5000
 }
