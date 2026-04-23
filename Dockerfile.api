@@ -1,11 +1,14 @@
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
-WORKDIR /app
-COPY Application/dotNET/ASPdotNET_Core_Web_API/ .
-RUN dotnet publish -c Release -o out
+WORKDIR /src
+
+COPY Application/dotNET/ASPdotNET_Core_Web_API/ ./app/
+
+WORKDIR /src/app
+
+RUN dotnet publish ASPdotNET_Core_Web_API.csproj -c Release -o /app
 
 FROM mcr.microsoft.com/dotnet/aspnet:8.0
 WORKDIR /app
-COPY --from=build /app/out .
-EXPOSE 5000
-ENV ASPNETCORE_URLS=http://+:5000
+COPY --from=build /app .
+
 ENTRYPOINT ["dotnet", "ASPdotNET_Core_Web_API.dll"]
