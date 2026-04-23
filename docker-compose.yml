@@ -1,0 +1,29 @@
+services:
+  caddy:
+    image: caddy:alpine
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - caddy_data:/data
+    depends_on:
+      - frontend
+      - api
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    expose:
+      - "80"
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    expose:
+      - "5000"
+
+volumes:
+  caddy_data:
