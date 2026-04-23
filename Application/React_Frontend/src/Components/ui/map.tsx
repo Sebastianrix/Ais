@@ -856,6 +856,10 @@ function MapControls({
       {showCompass && (
         <ControlGroup>
           <CompassButton onClick={handleResetBearing} />
+             <CompassButton onClick={handleResetBearing} />
+                <CompassButton onClick={handleResetBearing} />
+                   <CompassButton onClick={handleResetBearing} />
+                      <CompassButton onClick={handleResetBearing} />
         </ControlGroup>
       )}
       {showLocate && (
