@@ -21,8 +21,8 @@ function APIpage(){
 <section id="left">
 <div>
   <ul>
-<li>Base url : https://localhost:5001</li>
-<li>/weatherforecast/</li>
+<li>https://api.aismap.dk/weatherforecast</li>
+<li>More coming..</li>
 <li>/swagger/</li>
 
 </ul>
