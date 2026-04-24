@@ -63,6 +63,26 @@ CREATE TABLE IF NOT EXISTS tracked_tankers (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+CREATE TABLE IF NOT EXISTS voyages (
+    voyage_id BIGSERIAL PRIMARY KEY,
+    tanker_id BIGINT NOT NULL,
+    voyage_status VARCHAR(30) DEFAULT 'active',
+    start_time_utc TIMESTAMP NOT NULL,
+    end_time_utc TIMESTAMP,
+    start_position_id BIGINT,
+    end_position_id BIGINT,
+    start_port_name VARCHAR(255),
+    end_port_name VARCHAR(255),
+    destination_final VARCHAR(255),
+    eta_final TIMESTAMP,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT fk_voyages_tanker
+        FOREIGN KEY (tanker_id)
+        REFERENCES tankers(tanker_id)
+        ON DELETE CASCADE
+);
 CREATE TABLE IF NOT EXISTS tanker_positions (
     position_id BIGSERIAL PRIMARY KEY,
     tanker_id BIGINT,
