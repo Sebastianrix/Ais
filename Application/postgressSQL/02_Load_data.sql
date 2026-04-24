@@ -1,4 +1,18 @@
 TRUNCATE TABLE tanker_positions RESTART IDENTITY;
+INSERT INTO tankers (imo, mmsi, vessel_name, callsign, ship_type, cargo_type, 
+                     type_of_mobile, width, length, size_a, size_b, size_c, size_d)
+SELECT DISTINCT
+    TRIM(s.imo),
+    TRIM(s.mmsi),
+    TRIM(s.vessel_name),
+    TRIM(s.callsign),
+    TRIM(s.ship_type),
+    TRIM(s.cargo_type),
+    TRIM(s.type_of_mobile),
+    NULLIF(REPLACE(s.width_raw, ',', '.'), '')::NUMERIC,
+    NULLIF(REPLACE(s.length_raw, ',', '.'), '')::NUMERIC,
+    s.size_a, s.size_b, s.size_c, s.size_d
+FROM tanker_staging s
 JOIN tracked_tankers tt
   ON TRIM(s.imo) = tt.imo
 WHERE LOWER(TRIM(s.ship_type)) = 'tanker'
