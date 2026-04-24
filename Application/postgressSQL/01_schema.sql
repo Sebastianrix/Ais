@@ -57,9 +57,10 @@ CREATE TABLE IF NOT EXISTS tankers (
 CREATE TABLE IF NOT EXISTS tracked_tankers (
     tracked_id BIGSERIAL PRIMARY KEY,
     imo VARCHAR(20),
+    mmsi VARCHAR(20),
     source_trial VARCHAR(100),
     notes TEXT,
-    is_active BOOLEAN DEFAULT TRUE,
+    is_active BOOLEAN DEFAULT FALSE,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
