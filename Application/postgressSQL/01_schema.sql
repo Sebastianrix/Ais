@@ -130,8 +130,23 @@ ON tankers(imo);
 CREATE INDEX IF NOT EXISTS idx_tankers_mmsi
 ON tankers(mmsi);
 
+CREATE INDEX IF NOT EXISTS idx_voyages_tanker_id
+ON voyages(tanker_id);
+
+CREATE INDEX IF NOT EXISTS idx_voyages_start_time
+ON voyages(start_time_utc);
+
+CREATE INDEX IF NOT EXISTS idx_voyages_end_time
+ON voyages(end_time_utc);
+
 CREATE INDEX IF NOT EXISTS idx_tanker_positions_tanker_id
 ON tanker_positions(tanker_id);
+
+CREATE INDEX IF NOT EXISTS idx_tanker_positions_voyage_id
+ON tanker_positions(voyage_id);
+
+CREATE INDEX IF NOT EXISTS idx_tanker_positions_staging_id
+ON tanker_positions(staging_id);
 
 CREATE INDEX IF NOT EXISTS idx_tanker_positions_timestamp
 ON tanker_positions(timestamp_utc);
