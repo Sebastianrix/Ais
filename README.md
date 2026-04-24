@@ -42,7 +42,8 @@ Frontend {client-side}(
     Run
     - npm run dev
 
-   Docker {Container Orchestration} (
-   docker-compose up --build
-)
+   Docker 
+   - docker compose down
+   - docker compose up
+
 
