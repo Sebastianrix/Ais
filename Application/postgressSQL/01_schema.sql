@@ -86,6 +86,8 @@ CREATE TABLE IF NOT EXISTS voyages (
 CREATE TABLE IF NOT EXISTS tanker_positions (
     position_id BIGSERIAL PRIMARY KEY,
     tanker_id BIGINT,
+    voyage_id BIGINT,
+    staging_id BIGINT,
     timestamp_utc TIMESTAMP NOT NULL,
     latitude DOUBLE PRECISION NOT NULL,
     longitude DOUBLE PRECISION NOT NULL,
@@ -104,9 +106,19 @@ CREATE TABLE IF NOT EXISTS tanker_positions (
     data_source_type VARCHAR(50),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT fk_positions_tanker
-        FOREIGN KEY (tanker_id)
-        REFERENCES tankers(tanker_id)
-        ON DELETE CASCADE
+    FOREIGN KEY (tanker_id)
+    REFERENCES tankers(tanker_id)
+    ON DELETE CASCADE,
+
+CONSTRAINT fk_positions_voyage
+    FOREIGN KEY (voyage_id)
+    REFERENCES voyages(voyage_id)
+    ON DELETE SET NULL,
+
+CONSTRAINT fk_positions_staging
+    FOREIGN KEY (staging_id)
+    REFERENCES tanker_staging(staging_id)
+    ON DELETE SET NULL
 );
 
 CREATE INDEX IF NOT EXISTS idx_tracked_tankers_imo
