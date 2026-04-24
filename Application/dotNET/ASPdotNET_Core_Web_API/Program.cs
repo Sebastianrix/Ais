@@ -49,6 +49,4 @@ app.UseCors("AllowClientFrontend");
 
 app.MapControllers();
 
-app.UseHttpLogging();
-
 app.Run();
