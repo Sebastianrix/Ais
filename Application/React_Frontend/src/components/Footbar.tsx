@@ -26,10 +26,18 @@ const Footbar = () => {
                 <div className="col">
                 <h4>Sites</h4>
                 <ul className="list-unstyled">
-                    <li>Map</li>
-                    <li>API</li>  
-                    <li>About</li>
-                    <li>FQA</li>               
+             <li>
+      <a href="/map">Map</a>
+    </li>
+    <li>
+      <a href="/APIpage">API</a>
+    </li>
+    <li>
+      <a href="/about">About Us</a>
+    </li>
+    <li>
+      <a href="/faq">FAQ</a>
+    </li>           
                 </ul>
             </div>
         </div>
