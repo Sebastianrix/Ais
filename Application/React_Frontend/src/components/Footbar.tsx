@@ -23,21 +23,20 @@ const Footbar = () => {
                     <li>Roskilde Universitet</li>               
                 </ul>
             </div>
-                <div className="col">
-                <h4>Sites</h4>
-                <ul className="list-unstyled">
-             <li>
-      <a href="/map">Map</a>
-    </li>
-    <li>
-      <a href="/APIpage">API</a>
-    </li>
-    <li>
-      <a href="/about">About Us</a>
-    </li>
-    <li>
-      <a href="/faq">FAQ</a>
-    </li>           
+            <div className="col text-center" > 
+                <h4 className="text-center">Sites</h4> 
+                <ul className="footbar-links"> 
+                    <li> <a href="/map">Map</a> 
+                    </li> 
+                    <li> 
+                        <a href="/APIpage">API</a> 
+                    </li> 
+                    <li> 
+                        <a href="/about">About Us</a> 
+                    </li> 
+                    <li> 
+                    <a href="/faq">FAQ</a> 
+                    </li>     
                 </ul>
             </div>
         </div>
