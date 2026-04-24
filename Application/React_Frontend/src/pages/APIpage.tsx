@@ -22,8 +22,9 @@ function APIpage(){
 <div>
   <ul>
 <li>https://api.aismap.dk/weatherforecast</li>
+<li>https://api.aismap.dk/swagger</li>
 <li>More coming..</li>
-<li>/swagger/</li>
+
 
 </ul>
 </div>
