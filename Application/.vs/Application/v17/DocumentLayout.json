@@ -1,0 +1,91 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\sebas\\Desktop\\Thesis\\Ais\\Application\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A814CB6E-1683-794D-825E-7794FCE11F2A}|dotNET\\ASPdotNET_Core_Web_API\\ASP.NET Core Web API.csproj|c:\\users\\sebas\\desktop\\thesis\\ais\\application\\dotnet\\aspdotnet_core_web_api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A814CB6E-1683-794D-825E-7794FCE11F2A}|dotNET\\ASPdotNET_Core_Web_API\\ASP.NET Core Web API.csproj|solutionrelative:dotnet\\aspdotnet_core_web_api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{81DDED9D-158B-E303-5F62-77A2896D2A5A}|docker-compose.dcproj|c:\\users\\sebas\\desktop\\thesis\\ais\\application\\docker-compose.yml||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{81DDED9D-158B-E303-5F62-77A2896D2A5A}|docker-compose.dcproj|solutionrelative:docker-compose.yml||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A814CB6E-1683-794D-825E-7794FCE11F2A}|dotNET\\ASPdotNET_Core_Web_API\\ASP.NET Core Web API.csproj|c:\\users\\sebas\\desktop\\thesis\\ais\\application\\dotnet\\aspdotnet_core_web_api\\asp.net core web api.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
+      "RelativeMoniker": "D:0:0:{A814CB6E-1683-794D-825E-7794FCE11F2A}|dotNET\\ASPdotNET_Core_Web_API\\ASP.NET Core Web API.csproj|solutionrelative:dotnet\\aspdotnet_core_web_api\\asp.net core web api.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A814CB6E-1683-794D-825E-7794FCE11F2A}|dotNET\\ASPdotNET_Core_Web_API\\ASP.NET Core Web API.csproj|c:\\users\\sebas\\desktop\\thesis\\ais\\application\\dotnet\\aspdotnet_core_web_api\\dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A814CB6E-1683-794D-825E-7794FCE11F2A}|dotNET\\ASPdotNET_Core_Web_API\\ASP.NET Core Web API.csproj|solutionrelative:dotnet\\aspdotnet_core_web_api\\dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ASP.NET Core Web API.http",
+              "DocumentMoniker": "C:\\Users\\sebas\\Desktop\\Thesis\\Ais\\Application\\dotNET\\ASPdotNET_Core_Web_API\\ASP.NET Core Web API.http",
+              "RelativeDocumentMoniker": "dotNET\\ASPdotNET_Core_Web_API\\ASP.NET Core Web API.http",
+              "ToolTip": "C:\\Users\\sebas\\Desktop\\Thesis\\Ais\\Application\\dotNET\\ASPdotNET_Core_Web_API\\ASP.NET Core Web API.http",
+              "RelativeToolTip": "dotNET\\ASPdotNET_Core_Web_API\\ASP.NET Core Web API.http",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
+              "WhenOpened": "2026-04-20T20:02:54.361Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\sebas\\Desktop\\Thesis\\Ais\\Application\\dotNET\\ASPdotNET_Core_Web_API\\Program.cs",
+              "RelativeDocumentMoniker": "dotNET\\ASPdotNET_Core_Web_API\\Program.cs",
+              "ToolTip": "C:\\Users\\sebas\\Desktop\\Thesis\\Ais\\Application\\dotNET\\ASPdotNET_Core_Web_API\\Program.cs",
+              "RelativeToolTip": "dotNET\\ASPdotNET_Core_Web_API\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-20T19:03:48.014Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "docker-compose.yml",
+              "DocumentMoniker": "C:\\Users\\sebas\\Desktop\\Thesis\\Ais\\Application\\docker-compose.yml",
+              "RelativeDocumentMoniker": "docker-compose.yml",
+              "ToolTip": "C:\\Users\\sebas\\Desktop\\Thesis\\Ais\\Application\\docker-compose.yml",
+              "RelativeToolTip": "docker-compose.yml",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAQwAgAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003775|",
+              "WhenOpened": "2026-04-20T18:56:03.838Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Dockerfile",
+              "DocumentMoniker": "C:\\Users\\sebas\\Desktop\\Thesis\\Ais\\Application\\dotNET\\ASPdotNET_Core_Web_API\\Dockerfile",
+              "RelativeDocumentMoniker": "dotNET\\ASPdotNET_Core_Web_API\\Dockerfile",
+              "ToolTip": "C:\\Users\\sebas\\Desktop\\Thesis\\Ais\\Application\\dotNET\\ASPdotNET_Core_Web_API\\Dockerfile",
+              "RelativeToolTip": "dotNET\\ASPdotNET_Core_Web_API\\Dockerfile",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-04-20T18:55:10.005Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
