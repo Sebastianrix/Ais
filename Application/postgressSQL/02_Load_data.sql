@@ -16,6 +16,7 @@ FROM tanker_staging s
 JOIN tracked_tankers tt
   ON TRIM(s.imo) = tt.imo
 WHERE LOWER(TRIM(s.ship_type)) = 'tanker'
+ALTER TABLE tankers ADD CONSTRAINT uq_tankers_imo UNIQUE (imo);
 ON CONFLICT (imo) DO NOTHING;
 
 INSERT INTO tanker_positions (
