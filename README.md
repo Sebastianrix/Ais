@@ -1,3 +1,7 @@
+https://aismap.dk/
+https://api.aismap.dk/swagger
+
+
 This is Master-Thesis by Sebastian Rix and Neha Sharma.
 Both Comp.Sc master graduates at Roskilde University (RUC)
 Suporvisor Line Reinhard. 
