@@ -1,3 +1,8 @@
 .vsidx
 *.vsidx
 .vs/
+**/.vs
+
+
+**/launchSettings.json
+**/*.http
