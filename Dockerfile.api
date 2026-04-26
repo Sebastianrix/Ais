@@ -2,7 +2,7 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 
 COPY Application/dotNET/ASPdotNET_Core_Web_API/ ./app/
-COPY Datalayer/ ./DataLayer/
+COPY DataLayer/ ./DataLayer/
 
 WORKDIR /src/app
 
