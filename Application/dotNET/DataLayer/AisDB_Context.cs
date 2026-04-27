@@ -8,7 +8,7 @@ namespace DataLayer
 {
     public class AisDB_Context : DbContext
     {
-        public AisDB_Context(DbContextOptions<AisDB_Context> options) : base(options) {}
+        public AisDB_Context(DbContextOptions<AisDB_Context> options) : base(options) { }
 
         // As my once good friend once said: sanity check - We have a Db with 5 tabels,
         // so lets maybe start with those, then scale more.
@@ -16,12 +16,26 @@ namespace DataLayer
         // Which we know how to implement with JWT and such. But lets focus on the Psql made for now.
         // I imagine we can have end points for get/vessels, this could be for a overview display page. 
 
-        // #1 tanker_positions
-        // #2 tanker_staging
-        // #3 tankers
-        // #4 tracked_tankers
-        // #5 voyages
-        public DbSet<> Users {  get; set; }
+        // Map of 'tanker_positions' table
+        // Map of 'tanker_staging' table
+        // Map of 'tankers' table
+        // Map of 'tracked_tankers' table
+        // Map of 'voyages' table
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            MapTankerPositions(modelBuilder);
+            MapTankerStaging(modelBuilder);
+            MapTankers(modelBuilder);
+            MapTrackedTankers(modelBuilder);
+            MapVoyages(modelBuilder);
+        }
+
+
+
+
+
+
 
     }
 }
