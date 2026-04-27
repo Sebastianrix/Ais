@@ -24,6 +24,24 @@ namespace DataLayer
         // Map of 'voyages' table
 
         // Implementation reminder* Put Model for object in the datalayer /Models folder -> MapSQL -> IDataService/DataService? -> WebAPI DTO -> types/ .TS DTO -> Done
+        /*
+
+        TO-DO list / Work-flow
+
+         C# -> 
+              /Models folder ( objects.cs  )
+              /WebAPI DTO ( objectDTO.cs )
+              MapSQL in DbContext.cs
+
+              IDataService/DataService?
+              Controllers
+              
+              (https test in WepAPIhttp)
+              Unit-Test 
+        
+        Frontend ->
+               /types ( DTO.ts)
+         */
         // We should properbly mention this in the report, these's tons of seperation of Layers here. 
 
 
