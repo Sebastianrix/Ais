@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace DataLayer
 {
-    internal class DataService
+    internal class Aisdb_Context
     {
-
     }
 }
