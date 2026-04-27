@@ -1,7 +1,22 @@
 using DataLayer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Connecting to Postgres Database! Check appsettings.json for the credencials 
+var connectionString = builder.Configuration.GetConnectionString("aisDatabase");
+if (string.IsNullOrEmpty(connectionString))
+{
+    throw new InvalidOperationException("Failed to establish Database Connection! Check Appsettings.json or your PostgressSQL.");
+}
+else Console.WriteLine("Database Connected: "+connectionString);
+
+builder.Services.AddDbContext<DB_Context>(options => options.UseNpgsql(connectionString));
+
+
+
+
 
 // Add services to the container.
 
