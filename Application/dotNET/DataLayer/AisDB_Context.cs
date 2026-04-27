@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -31,7 +32,11 @@ namespace DataLayer
             MapVoyages(modelBuilder);
         }
 
-
+        private static void MapTankerPositions(ModelBuilder modelBuilder){}
+        private static void MapTankerStaging(ModelBuilder modelBuilder){}
+        private static void MapTankers(ModelBuilder modelBuilder){}
+        private static void MapTrackedTankers(ModelBuilder modelBuilder){}
+        private static void MapVoyages(ModelBuilder modelBuilder){}
 
 
 
