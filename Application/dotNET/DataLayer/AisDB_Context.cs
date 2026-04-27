@@ -23,6 +23,12 @@ namespace DataLayer
         // Map of 'tracked_tankers' table
         // Map of 'voyages' table
 
+        // Implementation reminder* Put Model for object in the datalayer /Models folder -> MapSQL -> IDataService/DataService? -> WebAPI DTO -> types/ .TS DTO -> Done
+        // We should properbly mention this in the report, these's tons of seperation of Layers here. 
+
+
+
+        public DbSet<TankerPosition> TankerPositions { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             MapTankerPositions(modelBuilder);
@@ -32,7 +38,9 @@ namespace DataLayer
             MapVoyages(modelBuilder);
         }
 
-        private static void MapTankerPositions(ModelBuilder modelBuilder){}
+        private static void MapTankerPositions(ModelBuilder modelBuilder){
+
+        }
         private static void MapTankerStaging(ModelBuilder modelBuilder){}
         private static void MapTankers(ModelBuilder modelBuilder){}
         private static void MapTrackedTankers(ModelBuilder modelBuilder){}
