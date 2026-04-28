@@ -1,13 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Numerics;
 
-namespace ASP.NET_Core_Web_API.DTOs
+namespace WebLayer.DTOs
 {
     public class TankerPositionDTO
     {
-        [Required]
         public int Position_Id { get; set; }
-        [Required]
         public int Tanker_Id { get; set; }
         public int Voyage_Id { get; set; }
         public int Staging_Id { get; set; }
@@ -29,7 +27,6 @@ namespace ASP.NET_Core_Web_API.DTOs
         public DateTime Eta { get; set; } 
         public string? Position_Fixing_Device { get; set; }
         public string Data_Source_Type { get; set; }
-        [Required]
         public DateTime Created_At { get; set; }       
     }
 }

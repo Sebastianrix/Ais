@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Routing;
 
-namespace ASP.NET_Core_Web_API.Controllers
+namespace WebLayer.Controllers
 
 {
     [ApiController]
@@ -8,7 +9,7 @@ namespace ASP.NET_Core_Web_API.Controllers
     {
         private readonly LinkGenerator _linkGenerator;
 
-        private BaseController(LinkGenerator linkGenerator)
+        public BaseController(LinkGenerator linkGenerator)
         {
             _linkGenerator = linkGenerator;
         }

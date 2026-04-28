@@ -13,6 +13,7 @@ if (string.IsNullOrEmpty(connectionString))
 else Console.WriteLine("Database Connected: "+connectionString);
 
 builder.Services.AddDbContext<AisDB_Context>(options => options.UseNpgsql(connectionString));
+builder.Services.AddScoped<IDataService, DataService>();
 
 
 
