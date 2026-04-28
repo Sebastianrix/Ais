@@ -95,6 +95,8 @@ CREATE TABLE IF NOT EXISTS tanker_positions (
     longitude DOUBLE PRECISION NOT NULL,
     raw_imo VARCHAR(20),
     imo_status VARCHAR(20),
+    raw_mmsi VARCHAR(20),
+    mmsi_status VARCHAR(20),
     anomaly_flag BOOLEAN DEFAULT FALSE,
     navigational_status VARCHAR(100),
     rot DOUBLE PRECISION,
