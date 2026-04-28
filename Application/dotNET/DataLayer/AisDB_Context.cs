@@ -15,6 +15,7 @@ namespace DataLayer
         public AisDB_Context(DbContextOptions<AisDB_Context> options) : base(options) { }
 
         public DbSet<TankerPosition> TankerPositions { get; set; }
+        public DbSet<TankerStaging> TankerStagings { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -57,38 +58,38 @@ namespace DataLayer
         private static void MapTankerStaging(ModelBuilder modelBuilder)
         {
         modelBuilder.Entity<TankerStaging>().ToTable("tanker_staging");
-        modelBuilder.Entity<TankerPosition>().HasKey(ts => ts.Staging_Id);
-        modelBuilder.Entity<TankerPosition>().Property(ts => ts.Staging_Id).HasColumnName("staging_id");
-        modelBuilder.Entity<TankerPosition>().Property(ts => ts.Timestamp_Raw).HasColumnName("timestamp_raw"); 
-        modelBuilder.Entity<TankerPosition>().Property(ts => ts.Type_Of_Mobile).HasColumnName("type_of_mobile"); 
-        modelBuilder.Entity<TankerPosition>().Property(ts => ts.Mmsi).HasColumnName("mmsi"); 
-        modelBuilder.Entity<TankerPosition>().Property(ts => ts.Latitude_Raw).HasColumnName("latitude_raw"); 
-        modelBuilder.Entity<TankerPosition>().Property(ts => ts.Longitude_Raw).HasColumnName("longitude_raw"); 
-        modelBuilder.Entity<TankerPosition>().Property(ts => ts.Navigational_Status).HasColumnName("navigational_status"); 
-        modelBuilder.Entity<TankerPosition>().Property(ts => ts.Rot_Raw).HasColumnName("rot_raw"); 
-        modelBuilder.Entity<TankerPosition>().Property(ts => ts.Sog_Raw).HasColumnName("sog_raw"); 
-        modelBuilder.Entity<TankerPosition>().Property(ts => ts.Cog_Raw).HasColumnName("cog_raw"); 
-        modelBuilder.Entity<TankerPosition>().Property(ts => ts.Heading_Raw).HasColumnName("heading_raw"); 
-        modelBuilder.Entity<TankerPosition>().Property(ts => ts.Imo).HasColumnName("imo"); 
-        modelBuilder.Entity<TankerPosition>().Property(ts => ts.Callsign).HasColumnName("callsign"); 
-        modelBuilder.Entity<TankerPosition>().Property(ts => ts.Vessel_Name).HasColumnName("vessel_name"); 
-        modelBuilder.Entity<TankerPosition>().Property(ts => ts.Ship_Type).HasColumnName("ship_type"); 
-        modelBuilder.Entity<TankerPosition>().Property(ts => ts.Cargo_Type).HasColumnName("cargo_type"); 
-        modelBuilder.Entity<TankerPosition>().Property(ts => ts.Width_Raw).HasColumnName("width_raw"); 
-        modelBuilder.Entity<TankerPosition>().Property(ts => ts.Length_Raw).HasColumnName("length_raw"); 
-        modelBuilder.Entity<TankerPosition>().Property(ts => ts.Position_Fixing_Device).HasColumnName("position_fixing_device"); 
-        modelBuilder.Entity<TankerPosition>().Property(ts => ts.DestinatiDraught_Rawon).HasColumnName("draught_raw"); 
-        modelBuilder.Entity<TankerPosition>().Property(ts => ts.Destination).HasColumnName("destination"); 
-        modelBuilder.Entity<TankerPosition>().Property(ts => ts.Eta_Raw).HasColumnName("eta_raw"); 
-        modelBuilder.Entity<TankerPosition>().Property(ts => ts.Data_Source_Type).HasColumnName("data_source_type"); 
-        modelBuilder.Entity<TankerPosition>().Property(ts => ts.Size_A).HasColumnName("size_a"); 
-        modelBuilder.Entity<TankerPosition>().Property(ts => ts.Size_B).HasColumnName("size_b"); 
-        modelBuilder.Entity<TankerPosition>().Property(ts => ts.Size_C).HasColumnName("size_c"); 
-        modelBuilder.Entity<TankerPosition>().Property(ts => ts.Size_D).HasColumnName("size_d"); ; 
-        modelBuilder.Entity<TankerPosition>().Property(ts => ts.Source_File_Name).HasColumnName("source_file_name"); 
-        modelBuilder.Entity<TankerPosition>().Property(ts => ts.Source_Batch_Date).HasColumnName("source_batch_date"); 
-        modelBuilder.Entity<TankerPosition>().Property(ts => ts.Created_At).HasColumnName("created_at"); 
-        modelBuilder.Entity<TankerPosition>().Property(ts => ts.Updated_At).HasColumnName("updated_at"); 
+        modelBuilder.Entity<TankerStaging>().HasKey(ts => ts.Staging_Id);
+        modelBuilder.Entity<TankerStaging>().Property(ts => ts.Staging_Id).HasColumnName("staging_id");
+        modelBuilder.Entity<TankerStaging>().Property(ts => ts.Timestamp_Raw).HasColumnName("timestamp_raw"); 
+        modelBuilder.Entity<TankerStaging>().Property(ts => ts.Type_Of_Mobile).HasColumnName("type_of_mobile"); 
+        modelBuilder.Entity<TankerStaging>().Property(ts => ts.Mmsi).HasColumnName("mmsi"); 
+        modelBuilder.Entity<TankerStaging>().Property(ts => ts.Latitude_Raw).HasColumnName("latitude_raw"); 
+        modelBuilder.Entity<TankerStaging>().Property(ts => ts.Longitude_Raw).HasColumnName("longitude_raw"); 
+        modelBuilder.Entity<TankerStaging>().Property(ts => ts.Navigational_Status).HasColumnName("navigational_status"); 
+        modelBuilder.Entity<TankerStaging>().Property(ts => ts.Rot_Raw).HasColumnName("rot_raw"); 
+        modelBuilder.Entity<TankerStaging>().Property(ts => ts.Cog_Raw).HasColumnName("sog_raw"); 
+        modelBuilder.Entity<TankerStaging>().Property(ts => ts.Cog_Raw).HasColumnName("cog_raw"); 
+        modelBuilder.Entity<TankerStaging>().Property(ts => ts.Heading_Raw).HasColumnName("heading_raw"); 
+        modelBuilder.Entity<TankerStaging>().Property(ts => ts.Imo).HasColumnName("imo"); 
+        modelBuilder.Entity<TankerStaging>().Property(ts => ts.Callsign).HasColumnName("callsign"); 
+        modelBuilder.Entity<TankerStaging>().Property(ts => ts.Vessel_Name).HasColumnName("vessel_name"); 
+        modelBuilder.Entity<TankerStaging>().Property(ts => ts.Ship_Type).HasColumnName("ship_type"); 
+        modelBuilder.Entity<TankerStaging>().Property(ts => ts.Cargo_Type).HasColumnName("cargo_type"); 
+        modelBuilder.Entity<TankerStaging>().Property(ts => ts.Width_Raw).HasColumnName("width_raw"); 
+        modelBuilder.Entity<TankerStaging>().Property(ts => ts.Length_Raw).HasColumnName("length_raw"); 
+        modelBuilder.Entity<TankerStaging>().Property(ts => ts.Position_Fixing_Device).HasColumnName("position_fixing_device"); 
+        modelBuilder.Entity<TankerStaging>().Property(ts => ts.Draught_Raw).HasColumnName("draught_raw"); 
+        modelBuilder.Entity<TankerStaging>().Property(ts => ts.Destination).HasColumnName("destination"); 
+        modelBuilder.Entity<TankerStaging>().Property(ts => ts.Eta_Raw).HasColumnName("eta_raw"); 
+        modelBuilder.Entity<TankerStaging>().Property(ts => ts.Data_Source_Type).HasColumnName("data_source_type"); 
+        modelBuilder.Entity<TankerStaging>().Property(ts => ts.Size_A).HasColumnName("size_a"); 
+        modelBuilder.Entity<TankerStaging>().Property(ts => ts.Size_B).HasColumnName("size_b"); 
+        modelBuilder.Entity<TankerStaging>().Property(ts => ts.Size_C).HasColumnName("size_c"); 
+        modelBuilder.Entity<TankerStaging>().Property(ts => ts.Size_D).HasColumnName("size_d"); ; 
+        modelBuilder.Entity<TankerStaging>().Property(ts => ts.Source_File_Name).HasColumnName("source_file_name"); 
+        modelBuilder.Entity<TankerStaging>().Property(ts => ts.Source_Batch_Date).HasColumnName("source_batch_date"); 
+        modelBuilder.Entity<TankerStaging>().Property(ts => ts.Created_At).HasColumnName("created_at"); 
+        modelBuilder.Entity<TankerStaging>().Property(ts => ts.Updated_At).HasColumnName("updated_at"); 
         }
         private static void MapTankers(ModelBuilder modelBuilder){}
         private static void MapTrackedTankers(ModelBuilder modelBuilder){}
