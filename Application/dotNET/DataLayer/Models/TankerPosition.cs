@@ -32,7 +32,7 @@ namespace DataLayer.Models
         public string? Destination { get; set; }
         public DateTime? Eta { get; set; }
         public string? Position_Fixing_Device { get; set; }
-        public string Data_Source_Type { get; set; }
+        public string? Data_Source_Type { get; set; }
         [Required]
         public DateTime Created_At { get; set; }
     }
