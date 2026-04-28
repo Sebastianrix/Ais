@@ -27,6 +27,14 @@ namespace DataLayer
                 .Take(100) // Remove this after Paging, This hack just make the program not freeze, since otherwise SQL would return thusands of rows.
                 .ToList();
         }
+
+
+
+
+
+
+
+
       
     }
 }

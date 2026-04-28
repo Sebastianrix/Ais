@@ -16,6 +16,8 @@ namespace DataLayer
 
         public DbSet<TankerPosition> TankerPositions { get; set; }
         public DbSet<TankerStaging> TankerStagings { get; set; }
+        public DbSet<Tanker> Tankers { get; set; }
+
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -91,7 +93,31 @@ namespace DataLayer
         modelBuilder.Entity<TankerStaging>().Property(ts => ts.Created_At).HasColumnName("created_at"); 
         modelBuilder.Entity<TankerStaging>().Property(ts => ts.Updated_At).HasColumnName("updated_at"); 
         }
-        private static void MapTankers(ModelBuilder modelBuilder){}
+        private static void MapTankers(ModelBuilder modelBuilder)
+        {
+        modelBuilder.Entity<Tanker>().ToTable("tankers");
+        modelBuilder.Entity<Tanker>().HasKey(t=> t.Tanker_Id);
+        modelBuilder.Entity<Tanker>().Property(t => t.Tanker_Id).HasColumnName("tanker_id");
+        modelBuilder.Entity<Tanker>().Property(t => t.Imo).HasColumnName("imo"); 
+        modelBuilder.Entity<Tanker>().Property(t => t.Mmsi).HasColumnName("mmsi"); 
+        modelBuilder.Entity<Tanker>().Property(t => t.Vessel_Name).HasColumnName("vessel_name"); 
+        modelBuilder.Entity<Tanker>().Property(t => t.Callsign).HasColumnName("callsign"); 
+        modelBuilder.Entity<Tanker>().Property(t => t.Ship_Type).HasColumnName("ship_type"); 
+        modelBuilder.Entity<Tanker>().Property(t => t.Cargo_Type).HasColumnName("cargo_type"); 
+        modelBuilder.Entity<Tanker>().Property(t => t.Type_Of_Mobil).HasColumnName("type_of_mobile"); 
+        modelBuilder.Entity<Tanker>().Property(t => t.Width).HasColumnName("width"); 
+        modelBuilder.Entity<Tanker>().Property(t => t.Length).HasColumnName("length"); 
+        modelBuilder.Entity<Tanker>().Property(t => t.Size_A).HasColumnName("size_a"); 
+        modelBuilder.Entity<Tanker>().Property(t => t.Size_B).HasColumnName("size_b"); 
+        modelBuilder.Entity<Tanker>().Property(t => t.Size_C).HasColumnName("size_c"); 
+        modelBuilder.Entity<Tanker>().Property(t => t.Size_D).HasColumnName("size_d"); 
+        modelBuilder.Entity<Tanker>().Property(t => t.Flag).HasColumnName("flag"); 
+        modelBuilder.Entity<Tanker>().Property(t => t.First_Seen_At).HasColumnName("first_seen_at"); 
+        modelBuilder.Entity<Tanker>().Property(t => t.Last_Seen_At).HasColumnName("last_seen_at"); 
+        modelBuilder.Entity<Tanker>().Property(t => t.Is_Active).HasColumnName("is_active"); 
+        modelBuilder.Entity<Tanker>().Property(t => t.Created_At).HasColumnName("created_at"); 
+        modelBuilder.Entity<Tanker>().Property(t => t.Updated_At).HasColumnName("updated_at"); 
+        }
         private static void MapTrackedTankers(ModelBuilder modelBuilder){}
         private static void MapVoyages(ModelBuilder modelBuilder){}
     }
