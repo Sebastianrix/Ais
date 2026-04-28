@@ -39,7 +39,7 @@ namespace WebLayer.Controllers
                     Voyage_Id = tp.Voyage_Id,
                     Staging_Id = tp.Staging_Id,
                     Timestamp = tp.Timestamp,
-                    Lantitude = tp.Lantitude,
+                    Longitude = tp.Longitude,
                     Latitude = tp.Latitude,
                     Raw_Imo = tp.Raw_Imo,
                     Imo_Status = tp.Imo_Status,
