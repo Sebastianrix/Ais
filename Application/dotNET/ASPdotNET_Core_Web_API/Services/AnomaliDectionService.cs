@@ -7,6 +7,10 @@ namespace ASP.NET_Core_Web_API.Services
             if (int.TryParse(DTOs.RawMmsi)) {
                                              
                 // Verified, should we transmute to Int?
+                // OBS : we have this value "Anomaly_Flag"
+                // we should proberbly examnd on this,
+                // but be cursious of DATA SIZE!!
+               DTOs.Anomaly_Flag = false;
         }
             else { 
             
