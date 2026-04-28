@@ -1,6 +1,7 @@
 ﻿using DataLayer;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Controllers;
+using WebLayer.DOTs;
 
 namespace ASP.NET_Core_Web_API.Controllers
 {

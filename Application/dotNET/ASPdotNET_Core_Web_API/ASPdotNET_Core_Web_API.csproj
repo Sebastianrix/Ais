@@ -13,6 +13,7 @@
 
   <ItemGroup>
 	  <ProjectReference Include="..\DataLayer\DataLayer.csproj" />
+	  <ProjectReference Include="..\WebLayer\WebLayer.csproj" />
 
   </ItemGroup>
 
