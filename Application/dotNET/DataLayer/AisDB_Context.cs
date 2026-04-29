@@ -17,6 +17,7 @@ namespace DataLayer
         public DbSet<TankerPosition> TankerPositions { get; set; }
         public DbSet<TankerStaging> TankerStagings { get; set; }
         public DbSet<Tanker> Tankers { get; set; }
+        public DbSet<Voyage> Voyages { get; set; }
 
 
 
@@ -28,9 +29,14 @@ namespace DataLayer
             MapTrackedTankers(modelBuilder);
             MapVoyages(modelBuilder);
         }
+        // Map of 'tanker_positions' table
+        // Map of 'tanker_staging' table
+        // Map of 'tankers' table
+        // Map of 'tracked_tankers' table
+        // Map of 'voyages' table
 
-        private static void MapTankerPositions(ModelBuilder modelBuilder)
-        {
+        private static void MapTankerPositions(ModelBuilder modelBuilder)//  We have a Db with 5 tabels,
+        { //23 columns
         modelBuilder.Entity<TankerPosition>().ToTable("tanker_positions");
         modelBuilder.Entity<TankerPosition>().HasKey(tp => tp.Position_Id);
         modelBuilder.Entity<TankerPosition>().Property(tp => tp.Position_Id).HasColumnName("position_id");
@@ -58,7 +64,7 @@ namespace DataLayer
         modelBuilder.Entity<TankerPosition>().Property(tp => tp.Created_At).HasColumnName("created_at");
         }
         private static void MapTankerStaging(ModelBuilder modelBuilder)
-        {
+        { //31 columns
         modelBuilder.Entity<TankerStaging>().ToTable("tanker_staging");
         modelBuilder.Entity<TankerStaging>().HasKey(ts => ts.Staging_Id);
         modelBuilder.Entity<TankerStaging>().Property(ts => ts.Staging_Id).HasColumnName("staging_id");
@@ -94,7 +100,7 @@ namespace DataLayer
         modelBuilder.Entity<TankerStaging>().Property(ts => ts.Updated_At).HasColumnName("updated_at"); 
         }
         private static void MapTankers(ModelBuilder modelBuilder)
-        {
+        {// 20 columns
         modelBuilder.Entity<Tanker>().ToTable("tankers");
         modelBuilder.Entity<Tanker>().HasKey(t=> t.Tanker_Id);
         modelBuilder.Entity<Tanker>().Property(t => t.Tanker_Id).HasColumnName("tanker_id");
@@ -133,52 +139,37 @@ namespace DataLayer
         private static void MapVoyages(ModelBuilder modelBuilder)
         {//  13 columns
         modelBuilder.Entity<Voyage>().ToTable("voyages");
-        modelBuilder.Entity<Voyage>().HasKey(t=> t.Voyage_Id);
-        modelBuilder.Entity<Voyage>().Property(t => t.Tanker_Id).HasColumnName("voyage_id");
-        modelBuilder.Entity<Voyage>().Property(t => t.Imo).HasColumnName("tanker_id"); 
-        modelBuilder.Entity<Voyage>().Property(t => t.Mmsi).HasColumnName("voyage_status"); 
-        modelBuilder.Entity<Voyage>().Property(t => t.Vessel_Name).HasColumnName("start_time_utc"); 
-        modelBuilder.Entity<Voyage>().Property(t => t.Callsign).HasColumnName("end_time_utc"); 
-        modelBuilder.Entity<Voyage>().Property(t => t.Ship_Type).HasColumnName("start_position_id"); 
-        modelBuilder.Entity<Voyage>().Property(t => t.End_Position_Id).HasColumnName("end_position_id"); 
-        modelBuilder.Entity<Voyage>().Property(t => t.Start_Port_Name).HasColumnName("start_port_name"); 
-        modelBuilder.Entity<Voyage>().Property(t => t.End_Port_Name).HasColumnName("end_port_name"); 
-        modelBuilder.Entity<Voyage>().Property(t => t.Destination_Final).HasColumnName("destination_final"); 
-        modelBuilder.Entity<Voyage>().Property(t => t.Eta_final).HasColumnName("eta_final"); 
-        modelBuilder.Entity<Voyage>().Property(t => t.Reated_At).HasColumnName("created_at"); 
-        modelBuilder.Entity<Voyage>().Property(t => t.Updated_At).HasColumnName("updated_at"); 
+        modelBuilder.Entity<Voyage>().HasKey(v=> v.Voyage_Id);
+        modelBuilder.Entity<Voyage>().Property(v => v.Tanker_Id).HasColumnName("voyage_id");
+        modelBuilder.Entity<Voyage>().Property(v => v.Imo).HasColumnName("tanker_id"); 
+        modelBuilder.Entity<Voyage>().Property(v => v.Mmsi).HasColumnName("voyage_status"); 
+        modelBuilder.Entity<Voyage>().Property(v => v.Vessel_Name).HasColumnName("start_time_utc"); 
+        modelBuilder.Entity<Voyage>().Property(v => v.Callsign).HasColumnName("end_time_utc"); 
+        modelBuilder.Entity<Voyage>().Property(v => v.Ship_Type).HasColumnName("start_position_id"); 
+        modelBuilder.Entity<Voyage>().Property(v => v.End_Position_Id).HasColumnName("end_position_id"); 
+        modelBuilder.Entity<Voyage>().Property(v => v.Start_Port_Name).HasColumnName("start_port_name"); 
+        modelBuilder.Entity<Voyage>().Property(v => v.End_Port_Name).HasColumnName("end_port_name"); 
+        modelBuilder.Entity<Voyage>().Property(v => v.Destination_Final).HasColumnName("destination_final"); 
+        modelBuilder.Entity<Voyage>().Property(v => v.Eta_final).HasColumnName("eta_final"); 
+        modelBuilder.Entity<Voyage>().Property(v => v.Reated_At).HasColumnName("created_at"); 
+        modelBuilder.Entity<Voyage>().Property(v => v.Updated_At).HasColumnName("updated_at"); 
         }
     }
 }
 
 
-// As my once good friend once said: sanity check - We have a Db with 5 tabels,
-// so lets maybe start with those, then scale more.
-// Bookmarks for certain interest would be awesome, but moves into realm of user framwork stuff
-// Which we know how to implement with JWT and such. But lets focus on the Psql made for now.
-// I imagine we can have end points for get/vessels, this could be for a overview display page. 
+//  SELFGUIDE : 
+//  To implement a new endpoint using DataBase
 
-// Map of 'tanker_positions' table
-// Map of 'tanker_staging' table
-// Map of 'tankers' table
-// Map of 'tracked_tankers' table
-// Map of 'voyages' table
-
-// Implementation reminder* Put Model for object in the datalayer /Models folder -> MapSQL -> IDataService/DataService? -> WebAPI DTO -> types/ .TS DTO -> Done
+//  Make functions in DataService/IDataService
+//  and create a new Controller.cs
+//  
 /*
-
-TO-DO list / Work-flow
-
- C# -> 
-      /Models folder ( objects.cs  )
-      /WebAPI DTO ( objectDTO.cs )
-      MapSQL in DbContext.cs
-
       IDataService/DataService?
       Controllers
 
       (https test in WepAPIhttp)
-      Unit-Test 
+      Unit-Test ( should we make these? )
 
 Frontend ->
        /types ( DTO.ts)
