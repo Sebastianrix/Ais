@@ -118,8 +118,17 @@ namespace DataLayer
         modelBuilder.Entity<Tanker>().Property(t => t.Created_At).HasColumnName("created_at"); 
         modelBuilder.Entity<Tanker>().Property(t => t.Updated_At).HasColumnName("updated_at"); 
         }
-        private static void MapTrackedTankers(ModelBuilder modelBuilder){}
-        private static void MapVoyages(ModelBuilder modelBuilder){}
+        private static void MapTrackedTankers(ModelBuilder modelBuilder)
+        {
+           // 7 columns 
+
+        }
+        private static void MapVoyages(ModelBuilder modelBuilder)
+        {
+        
+          //  13 columns
+
+        }
     }
 }
 
