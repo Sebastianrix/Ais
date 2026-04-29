@@ -1,4 +1,5 @@
 using DataLayer;
+using WebLayer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 
@@ -21,8 +22,9 @@ builder.Services.AddScoped<IDataService, DataService>();
 
 // Add services to the container.
 
+
+// (this commend came with the template :) Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 

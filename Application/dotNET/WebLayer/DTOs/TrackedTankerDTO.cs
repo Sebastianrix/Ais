@@ -10,10 +10,10 @@ namespace WebLayer.DTOs
     {
         public int? Tracked_Id { get; set; }
         public string? Imo { get; set; }
-        public string? source_trial { get; set; }
-        public string? notes { get; set; }
-        public bool? is_active { get; set; }
-        public DateTime created_at { get; set; }
-        public DateTime updated_at { get; set; }
+        public string? Source_Trial { get; set; }
+        public string? Notes { get; set; }
+        public bool? Is_Active { get; set; }
+        public DateTime Created_At { get; set; }
+        public DateTime Updated_At { get; set; }
     }
 }
