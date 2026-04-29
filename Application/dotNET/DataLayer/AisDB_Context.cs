@@ -134,33 +134,19 @@ namespace DataLayer
         {//  13 columns
         modelBuilder.Entity<Voyage>().ToTable("voyages");
         modelBuilder.Entity<Voyage>().HasKey(t=> t.Voyage_Id);
-        modelBuilder.Entity<Voyage>().Property(t => t.Tanker_Id).HasColumnName("Voyage_id");
-        modelBuilder.Entity<Voyage>().Property(t => t.Imo).HasColumnName("imo"); 
-        modelBuilder.Entity<Voyage>().Property(t => t.Mmsi).HasColumnName("mmsi"); 
-        modelBuilder.Entity<Voyage>().Property(t => t.Vessel_Name).HasColumnName("vessel_name"); 
-        modelBuilder.Entity<Voyage>().Property(t => t.Callsign).HasColumnName("callsign"); 
-        modelBuilder.Entity<Voyage>().Property(t => t.Ship_Type).HasColumnName("ship_type"); 
-        modelBuilder.Entity<Voyage>().Property(t => t.Cargo_Type).HasColumnName("cargo_type"); 
-        modelBuilder.Entity<Voyage>().Property(t => t.Type_Of_Mobil).HasColumnName("type_of_mobile"); 
-        modelBuilder.Entity<Voyage>().Property(t => t.Width).HasColumnName("width"); 
-        modelBuilder.Entity<Voyage>().Property(t => t.Length).HasColumnName("length"); 
-        modelBuilder.Entity<Voyage>().Property(t => t.Size_A).HasColumnName("size_a"); 
-        modelBuilder.Entity<Voyage>().Property(t => t.Size_B).HasColumnName("reated_at"); 
-        modelBuilder.Entity<Voyage>().Property(t => t.Size_C).HasColumnName("updated_at"); 
-
-        Voyage_Id
-        Tanker_Id
-        Voyage_Status
-        Start_Time_Utc
-        End_Time_Utc
-        Start_Position_Id
-        End_Position_Id
-        Start_Port_Name
-        End_Port_Name
-        Destination_Final
-        Eta_final
-        reated_at
-        updated_at
+        modelBuilder.Entity<Voyage>().Property(t => t.Tanker_Id).HasColumnName("voyage_id");
+        modelBuilder.Entity<Voyage>().Property(t => t.Imo).HasColumnName("tanker_id"); 
+        modelBuilder.Entity<Voyage>().Property(t => t.Mmsi).HasColumnName("voyage_status"); 
+        modelBuilder.Entity<Voyage>().Property(t => t.Vessel_Name).HasColumnName("start_time_utc"); 
+        modelBuilder.Entity<Voyage>().Property(t => t.Callsign).HasColumnName("end_time_utc"); 
+        modelBuilder.Entity<Voyage>().Property(t => t.Ship_Type).HasColumnName("start_position_id"); 
+        modelBuilder.Entity<Voyage>().Property(t => t.End_Position_Id).HasColumnName("end_position_id"); 
+        modelBuilder.Entity<Voyage>().Property(t => t.Start_Port_Name).HasColumnName("start_port_name"); 
+        modelBuilder.Entity<Voyage>().Property(t => t.End_Port_Name).HasColumnName("end_port_name"); 
+        modelBuilder.Entity<Voyage>().Property(t => t.Destination_Final).HasColumnName("destination_final"); 
+        modelBuilder.Entity<Voyage>().Property(t => t.Eta_final).HasColumnName("eta_final"); 
+        modelBuilder.Entity<Voyage>().Property(t => t.Reated_At).HasColumnName("created_at"); 
+        modelBuilder.Entity<Voyage>().Property(t => t.Updated_At).HasColumnName("updated_at"); 
         }
     }
 }
