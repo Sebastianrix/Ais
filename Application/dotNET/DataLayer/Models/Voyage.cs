@@ -8,18 +8,18 @@ namespace DataLayer.Models
 {
     public class Voyage
     {
-        public int? voyage_id { get; set; }
-        public int? tanker_id { get; set; }
-        public string? voyage_status { get; set; }
-        public DateTime? start_time_utc { get; set; }
-        public DateTime? end_time_utc { get; set; }
-        public int? start_position_id { get; set; }
-        public int? end_position_id { get; set; }
-        public string? start_port_name { get; set; }
-        public string? end_port_name { get; set; }
-        public string? destination_final {  get; set; }
-        public DateTime? eta_final { get; set; }
-        public DateTime created_at { get; set; }
-        public DateTime updated_at { get; set; }
+        public int? Voyage_Id { get; set; }
+        public int? Tanker_Id { get; set; }
+        public string? Voyage_status { get; set; }
+        public DateTime? Start_Time_Utc { get; set; }
+        public DateTime? End_Time_Utc { get; set; }
+        public int? Start_Position_Id { get; set; }
+        public int? End_Position_Id { get; set; }
+        public string? Start_Port_Name { get; set; }
+        public string? End_Port_Name { get; set; }
+        public string? Destination_Final { get; set; }
+        public DateTime? Eta_final { get; set; }
+        public DateTime Reated_At { get; set; }
+        public DateTime Updated_At { get; set; }
     }
 }
