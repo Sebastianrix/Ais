@@ -18,6 +18,8 @@ namespace DataLayer
         public DbSet<TankerStaging> TankerStagings { get; set; }
         public DbSet<Tanker> Tankers { get; set; }
         public DbSet<Voyage> Voyages { get; set; }
+        public DbSet<TrackedTanker> TrackedTankers { get; set; }
+        
 
 
 
@@ -102,7 +104,7 @@ namespace DataLayer
         private static void MapTankers(ModelBuilder modelBuilder)
         {// 20 columns
         modelBuilder.Entity<Tanker>().ToTable("tankers");
-        modelBuilder.Entity<Tanker>().HasKey(t=> t.Tanker_Id);
+        modelBuilder.Entity<Tanker>().HasKey(t => t.Tanker_Id);
         modelBuilder.Entity<Tanker>().Property(t => t.Tanker_Id).HasColumnName("tanker_id");
         modelBuilder.Entity<Tanker>().Property(t => t.Imo).HasColumnName("imo"); 
         modelBuilder.Entity<Tanker>().Property(t => t.Mmsi).HasColumnName("mmsi"); 
@@ -126,26 +128,27 @@ namespace DataLayer
         }
         private static void MapTrackedTankers(ModelBuilder modelBuilder)
         { // 7 columns 
-        modelBuilder.Entity<TrackedTanker>().ToTable("tracked_tankers");
-        modelBuilder.Entity<TrackedTanker>().HasKey(tt=> tt.Tracked_Id);
-        modelBuilder.Entity<TrackedTanker>().Property(tt => tt.Tracked_Id).HasColumnName("tracked_id");
-        modelBuilder.Entity<TrackedTanker>().Property(tt => tt.Imo).HasColumnName("imo"); 
-        modelBuilder.Entity<TrackedTanker>().Property(tt => tt.Source_Trial).HasColumnName("source_trial"); 
-        modelBuilder.Entity<TrackedTanker>().Property(tt => tt.Notes).HasColumnName("notes"); 
-        modelBuilder.Entity<TrackedTanker>().Property(tt => tt.Is_Active).HasColumnName("is_active"); 
-        modelBuilder.Entity<TrackedTanker>().Property(tt => tt.Created_At).HasColumnName("created_at"); 
-        modelBuilder.Entity<TrackedTanker>().Property(tt => tt.Updated_At).HasColumnName("updated_at"); 
+            modelBuilder.Entity<TrackedTanker>().ToTable("tracked_tankers");
+            modelBuilder.Entity<TrackedTanker>().HasKey(tt => tt.Tracked_Id);
+            modelBuilder.Entity<TrackedTanker>().Property(tt => tt.Tracked_Id).HasColumnName("tracked_id");
+            modelBuilder.Entity<TrackedTanker>().Property(tt => tt.Imo).HasColumnName("imo");
+            modelBuilder.Entity<TrackedTanker>().Property(tt => tt.Source_Trial).HasColumnName("source_trial");
+            modelBuilder.Entity<TrackedTanker>().Property(tt => tt.Notes).HasColumnName("notes");
+            modelBuilder.Entity<TrackedTanker>().Property(tt => tt.Is_Active).HasColumnName("is_active");
+            modelBuilder.Entity<TrackedTanker>().Property(tt => tt.Created_At).HasColumnName("created_at");
+            modelBuilder.Entity<TrackedTanker>().Property(tt => tt.Updated_At).HasColumnName("updated_at");
+
         }
         private static void MapVoyages(ModelBuilder modelBuilder)
         {//  13 columns
         modelBuilder.Entity<Voyage>().ToTable("voyages");
         modelBuilder.Entity<Voyage>().HasKey(v=> v.Voyage_Id);
-        modelBuilder.Entity<Voyage>().Property(v => v.Tanker_Id).HasColumnName("voyage_id");
-        modelBuilder.Entity<Voyage>().Property(v => v.Imo).HasColumnName("tanker_id"); 
-        modelBuilder.Entity<Voyage>().Property(v => v.Mmsi).HasColumnName("voyage_status"); 
-        modelBuilder.Entity<Voyage>().Property(v => v.Vessel_Name).HasColumnName("start_time_utc"); 
-        modelBuilder.Entity<Voyage>().Property(v => v.Callsign).HasColumnName("end_time_utc"); 
-        modelBuilder.Entity<Voyage>().Property(v => v.Ship_Type).HasColumnName("start_position_id"); 
+        modelBuilder.Entity<Voyage>().Property(v => v.Voyage_Id).HasColumnName("voyage_id");
+        modelBuilder.Entity<Voyage>().Property(v => v.Tanker_Id).HasColumnName("tanker_id");
+        modelBuilder.Entity<Voyage>().Property(v => v.Voyage_status).HasColumnName("voyage_status"); 
+        modelBuilder.Entity<Voyage>().Property(v => v.Start_Time_Utc).HasColumnName("start_time_utc"); 
+        modelBuilder.Entity<Voyage>().Property(v => v.End_Time_Utc).HasColumnName("end_time_utc"); 
+        modelBuilder.Entity<Voyage>().Property(v => v.Start_Position_Id).HasColumnName("start_position_id"); 
         modelBuilder.Entity<Voyage>().Property(v => v.End_Position_Id).HasColumnName("end_position_id"); 
         modelBuilder.Entity<Voyage>().Property(v => v.Start_Port_Name).HasColumnName("start_port_name"); 
         modelBuilder.Entity<Voyage>().Property(v => v.End_Port_Name).HasColumnName("end_port_name"); 

@@ -8,6 +8,12 @@ namespace DataLayer.Models
 {
     public class TrackedTanker
     {
-        // 7 columns
+        public int? Tracked_Id { get; set; }
+        public string? Imo { get; set; }
+        public string? Source_Trial { get; set; }
+        public string? Notes { get; set; }
+        public bool? Is_Active { get; set; }
+        public DateTime Created_At { get; set; }
+        public DateTime Updated_At { get; set; }
     }
 }
