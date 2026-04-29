@@ -119,33 +119,47 @@ namespace DataLayer
         modelBuilder.Entity<Tanker>().Property(t => t.Updated_At).HasColumnName("updated_at"); 
         }
         private static void MapTrackedTankers(ModelBuilder modelBuilder)
-        {
-            // 7 columns 
-        tracked_id
-        imo
-        source_trial
-        notes
-        is_active
-        created_at
-        updated_at
-
+        { // 7 columns 
+        modelBuilder.Entity<TrackedTanker>().ToTable("tracked_tankers");
+        modelBuilder.Entity<TrackedTanker>().HasKey(tt=> tt.Tracked_Id);
+        modelBuilder.Entity<TrackedTanker>().Property(tt => tt.Tracked_Id).HasColumnName("tracked_id");
+        modelBuilder.Entity<TrackedTanker>().Property(tt => tt.Imo).HasColumnName("imo"); 
+        modelBuilder.Entity<TrackedTanker>().Property(tt => tt.Source_Trial).HasColumnName("source_trial"); 
+        modelBuilder.Entity<TrackedTanker>().Property(tt => tt.Notes).HasColumnName("notes"); 
+        modelBuilder.Entity<TrackedTanker>().Property(tt => tt.Is_Active).HasColumnName("is_active"); 
+        modelBuilder.Entity<TrackedTanker>().Property(tt => tt.Created_At).HasColumnName("created_at"); 
+        modelBuilder.Entity<TrackedTanker>().Property(tt => tt.Updated_At).HasColumnName("updated_at"); 
         }
         private static void MapVoyages(ModelBuilder modelBuilder)
-        {
+        {//  13 columns
+        modelBuilder.Entity<Voyage>().ToTable("voyages");
+        modelBuilder.Entity<Voyage>().HasKey(t=> t.Voyage_Id);
+        modelBuilder.Entity<Voyage>().Property(t => t.Tanker_Id).HasColumnName("Voyage_id");
+        modelBuilder.Entity<Voyage>().Property(t => t.Imo).HasColumnName("imo"); 
+        modelBuilder.Entity<Voyage>().Property(t => t.Mmsi).HasColumnName("mmsi"); 
+        modelBuilder.Entity<Voyage>().Property(t => t.Vessel_Name).HasColumnName("vessel_name"); 
+        modelBuilder.Entity<Voyage>().Property(t => t.Callsign).HasColumnName("callsign"); 
+        modelBuilder.Entity<Voyage>().Property(t => t.Ship_Type).HasColumnName("ship_type"); 
+        modelBuilder.Entity<Voyage>().Property(t => t.Cargo_Type).HasColumnName("cargo_type"); 
+        modelBuilder.Entity<Voyage>().Property(t => t.Type_Of_Mobil).HasColumnName("type_of_mobile"); 
+        modelBuilder.Entity<Voyage>().Property(t => t.Width).HasColumnName("width"); 
+        modelBuilder.Entity<Voyage>().Property(t => t.Length).HasColumnName("length"); 
+        modelBuilder.Entity<Voyage>().Property(t => t.Size_A).HasColumnName("size_a"); 
+        modelBuilder.Entity<Voyage>().Property(t => t.Size_B).HasColumnName("reated_at"); 
+        modelBuilder.Entity<Voyage>().Property(t => t.Size_C).HasColumnName("updated_at"); 
 
-            //  13 columns
-        voyage_id
-        tanker_id
-        voyage_status
-        start_time_utc
-        end_time_utc
-        start_position_id
-        end_position_id
-        start_port_name
-        end_port_name
-        destination_final
-        eta_final
-        created_at
+        Voyage_Id
+        Tanker_Id
+        Voyage_Status
+        Start_Time_Utc
+        End_Time_Utc
+        Start_Position_Id
+        End_Position_Id
+        Start_Port_Name
+        End_Port_Name
+        Destination_Final
+        Eta_final
+        reated_at
         updated_at
         }
     }
