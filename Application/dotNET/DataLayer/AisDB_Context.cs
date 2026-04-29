@@ -120,14 +120,33 @@ namespace DataLayer
         }
         private static void MapTrackedTankers(ModelBuilder modelBuilder)
         {
-           // 7 columns 
+            // 7 columns 
+        tracked_id
+        imo
+        source_trial
+        notes
+        is_active
+        created_at
+        updated_at
 
         }
         private static void MapVoyages(ModelBuilder modelBuilder)
         {
-        
-          //  13 columns
 
+            //  13 columns
+        voyage_id
+        tanker_id
+        voyage_status
+        start_time_utc
+        end_time_utc
+        start_position_id
+        end_position_id
+        start_port_name
+        end_port_name
+        destination_final
+        eta_final
+        created_at
+        updated_at
         }
     }
 }
