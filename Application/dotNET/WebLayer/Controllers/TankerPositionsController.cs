@@ -60,10 +60,13 @@ namespace WebLayer.Controllers
 
                 return Ok(dto);
             }
-            catch (Exception ex) {
-                return StatusCode(500, new { message = "ERROR Check if the DTO rejected the db-entry cast mismatch with datatype", error = ex.Message });
-            }
-        } 
-    
+            //catch (Exception ex) {
+                //return StatusCode(500, new { message = "ERROR Check if the DTO rejected the db-entry cast mismatch with datatype", error = ex.Message });
+            //}
+          // } 
+    catch (Exception ex) {
+    Console.WriteLine($"[ERR] {ex}"); 
+    return StatusCode(500, new { message = "ERROR Check if the DTO rejected the db-entry cast mismatch with datatype", error = ex.Message });
+          }
     }
-}
+}}
