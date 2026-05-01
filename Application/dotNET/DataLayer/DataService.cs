@@ -28,6 +28,46 @@ namespace DataLayer
                 .ToList();
         }
 
+        
+        public IList<Tanker> GetTankers() {
+        return _context.Tankers
+                .OrderByDescending(t => t.Last_Seen_At)
+                .Take(100) // page here
+                .ToList();
+        }
+
+        public IList<TankerStaging> GetTankerStagings() {
+        return _context.TankerStaging
+                .OrderByDescending(ts => ts.Timestamp_Raw)
+                .Take(100) // Remove this after Paging, This hack>
+                .ToList();
+         }
+	
+	
+        public IList<TrackedTanker> GetTrackedTankers() {
+        return _context.TankerPositions
+                .OrderByDescending(tp => tp.Timestamp)
+                .Take(100) // Remove this after Paging, This hack>
+                .ToList();
+        }
+     //   public IList<Voyage> GetVoyages() {
+       // return _context.Voyage.OrderByDescending(v.Voyage)
+         //
+       // return _context.TankerPositions
+              //  .OrderByDescending(tp => tp.Timestamp)
+          //      .Take(100) // Remove this after Paging, This hack>
+            //    .ToList();
+        //}
+
+           
+          }	
+
+
+
+
+
+         }
+
 
 
 
