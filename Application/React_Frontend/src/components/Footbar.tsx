@@ -9,7 +9,7 @@ const Footbar = () => {
             <div className="col">
                 <h4>AIS MAP TEAM</h4>
                 <ul className="list-unstyled">
-                    <li>Roskilde Universitet<</li>
+                    <li>Roskilde Universitet</li>
                       <li>Mester Thesis team of two.</li>  
                               <li>Hosted within the EU, in Denmark</li>  
                 </ul>
