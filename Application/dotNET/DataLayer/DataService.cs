@@ -37,7 +37,7 @@ namespace DataLayer
         }
 
         public IList<TankerStaging> GetTankerStagings() {
-        return _context.TankerStaging
+        return _context.TankerStagings
                 .OrderByDescending(ts => ts.Timestamp_Raw)
                 .Take(100) // Remove this after Paging, This hack>
                 .ToList();
@@ -45,8 +45,8 @@ namespace DataLayer
 	
 	
         public IList<TrackedTanker> GetTrackedTankers() {
-        return _context.TankerPositions
-                .OrderByDescending(tp => tp.Timestamp)
+        return _context.TrackedTankers
+                .OrderByDescending(tt => tt.Tracked_Id)
                 .Take(100) // Remove this after Paging, This hack>
                 .ToList();
         }
@@ -57,24 +57,6 @@ namespace DataLayer
               //  .OrderByDescending(tp => tp.Timestamp)
           //      .Take(100) // Remove this after Paging, This hack>
             //    .ToList();
-        //}
-
-           
-          }	
-
-
-
-
-
-         }
-
-
-
-
-
-
-
-
-      
+        //}      
     }
 }
