@@ -1,5 +1,6 @@
 ﻿ using DataLayer.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -7,6 +8,7 @@ using System.Reflection.Emit;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace DataLayer
 {
@@ -159,6 +161,19 @@ namespace DataLayer
         }
     }
 }
+//Schema | Name | Type | Owner
+//-------- + ----------------------------------+----------+----------
+// public | tanker_positions | table | postgres
+// public | tanker_positions_position_id_seq | sequence | postgres
+// public | tanker_staging | table | postgres
+// public | tanker_staging_staging_id_seq | sequence | postgres
+// public | tankers | table | postgres
+// public | tankers_tanker_id_seq | sequence | postgres
+// public | tracked_tankers | table | postgres
+// public | tracked_tankers_tracked_id_seq | sequence | postgres
+// public | voyages | table | postgres
+// public | voyages_voyage_id_seq | sequence | postgres
+//(10 rows)
 
 
 //  SELFGUIDE : 
