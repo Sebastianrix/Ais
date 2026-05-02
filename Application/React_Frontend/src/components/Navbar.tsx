@@ -19,6 +19,9 @@ const Navbar = () => {
     <li>
       <a href="/map">Map</a>
     </li>
+      <li>
+      <a href="/Overview">Overview</a>
+    </li>
     <li>
       <a href="/APIpage">API</a>
     </li>
