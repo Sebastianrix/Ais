@@ -1,12 +1,13 @@
 import axios from 'axios';
-import type { Weather } from '../types/Weather';
+import type { Tankers } from '../types/Tankers';
 
-const API_URL_DOTNET = "https://localhost:5001/weatherforecast";
+
+const API_URL_DOTNET = "https://aismap.dk/tanker";
 //const API_URL_PYTHON = 
 
-export const getWeather = async (): Promise<Weather[]> =>{
+export const getTankers = async (): Promise<Tankers[]> =>{
     const res = await axios.get(API_URL_DOTNET);
     return res.data;
 };
 
-export default getWeather;
+export default getTankers;
