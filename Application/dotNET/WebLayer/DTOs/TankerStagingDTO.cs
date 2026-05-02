@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -32,10 +33,10 @@ namespace WebLayer.DTOs
         public string? Destination { get; set; }
         public string? Eta_Raw { get; set; }
         public string? Data_Source_Type { get; set; }
-        public string? Size_A { get; set; }
-        public string? Size_B { get; set; }
-        public string? Size_C { get; set; }
-        public string? Size_D { get; set; }
+        public int? Size_A { get; set; }
+        public int? Size_B { get; set; }
+        public int? Size_C { get; set; }
+        public int? Size_D { get; set; }
         //[Required]
         public string? Source_File_Name { get; set; }
         //[Required]
@@ -44,3 +45,43 @@ namespace WebLayer.DTOs
         public DateTime Updated_At { get; set; }
     }
 }
+
+
+//Table "public.tanker_staging"
+//         Column         |            Type             | Collation | Nullable |                      Default
+//------------------------+-----------------------------+-----------+----------+----------------------------------------------------
+// staging_id             | bigint                      |           | not null | nextval('tanker_staging_staging_id_seq'::regclass)
+// timestamp_raw          | character varying(100)      |           |          |
+// type_of_mobile         | character varying(100)      |           |          |
+// mmsi                   | character varying(20)       |           |          |
+// latitude_raw           | character varying(50)       |           |          |
+// longitude_raw          | character varying(50)       |           |          |
+// navigational_status    | character varying(100)      |           |          |
+// rot_raw                | character varying(50)       |           |          |
+// sog_raw                | character varying(50)       |           |          |
+// cog_raw                | character varying(50)       |           |          |
+// heading_raw            | character varying(50)       |           |          |
+// imo                    | character varying(20)       |           |          |
+// callsign               | character varying(50)       |           |          |
+// vessel_name            | character varying(255)      |           |          |
+// ship_type              | character varying(100)      |           |          |
+// cargo_type             | character varying(100)      |           |          |
+// width_raw              | character varying(50)       |           |          |
+// length_raw             | character varying(50)       |           |          |
+// position_fixing_device | character varying(100)      |           |          |
+// draught_raw            | character varying(50)       |           |          |
+// destination            | character varying(255)      |           |          |
+// eta_raw                | character varying(100)      |           |          |
+// data_source_type       | character varying(50)       |           |          |
+// size_a                 | numeric(10,2)               |           |          |
+// size_b                 | numeric(10,2)               |           |          |
+// size_c                 | numeric(10,2)               |           |          |
+// size_d                 | numeric(10,2)               |           |          |
+// source_file_name       | character varying(255)      |           |          |
+// source_batch_date      | date                        |           |          |
+// created_at             | timestamp without time zone |           |          | CURRENT_TIMESTAMP
+// updated_at             | timestamp without time zone |           |          | CURRENT_TIMESTAMP
+//Indexes:
+//    "tanker_staging_pkey" PRIMARY KEY, btree (staging_id)
+//Referenced by:
+//    TABLE "tanker_positions" CONSTRAINT "fk_positions_staging" FOREIGN KEY (staging_id) REFERENCES tanker_staging(staging_id) ON DELETE SET NULL
