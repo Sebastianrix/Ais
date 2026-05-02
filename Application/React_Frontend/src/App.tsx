@@ -12,12 +12,12 @@ import './css/App.css'
 function App() {
   const [count, setCount] = useState(0)
 
-  useEffect(() => { 
+  //useEffect(() => { 
     // fetch("https://localhost:5001/weatherforecast")
     // .then(res => res.json())
     // .then(data => console.log("HEJ HEJ HJE HJEJHEJHJEJHEJHEJHEJ : ",data));
-   getWeather().then(data => console.log("HEJ HEJ HJE HJEJHEJHJEJHEJHE : ",data));
-}, [] )
+//   getWeather().then(data => console.log("HEJ HEJ HJE HJEJHEJHJEJHEJHE : ",data));
+//}, [] )
 
   return (
     <>

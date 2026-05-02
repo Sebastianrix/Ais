@@ -4,6 +4,7 @@ import { createRoot } from 'react-dom/client'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/index.css'
+import Overview from './pages/Overview.tsx'
 import App from './App.tsx'
 import About from './pages/About.tsx'
 import FAQ from './pages/FAQ.tsx'
@@ -28,6 +29,7 @@ createRoot(document.getElementById('root')!).render(
       <Route path = "/FAQ" element={<FAQ />} />
       <Route path = "/APIpage" element={<APIpage />} />
       <Route path = "/Map" element={<Map />} />
+      <Route path = "/Overview" element={<Overview />} />
     </Routes>
   </BrowserRouter>
  

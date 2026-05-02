@@ -20,7 +20,12 @@ function DisplayMap(){
  <div className='myMapClass1'>
 <Card className="p-0 rounded-none ring-0 border-0 w-[850px] h-[700px] overflow-hidden">
              
-      <Map center={[11.000000,56.00000]} zoom={6} >
+      <Map 
+      center={[9.000000,56.00000]} 
+      zoom={5} 
+      pitch={45}
+      bearing={20}   
+      >
         
         <MapControls position="top-left"/>
 

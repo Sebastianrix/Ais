@@ -12,7 +12,7 @@ function APIpage(){
 
      
 
- <div>
+ <div  id="left">
           <h1>Public API</h1>
           <p>
           Welcome to the API references. This is where you can find information about our API endpoints.
