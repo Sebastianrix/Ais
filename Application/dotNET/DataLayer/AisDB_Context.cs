@@ -1,4 +1,4 @@
-﻿using DataLayer.Models;
+﻿ using DataLayer.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -77,7 +77,7 @@ namespace DataLayer
         modelBuilder.Entity<TankerStaging>().Property(ts => ts.Longitude_Raw).HasColumnName("longitude_raw"); 
         modelBuilder.Entity<TankerStaging>().Property(ts => ts.Navigational_Status).HasColumnName("navigational_status"); 
         modelBuilder.Entity<TankerStaging>().Property(ts => ts.Rot_Raw).HasColumnName("rot_raw"); 
-        modelBuilder.Entity<TankerStaging>().Property(ts => ts.Cog_Raw).HasColumnName("sog_raw"); 
+        modelBuilder.Entity<TankerStaging>().Property(ts => ts.Sog_Raw).HasColumnName("sog_raw"); 
         modelBuilder.Entity<TankerStaging>().Property(ts => ts.Cog_Raw).HasColumnName("cog_raw"); 
         modelBuilder.Entity<TankerStaging>().Property(ts => ts.Heading_Raw).HasColumnName("heading_raw"); 
         modelBuilder.Entity<TankerStaging>().Property(ts => ts.Imo).HasColumnName("imo"); 
