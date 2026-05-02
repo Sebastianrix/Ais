@@ -32,14 +32,14 @@ namespace DataLayer
         public IList<Tanker> GetTankers() {
         return _context.Tankers
                 .OrderByDescending(t => t.Last_Seen_At)
-                .Take(309) // page here
+                .Take(10) // page here
                 .ToList();
         }
 
         public IList<TankerStaging> GetTankerStagings() {
         return _context.TankerStagings
                 .OrderByDescending(ts => ts.Timestamp_Raw)
-                .Take(300) // Remove this after Paging, This hack>
+                .Take(10) // Remove this after Paging, This hack>
                 .ToList();
          }
 	
@@ -47,7 +47,7 @@ namespace DataLayer
         public IList<TrackedTanker> GetTrackedTankers() {
         return _context.TrackedTankers
                 .OrderByDescending(tt => tt.Tracked_Id)
-                .Take(300) // Remove this after Paging, This hack>
+                .Take(10) // Remove this after Paging, This hack>
                 .ToList();
         }
      //   public IList<Voyage> GetVoyages() {
