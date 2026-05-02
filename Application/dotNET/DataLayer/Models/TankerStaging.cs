@@ -13,8 +13,8 @@ namespace DataLayer.Models
         public DateTime? Timestamp_Raw { get; set; }
         public string? Type_Of_Mobile { get; set; }
         public string? Mmsi { get; set; }
-        public double Latitude_Raw { get; set; }
-        public double Longitude_Raw { get; set; }
+        public string? Latitude_Raw { get; set; }
+        public string? Longitude_Raw { get; set; }
         public string? Navigational_Status { get; set; }
         public string? Rot_Raw { get; set; }
         public string? Sog_Raw { get; set; }
