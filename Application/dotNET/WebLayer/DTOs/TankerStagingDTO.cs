@@ -11,7 +11,7 @@ namespace WebLayer.DTOs
     public class TankerStagingDTO
     {
         public int? Staging_Id { get; set; }
-        public DateTime? Timestamp_Raw { get; set; }
+        public string? Timestamp_Raw { get; set; }
         public string? Type_Of_Mobile { get; set; }
         public string? Mmsi { get; set; }
         public string? Latitude_Raw { get; set; }
