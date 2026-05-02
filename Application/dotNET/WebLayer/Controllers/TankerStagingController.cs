@@ -38,8 +38,8 @@ namespace WebLayer.Controllers
                   Timestamp_Raw = ts.Timestamp_Raw,
                   Type_Of_Mobile = ts.Type_Of_Mobile,
                   Mmsi = ts.Mmsi,
-                  Latitude_Raw = ts.Latitude_Raw
-                  Longitude_Raw = ts.Longitude_Raw
+                  Latitude_Raw = ts.Latitude_Raw,
+                  Longitude_Raw = ts.Longitude_Raw,
                   Navigational_Status = ts.Navigational_Status,
                   Rot_Raw = ts.Rot_Raw,
                   Sog_Raw = ts.Sog_Raw,
