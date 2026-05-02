@@ -31,8 +31,8 @@ namespace WebLayer.Controllers
         {
             try
             {
-                var tankerstaging = _dataService.GetTankerStagings();
-                var dto = tankerstaging.Select(ts => new TankerStagingDTO
+                var tankerStaging = _dataService.GetTankerStagings();
+                var dto = tankerStaging.Select(ts => new TankerStagingDTO
                 {
                   Staging_Id = ts.Staging_Id,
                   Timestamp_Raw = ts.Timestamp_Raw,
