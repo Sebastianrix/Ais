@@ -19,14 +19,14 @@ namespace DataLayer
 
         IList<Tanker> GetTankers();
 
-      //*note to self THIS ONE NEXT ::::  IList<TankerStaging> GetTankerStaging();
+        IList<TankerStaging> GetTankerStagings();
         //IList<TankerStaging> GetTankerStagingByDateRange(DateTime startDate, DateTime endDate);
         //IList<TankerStaging> GetTankerStagingByTanker(string tanker);
 
 
         IList<TrackedTanker> GetTrackedTankers();
 
-      //  IList<TankerVoyage> GetTankerVoyages();
+      //  IList<TankerVoyage> GetTankerVoyages(); Last table, we made python script that does some of this tech
 
     }
 }
