@@ -47,7 +47,7 @@ namespace WebLayer.Controllers
                   Heading_Raw = ts.Heading_Raw,
                   Imo = ts.Imo,
                   Callsign = ts.Callsign,
-                  Vessel_Name = ts.Vessel_Name = ts.
+                  Vessel_Name = ts.Vessel_Name,
                   Ship_Type = ts.Ship_Type,
                   Cargo_Type = ts.Cargo_Type,
                   Width_Raw  = ts.Width_Raw,
@@ -65,7 +65,7 @@ namespace WebLayer.Controllers
                   Source_Batch_Date  = ts.Source_Batch_Date,
                   Created_At  = ts.Created_At,
                   Updated_At = ts.Updated_At
-    }).ToList();
+                 }).ToList();
 
                 return Ok(dto);
             }
@@ -73,7 +73,7 @@ namespace WebLayer.Controllers
             catch (Exception ex)
             {
                 Console.WriteLine($"[ERR] {ex}");
-                return StatusCode(10, new
+                return StatusCode(500, new
                 {
                     message = "ERROR Tanker¨StagingController",
                     error = ex.Message

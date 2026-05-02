@@ -31,14 +31,14 @@ namespace DataLayer.Models
         public string? Draught_Raw { get; set; }
         public string? Destination { get; set; }
         public string? Eta_Raw { get; set; }
-        public string Data_Source_Type { get; set; }
+        public string? Data_Source_Type { get; set; }
         public int? Size_A { get; set; }
         public int? Size_B { get; set; }
         public int? Size_C { get; set; }
         public int? Size_D { get; set; }
-        [Required]
-        public string Source_File_Name { get; set; }
-        [Required]
+     //   [Required]
+        public string? Source_File_Name { get; set; }
+      //  [Required]
         public DateTime Source_Batch_Date { get; set; }
         public DateTime Created_At { get; set; }
         public DateTime Updated_At { get; set; }
