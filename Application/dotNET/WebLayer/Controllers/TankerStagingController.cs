@@ -73,7 +73,7 @@ namespace WebLayer.Controllers
             catch (Exception ex)
             {
                 Console.WriteLine($"[ERR] {ex}");
-                return StatusCode(500, new
+                return StatusCode(100, new
                 {
                     message = "ERROR Tanker¨StagingController",
                     error = ex.Message
