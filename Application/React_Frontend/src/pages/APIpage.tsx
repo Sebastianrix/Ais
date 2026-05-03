@@ -34,7 +34,7 @@ function APIpage(){
 <li><a href="https://api.aismap.dk/TankerStaging">https://api.aismap.dk/TankerStaging</a></li>
 <li><a href="https://api.aismap.dk/TrackedTanker">https://api.aismap.dk/TrackedTanker</a></li>
 
-<li>More coming..</li>
+<li className='grey-text'>More coming..</li>
 </div>
 </ul>
 

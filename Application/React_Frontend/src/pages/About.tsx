@@ -9,11 +9,11 @@ function About(){
   return (
 <>  
  <Navbar></Navbar>
-     
- <div>
+    
+ <div> <h1>About This Project</h1>
   <div className='box'>
 
-        <h1>About This Project</h1>
+        
         <ul>
         <li>
         <p>

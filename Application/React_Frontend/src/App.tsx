@@ -39,7 +39,7 @@ function App() {
           </p>
         </div>
         <a href="/map">
-        <button className="counter">Proceed to Map</button>
+        <button className="proceed-to-map">Proceed to Map<span className='arrow'>⚓</span></button>
         </a>
       </section>
 
