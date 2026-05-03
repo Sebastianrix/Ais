@@ -42,6 +42,7 @@ Frontend {client-side}(
     - npx shadcn@latest add @mapcn/map
     - npx shadcn@latest add card (this might not be nessesary, but try if the map (mapcn) is compile error.)
     - npm install @mui/material @emotion/react @emotion/styled
+    - npm install lucide-react
 
     Run
     - npm run dev
