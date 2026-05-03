@@ -13,7 +13,11 @@ function Overview(){
 <>  
 
 <Navbar></Navbar>
- <div> <p>Text from page within the div?</p>
+ 
+ 
+ 
+ <div> 
+   <h1>Browser-Tool</h1>
 <Menu>
              
 </Menu>
