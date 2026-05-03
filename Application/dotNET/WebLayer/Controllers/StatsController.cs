@@ -41,7 +41,7 @@ namespace WebLayer.Controllers
                     StagingCount = stats.StagingCount,
                 };
 
-
+                Console.WriteLine(stats == null ? "NULL!" : "NOT NULL");
                 return Ok();
             }
 
