@@ -26,7 +26,9 @@ function APIpage(){
         </div>
 <section >
 <div >
-      <ul className="api-links"> 
+
+      <ul className="api-links">
+<div > 
 <li><a href="https://api.aismap.dk/swagger">https://api.aismap.dk/swagger</a></li>
 <li><a href="https://api.aismap.dk/api/v1/TankerPositions">https://api.aismap.dk/api/v1/TankerPositions</a></li>
 <li><a href="https://api.aismap.dk/Tankers">https://api.aismap.dk/Tankers</a></li>
@@ -34,7 +36,9 @@ function APIpage(){
 <li><a href="https://api.aismap.dk/TrackedTanker">https://api.aismap.dk/TrackedTanker</a></li>
 
 <li>More coming..</li>
+</div>
 </ul>
+
 </div>
 </section>
 
