@@ -31,3 +31,8 @@
 .api-links a:hover {
   color: red;
 }
+
+ul {
+  margin: 0;
+  padding: 0;
+}

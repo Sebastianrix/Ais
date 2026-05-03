@@ -12,18 +12,16 @@ function APIpage(){
 
      
 
- <div>
+
  <ul>
   <li><h1>Public API</h1></li>
   <li><p>Welcome to the API references. This is where you can find information about our API endpoints.</p></li>
-  <li></li>
   <li><p>OBS: we currently only allow tanker data. Meaning tanker-ships. This means the API does NOT return data on cargo-ships, fishing-vessels ETC.</p></li>
   <li><p>We not only provide this platform, if you are a scientist or developer, we made our API freely available.</p></li>
   <li><p>Click here in the browser to test if you have connection to the API</p></li>
   <li><p>Good Watch </p></li>
   <li><p> Returns .JSON</p></li>
-  </ul>
-        </div>
+</ul>
 <section >
 <div >
 
