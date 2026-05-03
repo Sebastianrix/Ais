@@ -12,12 +12,12 @@ namespace WebLayer.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class StatsController : BaseController
+    public class StatsController : ControllerBase
     {
         private readonly IDataService _dataService;
 
         public StatsController(IDataService dataService, LinkGenerator linkGenerator)
-            : base(linkGenerator)
+            : base()
         {
             _dataService = dataService;
         }
@@ -42,7 +42,7 @@ namespace WebLayer.Controllers
                 };
 
                 Console.WriteLine(stats == null ? "NULL!" : "NOT NULL");
-                return Ok();
+                return Ok(new { Please = "work!" });
             }
 
             catch (Exception ex)
