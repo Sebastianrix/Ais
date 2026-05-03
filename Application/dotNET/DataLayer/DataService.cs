@@ -57,6 +57,13 @@ namespace DataLayer
               //  .OrderByDescending(tp => tp.Timestamp)
           //      .Take(100) // Remove this after Paging, This hack>
             //    .ToList();
-        //}      
+        //}
+       public Stats GetStats() {
+        return new Stats{
+          TankerCount = _context.Tankers.Count(),
+          PositionCount = _context.TankerPositions.Count(),
+          TrackedTankerCount = _context.TrackedTankers.Count(),
+          StagingCount = _context.TankerStagings.Count()};
+        }
     }
 }

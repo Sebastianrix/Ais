@@ -28,5 +28,12 @@ namespace DataLayer
 
       //  IList<TankerVoyage> GetTankerVoyages(); Last table, we made python script that does some of this tech
 
+
+        Stats GetStats();
+
+
+
+
+
     }
 }
