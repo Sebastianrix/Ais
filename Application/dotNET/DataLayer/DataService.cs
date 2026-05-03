@@ -39,7 +39,7 @@ namespace DataLayer
         public IList<TankerStaging> GetTankerStagings() {
         return _context.TankerStagings
                 .OrderByDescending(ts => ts.Timestamp_Raw)
-                .Take(10) // Remove this after Paging, This hack>
+                .Take(5) // Remove this after Paging, This hack>
                 .ToList();
          }
 	
