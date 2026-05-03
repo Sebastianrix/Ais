@@ -2,9 +2,18 @@
     display:flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #333;
+  /*  background-color: #333;*/
+background: radial-gradient(circle at 70% 10%, #4a4a4a, #1a1814);
+ 
     color: #fff;
     padding: 1rem;
+    border-bottom: 1px solid rgb(204, 198, 198);
+}
+.mesh {
+  background:
+    radial-gradient(circle at 20% 20%, #ff2a00, transparent 50%),
+    radial-gradient(circle at 80% 80%, #003cff, transparent 50%),
+    #1a1814;
 }
 
 .navbar-left .logo {
@@ -66,7 +75,7 @@
         align-items: center;
     }
     .navbar-right .hamburger-menu {
-        display: black;
+        display: rgb(214, 14, 14);
         color: #fff;
         font-size: 1.5rem;
         cursor: pointer;

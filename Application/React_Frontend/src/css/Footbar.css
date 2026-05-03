@@ -1,9 +1,11 @@
 .main-footer{
     color: white;
-    background-color: #333;
+  background: radial-gradient(circle at 70% 10%, #4a4a4a, #1a1814);
+ 
     padding-top: 3em;
     bottom: 0;
     width: 100%;
+    border-top: 1px solid rgb(204, 198, 198);
 }
 
 .footbar-links {

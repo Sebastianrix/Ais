@@ -11,8 +11,8 @@ function APIpage(){
 <Navbar></Navbar>
 
      
-
-
+<article >
+<div className='box'>
  <ul>
   <li><h1>Public API</h1></li>
   <li><p>Welcome to the API references. This is where you can find information about our API endpoints.</p></li>
@@ -22,8 +22,9 @@ function APIpage(){
   <li><p>Good Watch </p></li>
   <li><p> Returns .JSON</p></li>
 </ul>
-<section >
-<div >
+</div>
+
+<div className='box' >
 
       <ul className="api-links">
 <div > 
@@ -38,7 +39,7 @@ function APIpage(){
 </ul>
 
 </div>
-</section>
+</article>
 
 
 </>

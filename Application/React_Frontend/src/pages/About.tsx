@@ -11,6 +11,8 @@ function About(){
  <Navbar></Navbar>
      
  <div>
+  <div className='box'>
+
         <h1>About This Project</h1>
         <ul>
         <li>
@@ -48,6 +50,7 @@ function About(){
         </p>   
         </li>
         </ul>     
+        </div>
         </div>
 
 </>
