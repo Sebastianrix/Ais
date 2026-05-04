@@ -1,7 +1,7 @@
-import { useState, useEffect} from 'react'
 import Navbar from '@/components/Navbar';
-
+import Footbar from '@/components/Footbar';
 import '../css/FAQ.css';
+
 
 
 function FAQ(){
