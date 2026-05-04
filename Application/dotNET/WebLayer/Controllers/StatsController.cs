@@ -41,7 +41,7 @@ namespace WebLayer.Controllers
                 };
 
                 Console.WriteLine(stats == null ? "NULL!" : "NOT NULL");
-                return Ok(new { Please = "work!" });
+                return Ok(dto);
             }
 
             catch (Exception ex)
