@@ -16,7 +16,7 @@ namespace WebLayer.Controllers
     {
         private readonly IDataService _dataService;
 
-        public TankerPositionsController(IDataService dataService, LinkGenerator linkGenerator)
+        public StatsController(IDataService dataService, LinkGenerator linkGenerator)
             : base(linkGenerator)
         {
             _dataService = dataService;
@@ -26,7 +26,7 @@ namespace WebLayer.Controllers
 
         //    GET api/getstats
         [HttpGet]
-        public ActionResult<StatsDTO> GetStats()
+        public IActionResult GetStats()
         {
             try
             {
