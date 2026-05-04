@@ -10,14 +10,14 @@ function FAQ(){
 <>  
  <Navbar></Navbar>
 
-       
+       <div>
  <div>
           <h1>FAQ page</h1>
           <p>
            Questions and answers list coming soon
           </p>
         </div>
-
+</div>
 </>
     )
 }
