@@ -12,16 +12,15 @@ namespace WebLayer.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class StatsController : ControllerBase
+    public class StatsController : BaseController
     {
         private readonly IDataService _dataService;
 
-        public StatsController(IDataService dataService, LinkGenerator linkGenerator)
-            : base()
+        public TankerPositionsController(IDataService dataService, LinkGenerator linkGenerator)
+            : base(linkGenerator)
         {
             _dataService = dataService;
         }
-
 
 
 
