@@ -11,7 +11,7 @@ using WebLayer.DTOs;
 namespace WebLayer.Controllers
 {
     [ApiController]
-    [Route("api/v1/[controller]")]
+    [Route([controller])]
     public class TankerPositionsController : BaseController
     {
         private readonly IDataService _dataService;
