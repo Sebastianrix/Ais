@@ -137,8 +137,6 @@ CREATE TABLE mmsi_country_codes (
     itu_allocated_date DATE,
     created_at TIMESTAMP DEFAULT NOW()
 );
-
-
 -- https://www.itu.int/en/ITU-R/terrestrial/fmd/pages/mid.aspx
 -- so this site have the look-up table. We should dynamiclly read this,
 -- since it could be updated, but we really don't have time and it's
