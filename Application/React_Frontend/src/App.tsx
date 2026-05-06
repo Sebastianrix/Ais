@@ -12,6 +12,7 @@ import './css/App.css'
 function App() {
   const [count, setCount] = useState(0)
 
+
   //useEffect(() => { 
     // fetch("https://localhost:5001/weatherforecast")
     // .then(res => res.json())
@@ -21,7 +22,7 @@ function App() {
 
   return (
     <>
-  
+
       <section id="center">
    <h1>Welcome to <b>aismap.dk</b></h1>   
         <div className="hero">
