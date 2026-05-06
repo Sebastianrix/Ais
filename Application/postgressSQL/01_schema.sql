@@ -126,15 +126,25 @@ CONSTRAINT fk_positions_staging
 );
 
 
+
+-- Anomality table
+
+
+
+
+
+
+
+
+
+
 -- Lookup table ( this helps to fill flag column on the vessels. 
 -- You basiclly derive the country from MMSI.
-
-CREATE TABLE mmsi_country_codes (
+CREATE TABLE IF NOT EXISTS mmsi_country_codes (
     mid_code VARCHAR(3) PRIMARY KEY,
     country_code VARCHAR(2) NOT NULL UNIQUE,
     country_name VARCHAR(100) NOT NULL,
     region VARCHAR(50),
-    itu_allocated_date DATE,
     created_at TIMESTAMP DEFAULT NOW()
 );
 -- https://www.itu.int/en/ITU-R/terrestrial/fmd/pages/mid.aspx
@@ -440,6 +450,12 @@ INSERT INTO mmsi_country_codes (mid_code, country_code, country_name, region) VA
 -- We are currently deployed on phyiscal harddrives.
 
 CREATE INDEX IF NOT EXISTS idx_mmsi_country_mid ON mmsi_country_codes(mid_code);
+
+ALTER TABLE tankers 
+  ADD COLUMN IF NOT EXISTS flag_country_code VARCHAR(2);
+
+CREATE INDEX IF NOT EXISTS idx_tankers_flag_country_code
+  ON tankers(flag_country_code);
 
 CREATE INDEX IF NOT EXISTS idx_tracked_tankers_imo
 ON tracked_tankers(imo);

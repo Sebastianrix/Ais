@@ -1,7 +1,7 @@
 INSERT INTO tankers (
     imo, mmsi, vessel_name, callsign,
     ship_type, cargo_type, type_of_mobile,
-    width, length, size_a, size_b, size_c, size_d
+    width, length, size_a, size_b, size_c, size_d, flag_country_code
 )
 SELECT DISTINCT
     TRIM(s.imo),
@@ -14,7 +14,10 @@ SELECT DISTINCT
     NULLIF(REPLACE(s.width_raw, ',', '.'), '')::NUMERIC,
     NULLIF(REPLACE(s.length_raw, ',', '.'), '')::NUMERIC,
     s.size_a, s.size_b, s.size_c, s.size_d
+    COALESCE(mcc.country_code, 'UN') AS flag_country_code
 FROM tanker_staging s
+LEFT JOIN mmsi_country_codes mcc 
+    ON LEFT(TRIM(s.mmsi), 3) = mcc.mid_code
 WHERE LOWER(TRIM(s.ship_type)) = 'tanker'
 AND TRIM(s.imo) ~ '^[0-9]{7}$'
 ON CONFLICT (imo) DO NOTHING;
