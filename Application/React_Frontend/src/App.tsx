@@ -2,6 +2,8 @@ import { useState, useEffect} from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
+import Navbar from './components/Navbar'
+
 
 import aisDKlogo from './assets/3kpxl_Logo.png'
 
@@ -22,7 +24,7 @@ function App() {
 
   return (
     <>
-
+<Navbar></Navbar>
       <section id="center">
    <h1>Welcome to <b>aismap.dk</b></h1>   
         <div className="hero">
