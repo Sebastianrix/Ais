@@ -138,6 +138,11 @@ CREATE TABLE mmsi_country_codes (
     created_at TIMESTAMP DEFAULT NOW()
 );
 
+
+-- https://www.itu.int/en/ITU-R/terrestrial/fmd/pages/mid.aspx
+-- so this site have the look-up table. We should dynamiclly read this,
+-- since it could be updated, but we really don't have time and it's
+-- maybe it even useless. Just this could be Data-Drift.
 INSERT INTO mmsi_country_codes (mid_code, country_code, country_name, region) VALUES
 ('219', 'DK', 'Denmark', 'Northern Europe'),
 ('273', 'RU', 'russia', 'Eastern Europe'),
