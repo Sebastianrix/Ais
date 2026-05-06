@@ -125,6 +125,32 @@ CONSTRAINT fk_positions_staging
     ON DELETE SET NULL
 );
 
+
+-- Lookup table ( this helps to fill flag column on the vessels. 
+-- You basiclly derive the country from MMSI.
+
+CREATE TABLE mmsi_country_codes (
+    mid_code VARCHAR(3) PRIMARY KEY,
+    country_code VARCHAR(2) NOT NULL UNIQUE,
+    country_name VARCHAR(100) NOT NULL,
+    region VARCHAR(50),
+    itu_allocated_date DATE,
+    created_at TIMESTAMP DEFAULT NOW()
+);
+
+INSERT INTO mmsi_country_codes (mid_code, country_code, country_name, region) VALUES
+('219', 'DK', 'Denmark', 'Northern Europe'),
+('273', 'RU', 'russia', 'Eastern Europe'),
+('230', 'GR', 'Greece', 'Southern Europe'),
+
+
+
+
+-- Index / These are important since we are running old-hardware!
+-- We are currently deployed on phyiscal harddrives.
+
+CREATE INDEX IF NOT EXISTS idx_mmsi_country_mid ON mmsi_country_codes(mid_code);
+
 CREATE INDEX IF NOT EXISTS idx_tracked_tankers_imo
 ON tracked_tankers(imo);
 
@@ -167,3 +193,12 @@ ON tanker_positions(anomaly_flag);
 CREATE UNIQUE INDEX IF NOT EXISTS uq_tanker_position_known
 ON tanker_positions (tanker_id, timestamp_utc, latitude, longitude)
 WHERE tanker_id IS NOT NULL;
+
+CREATE INDEX IF NOT EXISTS idx_tanker_staging_staging_id_desc 
+  ON tanker_staging (staging_id DESC);
+
+CREATE INDEX IF NOT EXISTS idx_tanker_staging_ship_type 
+  ON tanker_staging (LOWER(TRIM(ship_type)));
+
+CREATE INDEX idx_tanker_timestamp_raw 
+ON tankerstaging("Timestamp_Raw" DESC);
