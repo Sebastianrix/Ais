@@ -19,7 +19,7 @@ createRoot(document.getElementById('root')!).render(
  
 <StrictMode>
       <div className="page-container">
-    <div className="content-wrap">
+         <div className="content-wrap">
           
        
   <BrowserRouter>
@@ -33,9 +33,9 @@ createRoot(document.getElementById('root')!).render(
     </Routes>
   </BrowserRouter>
  
-      <section id="spacer"></section>
+   
   </div>
-   <Footbar></Footbar>
+   <Footbar />
   </div>
 </StrictMode>
 
