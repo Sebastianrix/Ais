@@ -15,7 +15,7 @@ const Footbar = () => {
             </div>
                 <div className="col">
                 <h4>Contacts</h4>
-                <ul className="list-unstyled">
+                <ul className="footbar-links">
                     <li>
   <a href="tel:+4522128842">+45 22 12 88 42</a>
 </li>
