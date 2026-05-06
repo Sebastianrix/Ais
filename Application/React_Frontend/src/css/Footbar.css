@@ -2,29 +2,35 @@
     color: white;
   background: radial-gradient(circle at 70% 10%, #4a4a4a, #1a1814);
  
-    padding-top: 3em;
+    padding: 1em 0 0.5em 0;
     bottom: 0;
-    width: 100%;
-    border-top: 1px solid rgb(204, 198, 198);
+    width: 140%;
+    border-top: 2px solid rgb(204, 198, 198);
 }
 
 .footbar-links {
   list-style: none;
   padding: 0;
   margin: 0;
-  color: #fff;
-  text-decoration: none;
 }
 
 
 .footbar-links a{
-    color:#fff;
+    color: #fff;
     text-decoration: none;
-    list-style-type: none;
-       
-    margin: 0;
-    padding: 0;
+    transition: 0.3s ease;
 }
 .footbar-links a:hover {
   color: red;
+}
+.main-footer h4 {
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+}
+.main-footer li {
+  margin-bottom: 2px;
+  line-height: 1.2;
+}
+.main-footer hr {
+  margin: 10px 0;
 }

@@ -1,4 +1,3 @@
-import { } from 'react'
 import '../css/Footbar.css'
 
 const Footbar = () => {
@@ -10,18 +9,28 @@ const Footbar = () => {
                 <h4>AIS MAP TEAM</h4>
                 <ul className="list-unstyled">
                     <li>Roskilde Universitet</li>
-                      <li>Mester Thesis team of two.</li>  
+                      <li>Master Thesis team of two.</li>  
                               <li>Hosted within the EU, in Denmark</li>  
                 </ul>
             </div>
                 <div className="col">
                 <h4>Contacts</h4>
                 <ul className="list-unstyled">
-                    <li>+45 22 12 88 42</li>
-                    <li>srix@ruc.dk</li>
-                    <li>stud-neha@ruc.dk</li>
+                    <li>
+  <a href="tel:+4522128842">+45 22 12 88 42</a>
+</li>
+
+<li>
+  <a href="mailto:srix@ruc.dk">srix@ruc.dk</a>
+</li>
+
+<li>
+  <a href="mailto:stud-neha@ruc.dk">
+    stud-neha@ruc.dk
+  </a>
+</li>
                     <li>Universitetsvej 1, 4000</li>
-                    <li>Roskilde, Danmark</li>
+                    <li>Roskilde, Denmark</li>
 
                            
                 </ul>
