@@ -1,0 +1,2 @@
+Hey, to access the UI from your development PC, run this ssh -L 8080:localhost:8080 sebastian@aismap.dk -p 2222
+this will open a tunnel so you have access to the UI through http://localhost:8080. Login is Admin, Admin
