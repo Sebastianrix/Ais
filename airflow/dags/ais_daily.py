@@ -30,7 +30,7 @@ def ais_daily():
             host='host.docker.internal',
             port=5432,
             dbname=os.environ['ais_db'],
-            user=os.environ['postgres'],
+            user=os.environ['ais'],
             password=os.environ['sql']
         )
 
