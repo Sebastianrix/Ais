@@ -160,6 +160,17 @@ CREATE TABLE IF NOT EXISTS anomaly_flags (
     CONSTRAINT fk_anomaly_flags_type
         FOREIGN KEY (anomaly_type_id) REFERENCES anomaly_types(anomaly_type_id) ON DELETE CASCADE
 );
+INSERT INTO anomaly_types (code, name, description, severity)
+VALUES
+    ('INVALID_IMO', 'Invalid IMO', 'IMO format/check digit invalid', 'high'),
+    ('UNKNOWN_IMO', 'Unknown IMO', 'IMO exists in raw data but does not match known tanker', 'high'),
+    ('INVALID_MMSI_MID', 'Invalid MMSI MID', 'MMSI first three digits do not match known MID country code', 'medium'),
+    ('MISSING_FLAG', 'Missing flag', 'Tanker flag is missing', 'medium'),
+    ('INVALID_FLAG', 'Invalid flag', 'Tanker flag does not match known country code', 'medium'),
+    ('INVALID_POSITION', 'Invalid position', 'Latitude or longitude is outside valid range', 'high'),
+    ('MISSING_DRAUGHT', 'Missing draught', 'Draught value is missing', 'low'),
+    ('MISSING_DESTINATION', 'Missing destination', 'Destination is missing', 'low')
+ON CONFLICT (code) DO NOTHING;
 
 
 
