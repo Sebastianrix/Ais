@@ -137,6 +137,29 @@ CREATE TABLE IF NOT EXISTS anomaly_types (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+CREATE TABLE IF NOT EXISTS anomaly_flags (
+    anomaly_flag_id BIGSERIAL PRIMARY KEY,
+    tanker_id BIGINT,
+    position_id BIGINT,
+    staging_id BIGINT,
+    anomaly_type_id BIGINT NOT NULL,
+    source VARCHAR(50) NOT NULL DEFAULT 'system',
+    confidence NUMERIC(5,2) DEFAULT 1.00,
+    notes TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT fk_anomaly_flags_tanker
+        FOREIGN KEY (tanker_id) REFERENCES tankers(tanker_id) ON DELETE CASCADE,
+
+    CONSTRAINT fk_anomaly_flags_position
+        FOREIGN KEY (position_id) REFERENCES tanker_positions(position_id) ON DELETE CASCADE,
+
+    CONSTRAINT fk_anomaly_flags_staging
+        FOREIGN KEY (staging_id) REFERENCES tanker_staging(staging_id) ON DELETE SET NULL,
+
+    CONSTRAINT fk_anomaly_flags_type
+        FOREIGN KEY (anomaly_type_id) REFERENCES anomaly_types(anomaly_type_id) ON DELETE CASCADE
+);
 
 
 
