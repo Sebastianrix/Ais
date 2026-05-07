@@ -29,9 +29,9 @@ def ais_daily():
         conn = psycopg2.connect(
             host='host.docker.internal',
             port=5432,
-            dbname=os.environ['ais_db'],
-            user=os.environ['ais'],
-            password=os.environ['sql']
+            dbname=os.environ['AIS_DB_NAME'],
+            user=os.environ['AIS_DB_USER'],
+            password=os.environ['AIS_DB_PASS']
         )
 
         col_map = {
