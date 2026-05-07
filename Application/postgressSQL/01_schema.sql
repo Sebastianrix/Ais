@@ -452,10 +452,10 @@ INSERT INTO mmsi_country_codes (mid_code, country_code, country_name, region) VA
 CREATE INDEX IF NOT EXISTS idx_mmsi_country_mid ON mmsi_country_codes(mid_code);
 
 ALTER TABLE tankers 
-  ADD COLUMN IF NOT EXISTS flag_country_code VARCHAR(2);
+  ADD COLUMN IF NOT EXISTS flag VARCHAR(2);
 
-CREATE INDEX IF NOT EXISTS idx_tankers_flag_country_code
-  ON tankers(flag_country_code);
+CREATE INDEX IF NOT EXISTS idx_tankers_flag
+  ON tankers(flag);
 
 CREATE INDEX IF NOT EXISTS idx_tracked_tankers_imo
 ON tracked_tankers(imo);
