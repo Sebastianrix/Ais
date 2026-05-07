@@ -103,3 +103,6 @@ WHERE LOWER(TRIM(s.ship_type)) = 'tanker'
 DELETE FROM tanker_staging
 WHERE LOWER(TRIM(ship_type)) <> 'tanker'
    OR ship_type IS NULL;
+
+UPDATE tanker_staging SET is_loaded = TRUE WHERE is_loaded = FALSE;
+
