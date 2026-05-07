@@ -16,7 +16,28 @@ import os
 )
 def ais_daily():
 
-    @task()
+sebastian@k8s-worker-node002:~/ais/airflow/dags$ tail -20 ~/ais/airflow/dags/ais_daily.py
+
+        with z.open(csv_name) as f:
+            for chunk in pd.read_csv(f, chunksize=100000):
+                chunk = chunk.rename(columns=col_map)
+                chunk['source_file_name'] = f"aisdk-{target}.zip"
+                chunk['source_batch_date'] = str(target)
+                buf = io.StringIO()
+                chunk.to_csv(buf, index=False, header=False)
+                buf.seek(0)
+                with conn.cursor() as cur:
+                    cur.copy_expert(
+                        f"COPY tanker_staging ({','.join(chunk.columns)}) FROM STDIN WITH CSV",
+                        buf
+                    )
+                conn.commit()
+        conn.close()
+
+    download_and_stage() >> run_etl()
+
+ais_daily()
+sebastian@k8s-worker-node002:~/ais/airflow/dags$    @task()
     def download_and_stage(ds=None):
         target = datetime.strptime(ds, '%Y-%m-%d').date() - timedelta(days=3)
         url = f"http://aisdata.ais.dk/aisdk-{target}.zip"
@@ -67,3 +88,23 @@ def ais_daily():
                     )
                 conn.commit()
         conn.close()
+
+    @task()
+    def run_etl():
+        conn = psycopg2.connect(
+            host='host.docker.internal',
+            port=5432,
+            dbname=os.environ['AIS_DB_NAME'],
+            user=os.environ['AIS_DB_USER'],
+            password=os.environ['AIS_DB_PASS']
+        )
+        with open('/opt/airflow/sql/02_Load_data.sql') as f:
+            sql = f.read()
+        with conn.cursor() as cur:
+            cur.execute(sql)
+        conn.commit()
+        conn.close()
+
+    download_and_stage() >> run_etl()
+
+ais_daily()
