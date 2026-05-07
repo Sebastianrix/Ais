@@ -550,3 +550,15 @@ CREATE INDEX IF NOT EXISTS idx_tanker_staging_ship_type
 
 CREATE INDEX idx_tanker_timestamp_raw 
 ON tankerstaging("Timestamp_Raw" DESC);
+CREATE UNIQUE INDEX IF NOT EXISTS uq_anomaly_flags_position_type_source
+ON anomaly_flags(position_id, anomaly_type_id, source)
+WHERE position_id IS NOT NULL;
+
+CREATE INDEX IF NOT EXISTS idx_anomaly_flags_tanker_id
+ON anomaly_flags(tanker_id);
+
+CREATE INDEX IF NOT EXISTS idx_anomaly_flags_position_id
+ON anomaly_flags(position_id);
+
+CREATE INDEX IF NOT EXISTS idx_anomaly_flags_type_id
+ON anomaly_flags(anomaly_type_id);
