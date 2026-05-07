@@ -128,6 +128,14 @@ CONSTRAINT fk_positions_staging
 
 
 -- Anomality table
+CREATE TABLE IF NOT EXISTS anomaly_types (
+    anomaly_type_id BIGSERIAL PRIMARY KEY,
+    code VARCHAR(100) UNIQUE NOT NULL,
+    name VARCHAR(255) NOT NULL,
+    description TEXT,
+    severity VARCHAR(30) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
 
 
 
@@ -382,7 +390,7 @@ INSERT INTO mmsi_country_codes (mid_code, country_code, country_name, region) VA
 ('616', 'KM', 'Comoros', 'Indian Ocean'),
 ('617', 'CV', 'Cabo Verde', 'Atlantic'),
 ('618', 'TF', 'Crozet Archipelago', 'Indian Ocean'),
-('619', 'CI', 'Côte d''Ivoire', 'West Africa'),
+('619', 'CI', 'Cï¿½te d''Ivoire', 'West Africa'),
 ('620', 'KM', 'Comoros', 'Indian Ocean'),
 ('621', 'DJ', 'Djibouti', 'East Africa'),
 ('622', 'EG', 'Egypt', 'North Africa'),
@@ -411,7 +419,7 @@ INSERT INTO mmsi_country_codes (mid_code, country_code, country_name, region) VA
 ('656', 'NE', 'Niger', 'West Africa'),
 ('657', 'NG', 'Nigeria', 'West Africa'),
 ('659', 'NA', 'Namibia', 'Southern Africa'),
-('660', 'RE', 'Réunion', 'Indian Ocean'),
+('660', 'RE', 'Rï¿½union', 'Indian Ocean'),
 ('661', 'RW', 'Rwanda', 'Central Africa'),
 ('662', 'SD', 'Sudan', 'East Africa'),
 ('663', 'SN', 'Senegal', 'West Africa'),
@@ -419,7 +427,7 @@ INSERT INTO mmsi_country_codes (mid_code, country_code, country_name, region) VA
 ('665', 'SH', 'Saint Helena', 'Atlantic'),
 ('666', 'SO', 'Somalia', 'East Africa'),
 ('667', 'SL', 'Sierra Leone', 'West Africa'),
-('668', 'ST', 'São Tomé and Príncipe', 'Central Africa'),
+('668', 'ST', 'Sï¿½o Tomï¿½ and Prï¿½ncipe', 'Central Africa'),
 ('669', 'SZ', 'Eswatini', 'Southern Africa'),
 ('670', 'TD', 'Chad', 'Central Africa'),
 ('671', 'TG', 'Togo', 'West Africa'),
