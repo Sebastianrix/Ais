@@ -42,7 +42,7 @@ def ais_daily():
         )
 
         col_map = {
-            '# Timestamp': 'timestamp_raw',
+            'Timestamp': 'timestamp_raw',
             'Type of mobile': 'type_of_mobile',
             'MMSI': 'mmsi',
             'Latitude': 'latitude_raw',
