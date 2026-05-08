@@ -81,8 +81,13 @@ def ais_daily():
 
                 print(f"Chunk size: {len(chunk)}")
 
-                chunk = chunk.rename(columns=col_map)
+                chunk.columns = (
+                chunk.columns
+                .str.strip()
+                .str.replace('#', '', regex=False)
+            )
 
+                chunk = chunk.rename(columns=col_map)
                 chunk['source_file_name'] = f"aisdk-{target}.zip"
                 chunk['source_batch_date'] = str(target)
 
