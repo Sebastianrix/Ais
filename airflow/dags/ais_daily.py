@@ -85,9 +85,8 @@ def ais_daily():
 
     @task()
     def run_etl():
-
         conn = psycopg2.connect(
-            host='host.docker.internal',
+            host='host.docker.internal:host-gateway',
             port=5432,
             dbname=os.environ['AIS_DB_NAME'],
             user=os.environ['AIS_DB_USER'],
