@@ -3,7 +3,7 @@ INSERT INTO tankers (
     ship_type, cargo_type, type_of_mobile,
     width, length, size_a, size_b, size_c, size_d, flag
 )
-SELECT DISTINCT
+SELECT
     TRIM(s.imo),
     TRIM(s.mmsi),
     TRIM(s.vessel_name),
