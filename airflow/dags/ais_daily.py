@@ -122,23 +122,25 @@ def ais_daily():
             elapsed = time.time() - start
             print(f"[{target}] DONE: {chunk_num} chunks, {total_rows:,} rows, {elapsed:.0f}s")
 
-        conn.close()
+        
+
+conn.close()
 
     @task()
-def run_etl():
-    conn = psycopg2.connect(
-        host='host.docker.internal',
-        port=5432,
-        dbname=os.environ['AIS_DB_NAME'],
-        user=os.environ['AIS_DB_USER'],
-        password=os.environ['AIS_DB_PASS']
-    )
-    with conn:
-        with conn.cursor() as cur:
-            with open('/opt/airflow/sql/02_Load_data.sql', 'r') as f:
-                sql = f.read()
-            cur.execute(sql)
-    conn.close()
+    def run_etl():
+        conn = psycopg2.connect(
+            host='host.docker.internal',
+            port=5432,
+            dbname=os.environ['AIS_DB_NAME'],
+            user=os.environ['AIS_DB_USER'],
+            password=os.environ['AIS_DB_PASS']
+        )
+        with conn:
+            with conn.cursor() as cur:
+                with open('/opt/airflow/sql/02_Load_data.sql', 'r') as f:
+                    sql = f.read()
+                cur.execute(sql)
+        conn.close()
 
     download_and_stage() >> run_etl()
 
