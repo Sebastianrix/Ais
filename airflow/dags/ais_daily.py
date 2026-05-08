@@ -83,9 +83,9 @@ def ais_daily():
                 print("Raw data colum names (they are about to change names) : ",chunk.columns.tolist())
                 chunk.columns = (
                 chunk.columns
-                .str.strip()
                 .str.replace('#', '', regex=False)
-            )
+                .str.strip()
+                )
                 print("Removed # glyf colum names (they are about to change names again) : ",chunk.columns.tolist())
                 chunk = chunk.rename(columns=col_map)
                 print("Final column names :  : ",chunk.columns.tolist())
