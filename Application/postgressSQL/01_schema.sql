@@ -562,3 +562,7 @@ ON anomaly_flags(position_id);
 
 CREATE INDEX IF NOT EXISTS idx_anomaly_flags_type_id
 ON anomaly_flags(anomaly_type_id);
+
+CREATE INDEX IF NOT EXISTS idx_tanker_staging_unloaded
+  ON tanker_staging (staging_id)
+  WHERE is_loaded = FALSE;
