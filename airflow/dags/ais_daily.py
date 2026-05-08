@@ -1,4 +1,5 @@
 from airflow.decorators import dag, task
+from airflow.providers.postgres.hooks.postgres import PostgresHook
 from datetime import datetime, timedelta
 import requests, zipfile, io, psycopg2, pandas as pd
 import os
@@ -83,32 +84,23 @@ def ais_daily():
 
         conn.close()
 
-    @task()
-    def run_etl():
-        conn = psycopg2.connect(
-            host='host.docker.internal:host-gateway',
-            port=5432,
-            dbname=os.environ['AIS_DB_NAME'],
-            user=os.environ['AIS_DB_USER'],
-            password=os.environ['AIS_DB_PASS']
-        )
 
-        statements = open(
-            '/opt/airflow/sql/02_Load_data.sql'
-        ).read().split(';')
+@task()
+def run_etl():
 
-        for stmt in statements:
+    hook = PostgresHook(postgres_conn_id="ais_postgres")
 
-            stmt = stmt.strip()
+    conn = hook.get_conn()
 
-            if stmt:
+    with conn:
+        with conn.cursor() as cur:
 
-                with conn.cursor() as cur:
-                    cur.execute(stmt)
+            with open('/opt/airflow/sql/02_Load_data.sql', 'r') as f:
+                sql = f.read()
 
-                conn.commit()
+            cur.execute(sql)
 
-        conn.close()
+    conn.close()
 
     download_and_stage() >> run_etl()
 
