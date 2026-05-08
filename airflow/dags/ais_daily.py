@@ -3,6 +3,7 @@ from airflow.providers.postgres.hooks.postgres import PostgresHook
 from datetime import datetime, timedelta
 import requests, zipfile, io, psycopg2, pandas as pd
 import os
+import time   
 
 @dag(
     dag_id='ais_daily',
@@ -72,6 +73,10 @@ def ais_daily():
         }
 
         with z.open(csv_name) as f:
+            # INITIALIZE before loop
+            total_rows = 0
+            chunk_num = 0
+            start = time.time()
 
             for chunk in pd.read_csv(
                 f,
@@ -79,28 +84,22 @@ def ais_daily():
                 chunksize=20000,
                 low_memory=False
             ):
+                # Run PER ITERATION
+                chunk_num += 1
 
-                print(f"Chunk size: {len(chunk)}")
-                print("Raw data colum names (they are about to change names) : ",chunk.columns.tolist())
                 chunk.columns = (
-                chunk.columns
-                .str.replace('#', '', regex=False)
-                .str.strip()
+                    chunk.columns
+                    .str.replace('#', '', regex=False)
+                    .str.strip()
                 )
-                print("Removed # glyf colum names (they are about to change names again) : ",chunk.columns.tolist())
                 chunk = chunk.rename(columns=col_map)
-                print("Final column names :  : ",chunk.columns.tolist())
                 chunk['source_file_name'] = f"aisdk-{target}.zip"
                 chunk['source_batch_date'] = str(target)
-                
+
                 buf = io.StringIO()
-
                 chunk.to_csv(buf, index=False, header=False)
-
                 buf.seek(0)
-
                 with conn.cursor() as cur:
-
                     cur.copy_expert(
                         f"""
                         COPY tanker_staging ({','.join(chunk.columns)})
@@ -108,28 +107,32 @@ def ais_daily():
                         """,
                         buf
                     )
-
                 conn.commit()
 
-                print("COPY successful")
+                total_rows += len(chunk)
+
+                # Progress print every 25 chunks ( around 500k rows)
+                if chunk_num % 25 == 0:
+                    elapsed = time.time() - start
+                    rate = total_rows / elapsed
+                    print(f"[{target}] chunk={chunk_num} rows={total_rows:,} "
+                          f"elapsed={elapsed:.0f}s rate={rate:,.0f} rows/s")
+
+            # SUMMARIZE after loop
+            elapsed = time.time() - start
+            print(f"[{target}] DONE: {chunk_num} chunks, {total_rows:,} rows, {elapsed:.0f}s")
 
         conn.close()
 
     @task()
     def run_etl():
-
         hook = PostgresHook(postgres_conn_id="ais_postgres")
-
         conn = hook.get_conn()
-
         with conn:
             with conn.cursor() as cur:
-
                 with open('/opt/airflow/sql/02_Load_data.sql', 'r') as f:
                     sql = f.read()
-
                 cur.execute(sql)
-
         conn.close()
 
     download_and_stage() >> run_etl()
