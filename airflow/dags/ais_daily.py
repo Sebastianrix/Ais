@@ -14,7 +14,6 @@ import os
     }
 )
 def ais_daily():
-
     @task()
     def download_and_stage(ds=None):
         target = datetime.strptime(ds, '%Y-%m-%d').date() - timedelta(days=3)
@@ -72,14 +71,14 @@ def run_etl():
         password=os.environ['AIS_DB_PASS']
     )
     statements = open('/opt/airflow/sql/02_Load_data.sql').read().split(';')
-    for stmt in statements:
-        stmt = stmt.strip()
-        if stmt:
-            with conn.cursor() as cur:
-                cur.execute(stmt)
-            conn.commit()
-    conn.close()
-
-    download_and_stage() >> run_etl()
+     for stmt in statements:
+         stmt = stmt.strip()
+         if stmt:
+             with conn.cursor() as cur:
+                 cur.execute(stmt)
+             conn.commit()
+         conn.close()
+ 
+ download_and_stage() >> run_etl()
 
 ais_daily()
