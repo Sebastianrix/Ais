@@ -2,6 +2,7 @@ x-airflow-common: &airflow-common
   image: apache/airflow:2.9.3
   env_file: .env
   environment:
+    AIRFLOW__LOGGING__WORKER_LOG_SERVER_HOST: airflow-scheduler
     AIRFLOW__CORE__EXECUTOR: LocalExecutor
     AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@airflow-db/airflow
     AIRFLOW__CORE__FERNET_KEY: ${AIRFLOW_FERNET_KEY}
