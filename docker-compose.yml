@@ -11,6 +11,8 @@ x-airflow-common: &airflow-common
   volumes:
     - ./airflow/dags:/opt/airflow/dags
     - airflow_logs:/opt/airflow/logs
+    - ./Application/postgressSQL:/opt/airflow/sql:ro
+
   extra_hosts:
     - "host.docker.internal:host-gateway"
   depends_on:
