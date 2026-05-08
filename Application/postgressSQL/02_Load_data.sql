@@ -18,7 +18,8 @@ SELECT DISTINCT
 FROM tanker_staging s
 LEFT JOIN mmsi_country_codes mcc 
     ON LEFT(TRIM(s.mmsi), 3) = mcc.mid_code
-WHERE LOWER(TRIM(s.ship_type)) = 'tanker'
+WHERE s.is_loaded = FALSE  
+AND LOWER(TRIM(s.ship_type)) = 'tanker'
 AND TRIM(s.imo) ~ '^[0-9]{7}$'
 ON CONFLICT (imo) DO NOTHING;
 
@@ -54,7 +55,8 @@ SELECT
 FROM tanker_staging s
 JOIN tankers t
   ON t.imo = TRIM(s.imo)
-WHERE LOWER(TRIM(s.ship_type)) = 'tanker'
+WHERE s.is_loaded = FALSE  
+  AND LOWER(TRIM(s.ship_type)) = 'tanker'
   AND TRIM(s.imo) ~ '^[0-9]{7}$'
   AND REPLACE(s.latitude_raw, ',', '.')::DOUBLE PRECISION BETWEEN -90 AND 90
   AND REPLACE(s.longitude_raw, ',', '.')::DOUBLE PRECISION BETWEEN -180 AND 180
@@ -92,7 +94,8 @@ SELECT
     NULLIF(TRIM(s.position_fixing_device), ''),
     NULLIF(TRIM(s.data_source_type), '')
 FROM tanker_staging s
-WHERE LOWER(TRIM(s.ship_type)) = 'tanker'
+WHERE s.is_loaded = FALSE  
+  AND LOWER(TRIM(s.ship_type)) = 'tanker'
   AND (
       s.imo IS NULL
       OR TRIM(s.imo) = ''
@@ -101,8 +104,9 @@ WHERE LOWER(TRIM(s.ship_type)) = 'tanker'
   AND REPLACE(s.latitude_raw, ',', '.')::DOUBLE PRECISION BETWEEN -90 AND 90
   AND REPLACE(s.longitude_raw, ',', '.')::DOUBLE PRECISION BETWEEN -180 AND 180;
 DELETE FROM tanker_staging
-WHERE LOWER(TRIM(ship_type)) <> 'tanker'
-   OR ship_type IS NULL;
+WHERE s.is_loaded = FALSE
+  AND (LOWER(TRIM(s.ship_type)) <> 'tanker'
+       OR s.ship_type IS NULL);
 
 UPDATE tanker_staging SET is_loaded = TRUE WHERE is_loaded = FALSE;
 
