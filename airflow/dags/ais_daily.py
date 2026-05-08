@@ -122,13 +122,11 @@ def ais_daily():
             elapsed = time.time() - start
             print(f"[{target}] DONE: {chunk_num} chunks, {total_rows:,} rows, {elapsed:.0f}s")
 
-        
-
-conn.close()
+        conn.close()
 
     @task()
     def run_etl():
-        conn = psycopg2.connect(
+        conn = psycopg2.connect(      
             host='host.docker.internal',
             port=5432,
             dbname=os.environ['AIS_DB_NAME'],
