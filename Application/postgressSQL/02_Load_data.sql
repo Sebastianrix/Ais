@@ -103,10 +103,10 @@ WHERE s.is_loaded = FALSE
   )
   AND REPLACE(s.latitude_raw, ',', '.')::DOUBLE PRECISION BETWEEN -90 AND 90
   AND REPLACE(s.longitude_raw, ',', '.')::DOUBLE PRECISION BETWEEN -180 AND 180;
-DELETE FROM tanker_staging
-WHERE s.is_loaded = FALSE
-  AND (LOWER(TRIM(s.ship_type)) <> 'tanker'
-       OR s.ship_type IS NULL);
+--DELETE FROM tanker_staging
+--WHERE s.is_loaded = FALSE
+  --AND (LOWER(TRIM(s.ship_type)) <> 'tanker'
+    --   OR s.ship_type IS NULL);
 
 UPDATE tanker_staging SET is_loaded = TRUE WHERE is_loaded = FALSE;
 
