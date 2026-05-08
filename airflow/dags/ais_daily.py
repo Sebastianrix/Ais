@@ -74,7 +74,7 @@ def ais_daily():
 
             for chunk in pd.read_csv(
                 f,
-                sep=';',
+                sep=',',
                 chunksize=20000,
                 low_memory=False
             ):
