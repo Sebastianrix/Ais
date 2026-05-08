@@ -108,5 +108,12 @@ WHERE s.is_loaded = FALSE
   --AND (LOWER(TRIM(s.ship_type)) <> 'tanker'
     --   OR s.ship_type IS NULL);
 
-UPDATE tanker_staging SET is_loaded = TRUE WHERE is_loaded = FALSE;
+UPDATE tanker_staging
+SET is_loaded = TRUE
+WHERE staging_id IN (
+    SELECT staging_id
+    FROM tanker_staging
+    WHERE is_loaded = FALSE
+    LIMIT 500000
+);
 
