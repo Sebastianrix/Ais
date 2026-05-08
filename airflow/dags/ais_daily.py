@@ -3,7 +3,6 @@ from datetime import datetime, timedelta
 import requests, zipfile, io, psycopg2, pandas as pd
 import os
 
-
 @dag(
     dag_id='ais_daily',
     schedule='0 19 * * *',
@@ -16,35 +15,12 @@ import os
 )
 def ais_daily():
 
-sebastian@k8s-worker-node002:~/ais/airflow/dags$ tail -20 ~/ais/airflow/dags/ais_daily.py
-
-        with z.open(csv_name) as f:
-            for chunk in pd.read_csv(f, chunksize=100000):
-                chunk = chunk.rename(columns=col_map)
-                chunk['source_file_name'] = f"aisdk-{target}.zip"
-                chunk['source_batch_date'] = str(target)
-                buf = io.StringIO()
-                chunk.to_csv(buf, index=False, header=False)
-                buf.seek(0)
-                with conn.cursor() as cur:
-                    cur.copy_expert(
-                        f"COPY tanker_staging ({','.join(chunk.columns)}) FROM STDIN WITH CSV",
-                        buf
-                    )
-                conn.commit()
-        conn.close()
-
-    download_and_stage() >> run_etl()
-
-ais_daily()
-sebastian@k8s-worker-node002:~/ais/airflow/dags$    @task()
+    @task()
     def download_and_stage(ds=None):
         target = datetime.strptime(ds, '%Y-%m-%d').date() - timedelta(days=3)
         url = f"http://aisdata.ais.dk/aisdk-{target}.zip"
-
         r = requests.get(url, timeout=300)
         r.raise_for_status()
-
         z = zipfile.ZipFile(io.BytesIO(r.content))
         csv_name = z.namelist()[0]
         conn = psycopg2.connect(
@@ -54,7 +30,6 @@ sebastian@k8s-worker-node002:~/ais/airflow/dags$    @task()
             user=os.environ['AIS_DB_USER'],
             password=os.environ['AIS_DB_PASS']
         )
-
         col_map = {
             '# Timestamp': 'timestamp_raw',
             'Type of mobile': 'type_of_mobile',
@@ -72,7 +47,6 @@ sebastian@k8s-worker-node002:~/ais/airflow/dags$    @task()
             'ETA': 'eta_raw', 'Data source type': 'data_source_type',
             'A': 'size_a', 'B': 'size_b', 'C': 'size_c', 'D': 'size_d'
         }
-
         with z.open(csv_name) as f:
             for chunk in pd.read_csv(f, chunksize=100000):
                 chunk = chunk.rename(columns=col_map)
