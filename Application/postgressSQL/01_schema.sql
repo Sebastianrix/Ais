@@ -184,7 +184,7 @@ ALTER TABLE tanker_staging ADD COLUMN IF NOT EXISTS is_loaded BOOLEAN DEFAULT FA
 -- You basiclly derive the country from MMSI.
 CREATE TABLE IF NOT EXISTS mmsi_country_codes (
     mid_code VARCHAR(3) PRIMARY KEY,
-    country_code VARCHAR(2) NOT NULL UNIQUE,
+    country_code VARCHAR(2) NOT NULL,
     country_name VARCHAR(100) NOT NULL,
     region VARCHAR(50),
     created_at TIMESTAMP DEFAULT NOW()
