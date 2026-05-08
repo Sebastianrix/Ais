@@ -115,5 +115,3 @@ def ais_daily():
 
 
 ais_daily()
-
-ais_daily()
