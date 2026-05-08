@@ -57,7 +57,7 @@ def ais_daily():
 
         with z.open(csv_name) as f:
 
-            for chunk in pd.read_csv(f, chunksize=100000):
+            for chunk in pd.read_csv(f, chunksize=20000):
 
                 chunk = chunk.rename(columns=col_map)
 
