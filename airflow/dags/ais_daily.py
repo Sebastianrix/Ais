@@ -9,7 +9,7 @@ import os
     start_date=datetime(2026, 1, 1),
     catchup=False,
     default_args={
-        'retries': 10,
+        'retries': 3,
         'retry_delay': timedelta(minutes=8),
     }
 )
@@ -63,21 +63,22 @@ def ais_daily():
                 conn.commit()
         conn.close()
 
-    @task()
-    def run_etl():
-        conn = psycopg2.connect(
-            host='host.docker.internal',
-            port=5432,
-            dbname=os.environ['AIS_DB_NAME'],
-            user=os.environ['AIS_DB_USER'],
-            password=os.environ['AIS_DB_PASS']
-        )
-        with open('/opt/airflow/sql/02_Load_data.sql') as f:
-            sql = f.read()
-        with conn.cursor() as cur:
-            cur.execute(sql)
-        conn.commit()
-        conn.close()
+@task()
+def run_etl():
+    conn = psycopg2.connect(
+        host='host.docker.internal', port=5432,
+        dbname=os.environ['AIS_DB_NAME'],
+        user=os.environ['AIS_DB_USER'],
+        password=os.environ['AIS_DB_PASS']
+    )
+    statements = open('/opt/airflow/sql/02_Load_data.sql').read().split(';')
+    for stmt in statements:
+        stmt = stmt.strip()
+        if stmt:
+            with conn.cursor() as cur:
+                cur.execute(stmt)
+            conn.commit()
+    conn.close()
 
     download_and_stage() >> run_etl()
 
