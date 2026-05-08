@@ -6,6 +6,7 @@ import os
 
 @dag(
     dag_id='ais_daily',
+    schedule=None,
    ## schedule='0 19 * * *',
     start_date=datetime(2026, 1, 1),
     catchup=False,
