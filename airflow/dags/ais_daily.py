@@ -80,17 +80,18 @@ def ais_daily():
             ):
 
                 print(f"Chunk size: {len(chunk)}")
-
+                print("Raw data colum names (they are about to change names) : ",chunk.columns.tolist())
                 chunk.columns = (
                 chunk.columns
                 .str.strip()
                 .str.replace('#', '', regex=False)
             )
-
+                print("Removed # glyf colum names (they are about to change names again) : ",chunk.columns.tolist())
                 chunk = chunk.rename(columns=col_map)
+                print("Final column names :  : ",chunk.columns.tolist())
                 chunk['source_file_name'] = f"aisdk-{target}.zip"
                 chunk['source_batch_date'] = str(target)
-
+                
                 buf = io.StringIO()
 
                 chunk.to_csv(buf, index=False, header=False)
