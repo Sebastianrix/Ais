@@ -177,6 +177,21 @@ ON CONFLICT (code) DO NOTHING;
 ALTER TABLE tanker_staging ADD COLUMN IF NOT EXISTS is_loaded BOOLEAN DEFAULT FALSE;
 
 
+-- This table is nessesary since our queueing is abit more complex thain Airflow default allows
+-- Basiclly we want the API to allow user requested days to be moved up in que, infront of the backfill right. 
+CREATE TABLE IF NOT EXISTS data_consumer_queue (
+    queue_id          BIGSERIAL PRIMARY KEY,
+    source_batch_date DATE NOT NULL,
+    priority          INTEGER NOT NULL,           -- This is the priority score so something like: "100 daily", "50 user", "10 backfill"
+    requester         VARCHAR(20) NOT NULL,       -- This is the TYPE of request. Like is it the : "daily", "user", "backfill" 
+    status            VARCHAR(20) NOT NULL DEFAULT 'pending',
+                                                  -- "pending" "in_progress "done" "failed"
+    created_at        TIMESTAMP NOT NULL DEFAULT NOW()
+);
+
+CREATE UNIQUE INDEX IF NOT EXISTS uq_queue_open_per_date
+    ON data_consumer_queue (source_batch_date)
+    WHERE status IN ('pending', 'in_progress');
 
 
 
@@ -486,6 +501,12 @@ INSERT INTO mmsi_country_codes (mid_code, country_code, country_name, region) VA
 ('765', 'SR', 'Suriname', 'South America'),
 ('770', 'UY', 'Uruguay', 'South America'),
 ('775', 'VE', 'Venezuela', 'South America');
+
+
+
+
+
+
 
 
 -- Index / These are important since we are running old-hardware!
