@@ -1,3 +1,10 @@
+from airflow.decorators import dag, task
+from airflow.providers.postgres.hooks.postgres import PostgresHook
+from datetime import datetime, timedelta
+import requests, zipfile, io, psycopg2, pandas as pd
+import os
+import time 
+
 @dag(
     dag_id="ais_backfill",
     schedule=None,
