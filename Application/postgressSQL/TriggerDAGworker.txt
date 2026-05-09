@@ -1,0 +1,6 @@
+INSERT INTO data_consumer_queue (source_batch_date, priority, requester)
+SELECT generate_series(
+    '2026-05-01'::date,
+    '2026-05-06'::date,
+    '1 day'::interval
+)::date, 10, 'backfill';
