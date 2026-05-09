@@ -175,7 +175,17 @@ ON CONFLICT (code) DO NOTHING;
 
 
 ALTER TABLE tanker_staging ADD COLUMN IF NOT EXISTS is_loaded BOOLEAN DEFAULT FALSE;
-
+-- So this table is keeping oversight of days already downloaded, we could just qeuery that on
+-- the tanler_staging table, BUT bloat would increase compute. So it would be a growing problem 
+-- to keep computing after milions of rows are added, you can imagine.. 
+-- The total and tanker are for some cool stats on frontpage.
+CREATE TABLE IF NOT EXISTS data_date_archive (
+    source_batch_date  DATE PRIMARY KEY,
+    total_rows         BIGINT NOT NULL,
+    tanker_rows        BIGINT NOT NULL,
+    positions_inserted BIGINT NOT NULL,
+    archived_at        TIMESTAMP NOT NULL DEFAULT NOW()
+);
 
 -- This table is nessesary since our queueing is abit more complex thain Airflow default allows
 -- Basiclly we want the API to allow user requested days to be moved up in que, infront of the backfill right. 
