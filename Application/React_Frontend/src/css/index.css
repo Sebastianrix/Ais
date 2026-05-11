@@ -5,6 +5,7 @@
 
 @custom-variant dark (&:is(.dark *));
 :root {
+  
   --text: #6b6375;
   --text-h: #08060d;
   --bg: #fff;
@@ -34,6 +35,15 @@
   @media (max-width: 1024px) {
     font-size: 16px;
   }
+.page-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.content-wrap {
+  flex: 1;
+}
 
   --background: oklch(1 0 0);
 

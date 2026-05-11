@@ -25,6 +25,7 @@ function App() {
   return (
     <>
 <Navbar></Navbar>
+
       <section id="center">
    <h1>Welcome to <b>aismap.dk</b></h1>   
         <div className="hero">
@@ -44,7 +45,7 @@ function App() {
         <a href="/map">
         <button className="proceed-to-map">Proceed to Map<span className='arrow'>⚓</span></button>
         </a>
-      </section>
+
 
      
        {/*
@@ -136,8 +137,8 @@ function App() {
   
 */}
   
-
-    </>
+  </section>
+</>
   )
 }
 
