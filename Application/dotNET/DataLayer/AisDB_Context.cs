@@ -182,6 +182,17 @@ namespace DataLayer
             modelBuilder.Entity<AnomalyFlag>().Property(af => af.Notes).HasColumnName("notes");
             modelBuilder.Entity<AnomalyFlag>().Property(af => af.Created_At).HasColumnName("created_at");
         }
+        private static void MapAnomalyTypes(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<AnomalyType>().ToTable("anomaly_types");
+            modelBuilder.Entity<AnomalyType>().HasKey(at => at.Anomaly_Type_Id);
+            modelBuilder.Entity<AnomalyType>().Property(at => at.Anomaly_Type_Id).HasColumnName("anomaly_type_id");
+            modelBuilder.Entity<AnomalyType>().Property(at => at.Code).HasColumnName("code");
+            modelBuilder.Entity<AnomalyType>().Property(at => at.Name).HasColumnName("name");
+            modelBuilder.Entity<AnomalyType>().Property(at => at.Description).HasColumnName("description");
+            modelBuilder.Entity<AnomalyType>().Property(at => at.Severity).HasColumnName("severity");
+            modelBuilder.Entity<AnomalyType>().Property(at => at.Created_At).HasColumnName("created_at");
+        }
 
 
 
