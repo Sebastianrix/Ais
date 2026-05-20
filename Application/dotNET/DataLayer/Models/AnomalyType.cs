@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DataLayer.Models
 {
-    internal class AnomalyType
+    public class AnomalyType
     {
         public long Anomaly_Type_Id { get; set; }
         public string Code { get; set; } = string.Empty;

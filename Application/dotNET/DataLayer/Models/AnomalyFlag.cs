@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DataLayer.Models
 {
-    internal class AnomalyFlag
+    public class AnomalyFlag
     {
        public long Anomaly_Flag_Id { get; set; }
        public long? Tanker_Id { get; set; }

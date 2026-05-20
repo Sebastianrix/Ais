@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DataLayer.Models
 {
-    internal class DataDateArchive
+    public class DataDateArchive
     {
         public DateTime Source_Batch_Date { get; set; }
         public long Total_Rows { get; set; }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DataLayer.Models
 {
-    internal class MmsiCountryCode
+    public class MmsiCountryCode
     {
         public string Mid_Code { get; set; } = string.Empty;
         public string Country_Code { get; set; } = string.Empty;

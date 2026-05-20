@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace WebLayer.DTOs
 {
-    internal class MmsiCountryCodeDTO
+    public class MmsiCountryCodeDTO
     {
         public string Mid_Code { get; set; } = string.Empty;
         public string Country_Code { get; set; } = string.Empty;
         public string Country_Name { get; set; } = string.Empty;
         public string? Region { get; set; }
-        public DateTime? Created_At { get; set; }
+        public DateTime? Created_At { get; set; }   
     }
 }

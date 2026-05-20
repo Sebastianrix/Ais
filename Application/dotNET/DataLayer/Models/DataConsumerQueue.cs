@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DataLayer.Models
 {
-    internal class DataConsumerQueue
+    public class DataConsumerQueue
     {
         public long Queue_Id { get; set; }
         public DateTime Source_Batch_Date { get; set; }

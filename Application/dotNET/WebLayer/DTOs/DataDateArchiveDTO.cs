@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WebLayer.DTOs
 {
-    internal class DataDateArchiveDTO
+    public class DataDateArchiveDTO
     {
         public DateTime Source_Batch_Date { get; set; }
         public long Total_Rows { get; set; }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WebLayer.DTOs
 {
-    internal class AnomalyFlagDTO
+    public class AnomalyFlagDTO
     {
       public long Anomaly_Flag_Id { get; set; }
       public long? Tanker_Id { get; set; }
