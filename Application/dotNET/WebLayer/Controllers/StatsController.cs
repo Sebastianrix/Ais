@@ -30,18 +30,18 @@ namespace WebLayer.Controllers
         {
             try
             {
-             //   var stats = _dataService.GetStats();
+          var stats = _dataService.GetStats();
 
-               // var dto = new StatsDTO
-               // {
-                //    TankerCount = stats.TankerCount,
-                  //  PositionCount = stats.PositionCount,
-                   // TrackedTankerCount = stats.TrackedTankerCount,
-                  //  StagingCount = stats.StagingCount,
+                var dto = new StatsDTO
+                {
+                    TankerCount = stats.TankerCount,
+                    PositionCount = stats.PositionCount,
+                    TrackedTankerCount = stats.TrackedTankerCount,
+                    StagingCount = stats.StagingCount,
                                   
   };
                   
-              //  Console.WriteLine(stats == null ? "NULL!" : "NOT NULL");
+                Console.WriteLine(stats == null ? "NULL!" : "NOT NULL");
                  return Ok();//dto);
             }
 
@@ -50,10 +50,10 @@ namespace WebLayer.Controllers
                 Console.WriteLine($"[ERR] {ex}");
                 return StatusCode(500, new
                 {
-                 //   message = "ERROR StatsController",
-                   // error = ex.Message
+                    message = "ERROR StatsController",
+                    error = ex.Message
                 });
             }
-        }/*
+        }
     }
 }

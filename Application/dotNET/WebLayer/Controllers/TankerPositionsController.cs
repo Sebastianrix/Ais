@@ -66,7 +66,7 @@ namespace WebLayer.Controllers
           // } 
     catch (Exception ex) {
     Console.WriteLine($"[ERR] {ex}"); 
-    return StatusCode(500, new { message = "ERROR Check if the DTO rejected the db-entry cast mismatch with datatype", error = ex.Message });
+    return StatusCode(500, new { message = "Our DB is running Old-Harddisk! Try again if timedout!", error = ex.Message });
           }
     }
 }}
