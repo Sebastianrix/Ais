@@ -193,10 +193,38 @@ namespace DataLayer
             modelBuilder.Entity<AnomalyType>().Property(at => at.Severity).HasColumnName("severity");
             modelBuilder.Entity<AnomalyType>().Property(at => at.Created_At).HasColumnName("created_at");
         }
+        private static void MapDataConsumerQueue(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<DataConsumerQueue>().ToTable("data_consumer_queue");
+            modelBuilder.Entity<DataConsumerQueue>().HasKey(dcq => dcq.Queue_Id);
+            modelBuilder.Entity<DataConsumerQueue>().Property(dcq => dcq.Queue_Id).HasColumnName("queue_id");
+            modelBuilder.Entity<DataConsumerQueue>().Property(dcq => dcq.Source_Batch_Date).HasColumnName("source_batch_date");
+            modelBuilder.Entity<DataConsumerQueue>().Property(dcq => dcq.Priority).HasColumnName("priority");
+            modelBuilder.Entity<DataConsumerQueue>().Property(dcq => dcq.Requester).HasColumnName("requester");
+            modelBuilder.Entity<DataConsumerQueue>().Property(dcq => dcq.Status).HasColumnName("status");
+            modelBuilder.Entity<DataConsumerQueue>().Property(dcq => dcq.Created_At).HasColumnName("created_at");
+        }
 
-
-
-
+        private static void MapDataDateArchive(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<DataDateArchive>().ToTable("data_date_archive");
+            modelBuilder.Entity<DataDateArchive>().HasKey(dda => dda.Source_Batch_Date);
+            modelBuilder.Entity<DataDateArchive>().Property(dda => dda.Source_Batch_Date).HasColumnName("source_batch_date");
+            modelBuilder.Entity<DataDateArchive>().Property(dda => dda.Total_Rows).HasColumnName("total_rows");
+            modelBuilder.Entity<DataDateArchive>().Property(dda => dda.Tanker_Rows).HasColumnName("tanker_rows");
+            modelBuilder.Entity<DataDateArchive>().Property(dda => dda.Positions_Inserted).HasColumnName("positions_inserted");
+            modelBuilder.Entity<DataDateArchive>().Property(dda => dda.Archived_At).HasColumnName("archived_at");
+        }
+        private static void MapMmsiCountryCodes(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<MmsiCountryCode>().ToTable("mmsi_country_codes");
+            modelBuilder.Entity<MmsiCountryCode>().HasKey(mcc => mcc.Mid_Code);
+            modelBuilder.Entity<MmsiCountryCode>().Property(mcc => mcc.Mid_Code).HasColumnName("mid_code");
+            modelBuilder.Entity<MmsiCountryCode>().Property(mcc => mcc.Country_Code).HasColumnName("country_code");
+            modelBuilder.Entity<MmsiCountryCode>().Property(mcc => mcc.Country_Name).HasColumnName("country_name");
+            modelBuilder.Entity<MmsiCountryCode>().Property(mcc => mcc.Region).HasColumnName("region");
+            modelBuilder.Entity<MmsiCountryCode>().Property(mcc => mcc.Created_At).HasColumnName("created_at");
+        }
 
     }
 }
