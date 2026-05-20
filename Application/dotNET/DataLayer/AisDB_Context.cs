@@ -21,7 +21,11 @@ namespace DataLayer
         public DbSet<Tanker> Tankers { get; set; }
         public DbSet<Voyage> Voyages { get; set; }
         public DbSet<TrackedTanker> TrackedTankers { get; set; }
-        
+        public DbSet<AnomalyFlag> AnomalyFlags { get; set; }
+        public DbSet<AnomalyType> AnomalyTypes { get; set; }
+        public DbSet<DataConsumerQueue> DataConsumerQueue { get; set; }
+        public DbSet<DataDateArchive> DataDateArchive { get; set; }
+        public DbSet<MmsiCountryCode> MmsiCountryCodes { get; set; }
 
 
 
@@ -32,6 +36,11 @@ namespace DataLayer
             MapTankers(modelBuilder);
             MapTrackedTankers(modelBuilder);
             MapVoyages(modelBuilder);
+            MapAnomalyFlags(modelBuilder);
+            MapAnomalyTypes(modelBuilder);
+            MapDataConsumerQueue(modelBuilder);
+            MapDataDateArchive(modelBuilder);
+            MapMmsiCountryCodes(modelBuilder);
         }
         // Map of 'tanker_positions' table
         // Map of 'tanker_staging' table
@@ -159,6 +168,10 @@ namespace DataLayer
         modelBuilder.Entity<Voyage>().Property(v => v.Reated_At).HasColumnName("created_at"); 
         modelBuilder.Entity<Voyage>().Property(v => v.Updated_At).HasColumnName("updated_at"); 
         }
+
+
+
+
     }
 }
 //List of tables
