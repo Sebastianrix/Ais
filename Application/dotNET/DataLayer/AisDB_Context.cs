@@ -161,18 +161,19 @@ namespace DataLayer
         }
     }
 }
-//Schema | Name | Type | Owner
-//-------- + ----------------------------------+----------+----------
+//List of tables
+// Schema |        Name         | Type  |  Owner
+//--------+---------------------+-------+----------
+// public | anomaly_flags | table | postgres
+// public | anomaly_types | table | postgres
+// public | data_consumer_queue | table | postgres
+// public | data_date_archive | table | postgres
+// public | mmsi_country_codes | table | postgres
 // public | tanker_positions | table | postgres
-// public | tanker_positions_position_id_seq | sequence | postgres
 // public | tanker_staging | table | postgres
-// public | tanker_staging_staging_id_seq | sequence | postgres
 // public | tankers | table | postgres
-// public | tankers_tanker_id_seq | sequence | postgres
 // public | tracked_tankers | table | postgres
-// public | tracked_tankers_tracked_id_seq | sequence | postgres
 // public | voyages | table | postgres
-// public | voyages_voyage_id_seq | sequence | postgres
 //(10 rows)
 
 
