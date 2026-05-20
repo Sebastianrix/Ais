@@ -31,7 +31,11 @@ namespace DataLayer
 
         Stats GetStats();
 
-
+        IList<DataConsumerQueue> GetDataConsumerQueue();
+        IList<DataDateArchive> GetDataDateArchive();
+        IList<AnomalyFlag> GetAnomalyFlags();
+        IList<AnomalyType> GetAnomalyTypes();
+        MmsiCountryCode? GetCountryByMmsi(string mmsi); // Lookup helper, maybe we don't need this, but here it is
 
 
 

@@ -58,12 +58,16 @@ namespace DataLayer
           //      .Take(100) // Remove this after Paging, This hack>
             //    .ToList();
         //}
+
        public Stats GetStats() {
-        return new Stats{
-          TankerCount = _context.Tankers.Count(),
-          PositionCount = _context.TankerPositions.Count(),
-          TrackedTankerCount = _context.TrackedTankers.Count(),
-          StagingCount = _context.TankerStagings.Count()};
-        }
+            var archive = _context.DataDateArchive.AsNoTracking();
+            var queue = _context.DataConsumerQueue.AsNoTracking();
+            return new Stats
+            {
+                TankerCount = _context.Tankers.Count(),
+                TrackedTankerCount = _context.TrackedTankers.Count(),
+
+
+            };
     }
 }
