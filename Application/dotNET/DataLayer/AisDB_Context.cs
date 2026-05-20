@@ -168,6 +168,21 @@ namespace DataLayer
         modelBuilder.Entity<Voyage>().Property(v => v.Reated_At).HasColumnName("created_at"); 
         modelBuilder.Entity<Voyage>().Property(v => v.Updated_At).HasColumnName("updated_at"); 
         }
+        private static void MapAnomalyFlags(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<AnomalyFlag>().ToTable("anomaly_flags");
+            modelBuilder.Entity<AnomalyFlag>().HasKey(af => af.Anomaly_Flag_Id);
+            modelBuilder.Entity<AnomalyFlag>().Property(af => af.Anomaly_Flag_Id).HasColumnName("anomaly_flag_id");
+            modelBuilder.Entity<AnomalyFlag>().Property(af => af.Tanker_Id).HasColumnName("tanker_id");
+            modelBuilder.Entity<AnomalyFlag>().Property(af => af.Position_Id).HasColumnName("position_id");
+            modelBuilder.Entity<AnomalyFlag>().Property(af => af.Staging_Id).HasColumnName("staging_id");
+            modelBuilder.Entity<AnomalyFlag>().Property(af => af.Anomaly_Type_Id).HasColumnName("anomaly_type_id");
+            modelBuilder.Entity<AnomalyFlag>().Property(af => af.Source).HasColumnName("source");
+            modelBuilder.Entity<AnomalyFlag>().Property(af => af.Confidence).HasColumnName("confidence");
+            modelBuilder.Entity<AnomalyFlag>().Property(af => af.Notes).HasColumnName("notes");
+            modelBuilder.Entity<AnomalyFlag>().Property(af => af.Created_At).HasColumnName("created_at");
+        }
+
 
 
 
