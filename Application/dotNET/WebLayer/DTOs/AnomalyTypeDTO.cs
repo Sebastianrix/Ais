@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WebLayer.DTOs
 {
-    public class AnomalyType
+    public class AnomalyTypeDTO
     {
        public long Anomaly_Type_Id { get; set; }
        public string Code { get; set; } = string.Empty;
