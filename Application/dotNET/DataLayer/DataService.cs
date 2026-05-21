@@ -81,7 +81,52 @@ namespace DataLayer
                 InProgressBatches = queue.Count(q => q.Status == "in_progress")
             };
         }
-    
-   }
+
+        public IList<DataConsumerQueue> GetDataConsumerQueue()
+        {
+            return _context.DataConsumerQueue
+                .Where(q => q.Status == "pending" || q.Status == "in_progress")
+                .OrderBy(q => q.Priority)
+                .ThenBy(q => q.Source_Batch_Date)
+                .Take(50)
+                .ToList();
+        }
+
+        public IList<DataDateArchive> GetDataDateArchive()
+        {
+            return _context.DataDateArchive
+                .OrderByDescending(a => a.Source_Batch_Date)
+                .ToList();
+        }
+
+        public IList<AnomalyFlag> GetAnomalyFlags()
+        {
+            return _context.AnomalyFlags
+                .OrderByDescending(af => af.Created_At)
+                .Take(100)
+                .ToList();
+        }
+
+        // Anomaly types (small static table)
+        public IList<AnomalyType> GetAnomalyTypes()
+        {
+            return _context.AnomalyTypes
+                .OrderBy(at => at.Severity)
+                .ThenBy(at => at.Name)
+                .ToList();
+        }
+
+        // MMSI country lookup helper
+        public MmsiCountryCode? GetCountryByMmsi(string mmsi)
+        {
+            if (string.IsNullOrEmpty(mmsi) || mmsi.Length < 3)
+                return null;
+
+            var mid = mmsi.Substring(0, 3);
+            return _context.MmsiCountryCodes
+                .FirstOrDefault(mcc => mcc.Mid_Code == mid);
+        }
+
+    }
 }
 

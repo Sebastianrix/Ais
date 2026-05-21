@@ -35,12 +35,16 @@ namespace WebLayer.Controllers
                 var dto = new StatsDTO
                 {
                     TankerCount = stats.TankerCount,
-                    PositionCount = stats.PositionCount,
                     TrackedTankerCount = stats.TrackedTankerCount,
-                    StagingCount = stats.StagingCount,
-                                  
-  };
-                  
+                    TotalPositionsProcessed = stats.TotalPositionsProcessed,
+                    TotalStagingRowsProcessed = stats.TotalStagingRowsProcessed,
+                    DatesProcessed = stats.DatesProcessed,
+                    LatestBatchDate = stats.LatestBatchDate,
+                    OldestBatchDate = stats.OldestBatchDate,
+                    PendingBatches = stats.PendingBatches,
+                    InProgressBatches = stats.InProgressBatches
+                };
+
                 Console.WriteLine(stats == null ? "NULL!" : "NOT NULL");
                  return Ok();//dto);
             }
