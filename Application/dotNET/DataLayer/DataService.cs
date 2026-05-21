@@ -50,16 +50,17 @@ namespace DataLayer
                 .Take(10) // Remove this after Paging, This hack>
                 .ToList();
         }
-     //   public IList<Voyage> GetVoyages() {
-       // return _context.Voyage.OrderByDescending(v.Voyage)
-         //
-       // return _context.TankerPositions
-              //  .OrderByDescending(tp => tp.Timestamp)
-          //      .Take(100) // Remove this after Paging, This hack>
-            //    .ToList();
+        //   public IList<Voyage> GetVoyages() {
+        // return _context.Voyage.OrderByDescending(v.Voyage)
+        //
+        // return _context.TankerPositions
+        //  .OrderByDescending(tp => tp.Timestamp)
+        //      .Take(100) // Remove this after Paging, This hack>
+        //    .ToList();
         //}
 
-       public Stats GetStats() {
+        public Stats GetStats()
+        {
             var archive = _context.DataDateArchive.AsNoTracking();
             var queue = _context.DataConsumerQueue.AsNoTracking();
             return new Stats
@@ -69,5 +70,8 @@ namespace DataLayer
 
 
             };
-    }
+        }
+    
+   }
 }
+
