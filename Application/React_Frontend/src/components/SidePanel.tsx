@@ -324,7 +324,7 @@ export default function SidePanel() {
           <section id="example-response" className="subsection">
             <h2 className="section-label">Example Response</h2>
             <p className="prose">
-              A trimmed response from <code>/api/v1/TankerPositions</code>:
+              A trimmed response from <code>/TankerPositions</code>:
             </p>
             <pre className="code-block code-block-multiline">
 {`[
