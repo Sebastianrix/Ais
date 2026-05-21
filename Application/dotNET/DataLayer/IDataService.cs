@@ -37,9 +37,9 @@ namespace DataLayer
         IList<AnomalyType> GetAnomalyTypes();
         MmsiCountryCode? GetCountryByMmsi(string mmsi); // Lookup helper, maybe we don't need this, but here it is
 
-        IList<VesselMapPosition> GetLatestVesselPositions(
-        double? minLat, double? minLon, double? maxLat, double? maxLon,
-        int sinceHours, int cap);
+        //IList<VesselMapPosition> GetLatestVesselPositions(
+        //double? minLat, double? minLon, double? maxLat, double? maxLon,
+        //int sinceHours, int cap);
 
     }
 }

@@ -88,7 +88,7 @@ namespace DataLayer
                 .Where(q => q.Status == "pending" || q.Status == "in_progress")
                 .OrderBy(q => q.Priority)
                 .ThenBy(q => q.Source_Batch_Date)
-                .Take(50)
+
                 .ToList();
         }
 
@@ -103,7 +103,7 @@ namespace DataLayer
         {
             return _context.AnomalyFlags
                 .OrderByDescending(af => af.Created_At)
-                .Take(100)
+    
                 .ToList();
         }
 
