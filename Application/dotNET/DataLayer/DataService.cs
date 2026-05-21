@@ -64,11 +64,21 @@ namespace DataLayer
             var archive = _context.DataDateArchive.AsNoTracking();
             var queue = _context.DataConsumerQueue.AsNoTracking();
             return new Stats
-            {
+            {   
+                // Small tables (we can count)
                 TankerCount = _context.Tankers.Count(),
                 TrackedTankerCount = _context.TrackedTankers.Count(),
+                // Big tables (we can't do count, so we use the noted counts from archive)
+                TotalPositionsProcessed = archive.Sum(a => (long?)a.Positions_Inserted) ?? 0,
+                TotalStagingRowsProcessed = archive.Sum(a => (long?)a.Total_Rows) ?? 0,
 
+                DatesProcessed = archive.Count(),
 
+                LatestBatchDate = archive.Max(a => (DateTime?)a.Source_Batch_Date),
+                OldestBatchDate = archive.Min(a => (DateTime?)a.Source_Batch_Date),
+                // Queue status
+                PendingBatches = queue.Count(q => q.Status == "pending"),
+                InProgressBatches = queue.Count(q => q.Status == "in_progress")
             };
         }
     
