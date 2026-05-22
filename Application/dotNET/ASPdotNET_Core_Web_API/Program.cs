@@ -34,7 +34,7 @@ builder.Services.AddApiVersioning(options =>
         new HeaderApiVersionReader("X-Version")
    );
 }).AddApiExplorer(options => {
-    options.GroupNameFormat = "'v'vvv"; // This line is related to version string format
+    options.GroupNameFormat = "'v'VVV"; // This line is related to version string format
     options.SubstituteApiVersionInUrl = true;
 });
 
@@ -91,8 +91,6 @@ app.UseStaticFiles();
 app.UseSwagger();
 app.UseSwaggerUI(options =>
 {
-
-
     // Build swagger UI endpoints for both versions so they appear in the top-right dropdown menu
     options.SwaggerEndpoint("/swagger/v1/swagger.json", "API v1.0");
     options.SwaggerEndpoint("/swagger/v2/swagger.json", "API v2.0");
@@ -101,13 +99,8 @@ app.UseSwaggerUI(options =>
 });
 
 app.UseHttpsRedirection();
-
 app.UseCors("AllowClientFrontend");
-
 app.UseAuthorization();
-
-
-
 app.MapControllers();
 
 app.Run();
