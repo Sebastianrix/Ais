@@ -1,0 +1,38 @@
+﻿body {
+    background-color: #121212;
+}
+
+
+.swagger-ui .info .title {
+    background-color: #121212;
+    color: #f21b42;
+}
+
+    .swagger-ui .opblock,
+    .swagger-ui .opblock-section-header,
+    .swagger-ui .responses-wrapper,
+    .swagger-ui .parameters-container {
+        background-color: #1b1b1b !important;
+    }
+
+
+    .swagger-ui div,
+    .swagger-ui span,
+    .swagger-ui p,
+    .swagger-ui td,
+    .swagger-ui th {
+        color: #e6e6e6 !important;
+    }
+
+
+    .swagger-ui .response-col_status {
+        color: #49cc90 !important;
+        font-weight: bold;
+    }
+
+
+    .swagger-ui .btn {
+        background-color: #2a2a2a !important;
+        color: #e6e6e6 !important;
+        border: 1px solid #3a3a3a !important;
+    }

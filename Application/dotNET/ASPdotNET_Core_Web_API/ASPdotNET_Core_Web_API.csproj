@@ -12,6 +12,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\swagger.css" />
+  </ItemGroup>
+
+  <ItemGroup>
 	  <ProjectReference Include="..\DataLayer\DataLayer.csproj" />
 	  <ProjectReference Include="..\WebLayer\WebLayer.csproj" />
 
