@@ -14,12 +14,10 @@ namespace DataLayer
     {
         private readonly AisDB_Context _context;
 
-        public DataService(IConfiguration configuration)
+        public DataService(AisDB_Context context)
         {
-            var options = new DbContextOptionsBuilder<AisDB_Context>().UseNpgsql(configuration.GetConnectionString("aisDatabase")).Options;
-            _context = new AisDB_Context(options);
+            _context = context;
         }
-
    
 
         public PagedResult<TankerPosition> GetTankerPositions(
@@ -141,6 +139,10 @@ namespace DataLayer
             return _context.MmsiCountryCodes
                 .FirstOrDefault(mcc => mcc.Mid_Code == mid);
         }
+
+        private int? Re
+
+
 
     }
 }
