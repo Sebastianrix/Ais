@@ -29,13 +29,24 @@ namespace WebLayer.Controllers
 
         // GET api/tankers
         [HttpGet]
-        public IActionResult GetTankers()
+        public async Task<IActionResult> GetTankers(
+            [FromQuery] int page = 1,
+            [FromQuery] int pageSize = 50,
+            [FromQuery] bool? isActive = null)
         {
+            if (page < 1) page = 1;
+            if (pageSize < 1 || pageSize > 500) pageSize = 50;
+
             try
             {
-                var tanker = _dataService.GetTankers();
-                var dto = tanker.Select(t => new TankerDTO
+                var results = await _dataService.GetTankersAsync(page, pageSize, isActive);
+                return Ok(new PagedResult<TankerDTO>
                 {
+                    Page = results.Page,
+                    PageSize = results.PageSize,
+                    TotalItems = results.TotalItems,
+                    Items = results.Items.Select(t => new TankerDTO
+                    {
                         Tanker_Id = t.Tanker_Id,
                         Imo = t.Imo,
                         Mmsi = t.Mmsi,
@@ -56,19 +67,17 @@ namespace WebLayer.Controllers
                         Is_Active = t.Is_Active,
                         Created_At = t.Created_At,
                         Updated_At = t.Updated_At
-
-
-                }).ToList();
-
-                return Ok(dto);
+                    }).ToList()
+                });
             }
-            //catch (Exception ex) {
-                //return StatusCode(500, new { message = "ERROR Check if the DTO rejected the db-entry cast mismatch with datatype", error = ex.Message });
-            //}
-          // } 
-    catch (Exception ex) {
-    Console.WriteLine($"[ERR] {ex}"); 
-    return StatusCode(500, new { message = "Error GetTankers endpoint failed, this messeg is TankerController.", error = ex.Message });
-          }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"[ERR] {ex}");
+                {
+                    return StatusCode(500, new { message = "Error GetTankers endpooint failed", error = ex.Message });
+                }
+
+            }
+        }
     }
-}}
+}
