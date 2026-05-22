@@ -22,6 +22,7 @@ builder.Services.AddScoped<IDataService, DataService>();
 
 
 builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddApiVersioning(options =>
 {
     options.DefaultApiVersion = new ApiVersion(1, 0);
@@ -32,9 +33,12 @@ builder.Services.AddApiVersioning(options =>
         new QueryStringApiVersionReader("api-version"),
         new HeaderApiVersionReader("X-Version")
    );
+}).AddApiExplorer(options => {
+    options.GroupNameFormat = "'v'vvv"; // This line is related to version string format
+    options.SubstituteApiVersionInUrl = true;
 });
    
-builder.Services.AddEndpointsApiExplorer();
+
 builder.Services.AddSwaggerGen();
 
 
@@ -70,9 +74,15 @@ if (app.Environment.IsDevelopment())
 // SWAGGER foreveryone!
 app.UseStaticFiles();
 app.UseSwagger();
-app.UseSwaggerUI(c => { 
-    c.SwaggerEndpoint("/swagger/v1/swagger.json", "api.aismap.dk");
-    c.InjectStylesheet("/swagger.css");
+app.UseSwaggerUI(options =>
+{
+
+
+    // Build swagger UI endpoints for both versions so they appear in the top-right dropdown menu
+    options.SwaggerEndpoint("/swagger/v1/swagger.json", "API v1.0");
+    options.SwaggerEndpoint("/swagger/v2/swagger.json", "API v2.0");
+    options.InjectStylesheet("/swagger.css");
+    options.DocumentTitle = "api.aismap.dk - API Documentation";
 });
 
 app.UseHttpsRedirection();
