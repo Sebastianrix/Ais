@@ -42,12 +42,25 @@ namespace DataLayer
             };
         }
 
+
+        public async Task<PagedResult<Tanker>> GetTankersAsync(int page, int pageSize, bool? isActive = null)
+        {
+            var query = _context.Tankers.AsNoTracking();
+
+            if (isActive.HasValue) query = query.Where(t => t.Is_Active == isActive.Value);
+
+            var total = await query.CountAsync();
+            var items = await query.OrderByDescending(t => t.Last_Seen_At).Skip((page - 1) * pageSize).Take(pageSize).ToListAsync();
+
+            return new PagedResult<Tanker>
+            {
+                Items = items,
+                Page = page,
+                PageSize = pageSize,
+                TotalItems = total
+            };
         
-        public IList<Tanker> GetTankers() {
-        return _context.Tankers
-                .OrderByDescending(t => t.Last_Seen_At)
-                .Take(10) // page here
-                .ToList();
+        
         }
 
         public IList<TankerStaging> GetTankerStagings() {

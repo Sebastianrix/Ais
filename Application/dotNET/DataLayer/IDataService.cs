@@ -23,7 +23,10 @@ namespace DataLayer
         //   IList<TankerPosition> GetTankerPositionByTanker(string tanker); //*Implement this
 
 
-        IList<Tanker> GetTankers();
+        Task<PagedResult<Tanker>> GetTankersAsync(
+            int page,
+            int pageSize,
+            bool? isActive = null); // Optinal filter ( we do this for all version, so NOT filling parameters autobackfill to v1, parameters is v2 )
 
         IList<TankerStaging> GetTankerStagings();
         //IList<TankerStaging> GetTankerStagingByDateRange(DateTime startDate, DateTime endDate);
