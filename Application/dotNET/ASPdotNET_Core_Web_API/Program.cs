@@ -37,9 +37,24 @@ builder.Services.AddApiVersioning(options =>
     options.GroupNameFormat = "'v'vvv"; // This line is related to version string format
     options.SubstituteApiVersionInUrl = true;
 });
-   
 
-builder.Services.AddSwaggerGen();
+
+builder.Services.AddSwaggerGen(options =>
+{
+    // v1
+    options.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
+    {
+        Title = "api.aismap.dk",
+        Version = "v1"
+    });
+
+    // v2
+    options.SwaggerDoc("v2", new Microsoft.OpenApi.Models.OpenApiInfo
+    {
+        Title = "api.aismap.dk",
+        Version = "v2"
+    });
+});
 
 
 
