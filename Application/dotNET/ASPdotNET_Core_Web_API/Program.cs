@@ -59,14 +59,20 @@ if (app.Environment.IsDevelopment())
 //    app.UseSwaggerUI();
 }
 // SWAGGER foreveryone!
- app.UseSwagger();
- app.UseSwaggerUI();
+app.UseStaticFiles();
+app.UseSwagger();
+app.UseSwaggerUI(c => { 
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "api.aismap.dk");
+    c.InjectStylesheet("/swagger.css");
+});
 
 app.UseHttpsRedirection();
 
+app.UseCors("AllowClientFrontend");
+
 app.UseAuthorization();
 
-app.UseCors("AllowClientFrontend");
+
 
 app.MapControllers();
 

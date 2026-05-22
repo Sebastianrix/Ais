@@ -25,7 +25,7 @@ namespace WebLayer.Controllers
 
 
 
-        // GET api/v1/tankerpositions
+        // GET /tankerpositions
         [HttpGet]
         public IActionResult GetTankerPositions()
         {
