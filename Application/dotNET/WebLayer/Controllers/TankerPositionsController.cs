@@ -5,21 +5,79 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.AspNetCore.Routing;
 using WebLayer.DTOs;
+using WebLayer.DTOs;
 
 
 namespace WebLayer.Controllers
 {
+
+    [ApiVersion("1.0")]
     [ApiController]
     [Route("[controller]")]
-    public class TankerPositionsController : BaseController
+    public class TankerPositionsV1Controller : BaseController
     {
         private readonly IDataService _dataService;
 
-        public TankerPositionsController(IDataService dataService, LinkGenerator linkGenerator)
+        public TankerPositionsV1Controller(IDataService dataService, LinkGenerator linkGenerator) : base(linkGenerator) {
+            _dataService = dataService;
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> GetTankerPositions()
+        {
+            var results = await _dataService.GetTankerPositionsAsync(page:1,pageSize:50,null,null,null);
+            return Ok( new PagedResult<TankerPositionDTO>
+            {
+                Page = results.Page,
+                PageSize = results.PageSize,
+                TotalItems = results.TotalItems,
+                Items = results.Items.Select(tp => new TankerPositionDTO
+                {
+                    Position_Id = tp.Position_Id,
+                    Tanker_Id = tp.Tanker_Id,
+                    Voyage_Id = tp.Voyage_Id,
+                    Staging_Id = tp.Staging_Id,
+                    Timestamp = tp.Timestamp,
+                    Longitude = tp.Longitude,
+                    Latitude = tp.Latitude,
+                    Raw_Imo = tp.Raw_Imo,
+                    Imo_Status = tp.Imo_Status,
+                    Raw_Mmsi = tp.Raw_Mmsi,
+                    Mmsi_Status = tp.Mmsi_Status,
+                    Anomaly_Flag = tp.Anomaly_Flag,
+                    Navigational_Status = tp.Navigational_Status,
+                    Rot = tp.Rot,
+                    Sog = tp.Sog,
+                    Cog = tp.Cog,
+                    Heading = tp.Heading,
+                    Draught = tp.Draught,
+                    Destination = tp.Destination,
+                    Eta = tp.Eta,
+                    Position_Fixing_Device = tp.Position_Fixing_Device,
+                    Data_Source_Type = tp.Data_Source_Type
+                }).ToList()
+            });
+          }
+      }
+
+
+
+    [ApiVersion("2.0")]
+    [ApiController]
+    [Route("[controller]")]
+    
+    public class TankerPositionsV2Controller : BaseController
+    {
+        private readonly IDataService _dataService;
+
+        public TankerPositionsV2Controller(IDataService dataService, LinkGenerator linkGenerator)
             : base(linkGenerator)
         {
             _dataService = dataService;
         }
+
+
+
 
         // GET /tankerpositions
         [HttpGet]

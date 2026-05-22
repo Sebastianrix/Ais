@@ -27,7 +27,11 @@ builder.Services.AddApiVersioning(options =>
     options.DefaultApiVersion = new ApiVersion(1, 0);
     options.AssumeDefaultVersionWhenUnspecified = true;
     options.ReportApiVersions = true;
-
+    //(?api-version=2.0)So basiclly we combines reading from a quiery string to a request header.
+    options.ApiVersionReader = ApiVersionReader.Combine(
+        new QueryStringApiVersionReader("api-version"),
+        new HeaderApiVersionReader("X-Version")
+   );
 });
    
 builder.Services.AddEndpointsApiExplorer();
