@@ -35,9 +35,9 @@ namespace WebLayer.Controllers
             [FromQuery] DateTime? endDate = null)
         {
             if (page < 1) page = 1;
-            if (pageSize > 1 || pageSize > 500) pageSize = 50;
+            if (pageSize < 1 || pageSize > 500) pageSize = 50;
 
-            var results = _dataService.GetTankerPositions(page, pageSize, tankerId, endDate);
+            var results = _dataService.GetTankerPositions(page, pageSize, tankerId, startDate: startDate, endDate: endDate);
 
             return Ok(new PagedResult<TankerPositionDTO>
             {
