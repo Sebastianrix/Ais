@@ -1,15 +1,16 @@
-﻿using WebLayer.DTOs;
+﻿using Asp.Versioning;
 using DataLayer;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.AspNetCore.Routing;
-
+using WebLayer.DTOs;
 using WebLayer.DTOs;
 
 
 namespace WebLayer.Controllers
 {
+    [ApiVersion("1.0")]
     [ApiController]
     [Route("[controller]")]
     public class TankerStagingController : BaseController

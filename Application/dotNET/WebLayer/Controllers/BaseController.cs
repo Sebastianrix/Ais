@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Asp.Versioning;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
 
 namespace WebLayer.Controllers
 
 {
+    [ApiVersion("1.0")]
     [ApiController]
     public class BaseController : ControllerBase
     {

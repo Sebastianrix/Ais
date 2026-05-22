@@ -1,4 +1,5 @@
-﻿using DataLayer;
+﻿using Asp.Versioning;
+using DataLayer;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
 using System;
@@ -10,6 +11,7 @@ using WebLayer.DTOs;
 
 namespace WebLayer.Controllers
 {
+    [ApiVersion("1.0")]
     [ApiController]
     [Route("[controller]")]
     public class DataConsumerQueueController : BaseController
