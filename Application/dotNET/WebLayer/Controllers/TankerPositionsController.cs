@@ -27,13 +27,24 @@ namespace WebLayer.Controllers
 
         // GET /tankerpositions
         [HttpGet]
-        public IActionResult GetTankerPositions()
+        public IActionResult GetTankerPositions(
+            [FromQuery] int page = 1,
+            [FromQuery] int pageSize = 50,
+            [FromQuery] int? tankerId = null,
+            [FromQuery] DateTime? startDate = null,
+            [FromQuery] DateTime? endDate = null)
         {
-            try
+            if (page < 1) page = 1;
+            if (pageSize > 1 || pageSize > 500) pageSize = 50;
+
+            var results = _dataService.GetTankerPositions(page, pageSize, tankerId, endDate);
+
+            return Ok(new PagedResult<TankerPositionDTO>
             {
-                var tankerPositions = _dataService.GetTankerPositions();
-                var dto = tankerPositions.Select(tp => new TankerPositionDTO
-                {
+                Page = results.Page,
+                PageSize = results.PageSize,
+                TotalItems = results.TotalItems,
+                Items = results.Items.Select(tp => new TankerPositionDTO {
                     Position_Id = tp.Position_Id,
                     Tanker_Id = tp.Tanker_Id,
                     Voyage_Id = tp.Voyage_Id,
@@ -55,18 +66,8 @@ namespace WebLayer.Controllers
                     Destination = tp.Destination,
                     Eta = tp.Eta,
                     Position_Fixing_Device = tp.Position_Fixing_Device,
-                    Data_Source_Type = tp.Data_Source_Type
-                }).ToList();
-
-                return Ok(dto);
-            }
-            //catch (Exception ex) {
-                //return StatusCode(500, new { message = "ERROR Check if the DTO rejected the db-entry cast mismatch with datatype", error = ex.Message });
-            //}
-          // } 
-    catch (Exception ex) {
-    Console.WriteLine($"[ERR] {ex}"); 
-    return StatusCode(500, new { message = "Our DB is running Old-Harddisk! Try again if timedout!", error = ex.Message });
-          }
+                    Data_Source_Type = tp.Data_Source_Type}).ToList(),
+            });
+        }
     }
-}}
+}
