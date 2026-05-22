@@ -12,7 +12,11 @@ namespace DataLayer
 
 
 
-        IList<TankerPosition> GetTankerPositions();
+        PagedResult<TankerPosition> GetTankerPositions(
+            int page, int pageSize,
+            int? tankerId = null,
+            DateTime? startDate = null,
+            DateTime? endDate = null);
         //   IList<TankerPosition> GetTankerPositionsByDateRange(DateTime startDate, DateTime endDate); //*Implement this
         //   IList<TankerPosition> GetTankerPositionByTanker(string tanker); //*Implement this
 

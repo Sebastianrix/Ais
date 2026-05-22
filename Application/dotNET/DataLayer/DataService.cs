@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DataLayer.Models;
+using Microsoft.AspNetCore.Http.Features;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
@@ -19,13 +20,27 @@ namespace DataLayer
             _context = new AisDB_Context(options);
         }
 
-        // private IList<T> GetPagedResults   *Implement later*
+   
 
-        public IList<TankerPosition> GetTankerPositions() {
-        return _context.TankerPositions
-                .OrderByDescending(tp => tp.Timestamp)
-                .Take(100) // Remove this after Paging, This hack just make the program not freeze, since otherwise SQL would return thusands of rows.
-                .ToList();
+        public PagedResult<TankerPosition> GetTankerPositions(
+            int page, int pageSize,
+            int? tankerId = null, DateTime? startDate = null, DateTime? endDate = null)
+            {
+
+            var query = _context.TankerPositions.AsNoTracking();
+
+            if (tankerId.HasValue) query = query.Where(tp => tp.Tanker_Id == tankerId.Value);
+            if (startDate.HasValue) query = query.Where(tp => tp.Timestamp >= startDate.Value);
+            if (endDate.HasValue) query = query.Where(tp => tp.Timestamp <= endDate.Value);
+
+            var total = query.Count();
+
+            var items = query.OrderByDescending(tp => tp.Timestamp).Skip((page - 1) * pageSize).Take(pageSize).ToList();
+
+            return new PagedResult<TankerPosition>
+            {
+                Items = items, Page = page, PageSize = pageSize, TotalItems = total
+            };
         }
 
         
