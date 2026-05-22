@@ -3,6 +3,23 @@
 }
 
 
+.swagger-ui .topbar .link {
+    content: ""; /* removed default content*/
+    background-image: url('/images/v3Logo.jpg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: left center;
+
+    display: inline-block;
+    min-width: 150px;
+    min-height: 40px;
+}
+
+
+    .swagger-ui .topbar .link svg {
+        display: none; /* removed default SVG image*/
+    }
+
 .swagger-ui .info .title {
     background-color: #121212;
     color: #f21b42;
