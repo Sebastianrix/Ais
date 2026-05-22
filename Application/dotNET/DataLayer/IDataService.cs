@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace DataLayer
 {
@@ -12,8 +13,9 @@ namespace DataLayer
 
 
 
-        PagedResult<TankerPosition> GetTankerPositions(
-            int page, int pageSize,
+        Task<PagedResult<TankerPosition>> GetTankerPositionsAsync(
+            int page, 
+            int pageSize,
             int? tankerId = null,
             DateTime? startDate = null,
             DateTime? endDate = null);

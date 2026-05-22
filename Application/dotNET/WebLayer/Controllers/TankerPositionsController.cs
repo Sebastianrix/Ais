@@ -27,7 +27,7 @@ namespace WebLayer.Controllers
 
         // GET /tankerpositions
         [HttpGet]
-        public IActionResult GetTankerPositions(
+        public async Task<IActionResult> GetTankerPositions(
             [FromQuery] int page = 1,
             [FromQuery] int pageSize = 50,
             [FromQuery] int? tankerId = null,
@@ -37,14 +37,21 @@ namespace WebLayer.Controllers
             if (page < 1) page = 1;
             if (pageSize < 1 || pageSize > 500) pageSize = 50;
 
-            var results = _dataService.GetTankerPositions(page, pageSize, tankerId, startDate: startDate, endDate: endDate);
+            var results = await _dataService.GetTankerPositionsAsync(
+                page,
+                pageSize,
+                tankerId,
+                startDate,
+                endDate);
 
             return Ok(new PagedResult<TankerPositionDTO>
             {
                 Page = results.Page,
                 PageSize = results.PageSize,
                 TotalItems = results.TotalItems,
-                Items = results.Items.Select(tp => new TankerPositionDTO {
+
+                Items = results.Items.Select(tp => new TankerPositionDTO
+                {
                     Position_Id = tp.Position_Id,
                     Tanker_Id = tp.Tanker_Id,
                     Voyage_Id = tp.Voyage_Id,
@@ -66,7 +73,8 @@ namespace WebLayer.Controllers
                     Destination = tp.Destination,
                     Eta = tp.Eta,
                     Position_Fixing_Device = tp.Position_Fixing_Device,
-                    Data_Source_Type = tp.Data_Source_Type}).ToList(),
+                    Data_Source_Type = tp.Data_Source_Type
+                }).ToList()
             });
         }
     }

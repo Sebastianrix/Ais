@@ -7,6 +7,7 @@ using DataLayer.Models;
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using System.Threading.Tasks;
 
 namespace DataLayer
 {
@@ -20,7 +21,7 @@ namespace DataLayer
         }
    
 
-        public PagedResult<TankerPosition> GetTankerPositions(
+        public async Task<PagedResult<TankerPosition>> GetTankerPositionsAsync(
             int page, int pageSize,
             int? tankerId = null, DateTime? startDate = null, DateTime? endDate = null)
             {
@@ -31,9 +32,9 @@ namespace DataLayer
             if (startDate.HasValue) query = query.Where(tp => tp.Timestamp >= startDate.Value);
             if (endDate.HasValue) query = query.Where(tp => tp.Timestamp <= endDate.Value);
 
-            var total = query.Count();
+            var total = await query.CountAsync();
 
-            var items = query.OrderByDescending(tp => tp.Timestamp).Skip((page - 1) * pageSize).Take(pageSize).ToList();
+            var items = await query.OrderByDescending(tp => tp.Timestamp).Skip((page - 1) * pageSize).Take(pageSize).ToListAsync();
 
             return new PagedResult<TankerPosition>
             {
@@ -140,8 +141,7 @@ namespace DataLayer
                 .FirstOrDefault(mcc => mcc.Mid_Code == mid);
         }
 
-        private int? Re
-
+        
 
 
     }
