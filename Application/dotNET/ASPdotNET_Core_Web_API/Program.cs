@@ -2,6 +2,7 @@ using DataLayer;
 using WebLayer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
+using Asp.Versioning;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,11 +21,15 @@ builder.Services.AddScoped<IDataService, DataService>();
 
 
 
-// Add services to the container.
-
-
-// (this commend came with the template :) Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddControllers();
+builder.Services.AddApiVersioning(options =>
+{
+    options.DefaultApiVersion = new ApiVersion(1, 0);
+    options.AssumeDefaultVersionWhenUnspecified = true;
+    options.ReportApiVersions = true;
+
+});
+   
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 

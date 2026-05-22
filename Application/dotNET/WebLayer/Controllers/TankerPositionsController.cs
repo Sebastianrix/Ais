@@ -1,10 +1,9 @@
-﻿using WebLayer.DTOs;
+﻿using Asp.Versioning;
 using DataLayer;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.AspNetCore.Routing;
-
 using WebLayer.DTOs;
 
 
@@ -21,9 +20,6 @@ namespace WebLayer.Controllers
         {
             _dataService = dataService;
         }
-
-
-
 
         // GET /tankerpositions
         [HttpGet]
