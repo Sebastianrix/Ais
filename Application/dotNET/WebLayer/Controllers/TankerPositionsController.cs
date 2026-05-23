@@ -11,8 +11,7 @@ namespace WebLayer.Controllers
 
     [ApiVersion("1.0")]
     [ApiController]
-    [Route("/TankerPositions")]
-    [EnableRateLimiting("fixed")]
+    [Route("[controller]")]
     public class TankerPositionsV1Controller : BaseController
     {
         private readonly IDataService _dataService;
@@ -23,7 +22,7 @@ namespace WebLayer.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetTankerPositions()
+        public async Task<IActionResult> GetTankerPositionsV1()
         {
             try
             {
@@ -74,7 +73,7 @@ namespace WebLayer.Controllers
 
         [ApiVersion("2.0")]
         [ApiController]
-        [Route("/TankerPositions")]
+        [Route("[controller]")]
         [EnableRateLimiting("fixed")]
 
         public class TankerPositionsV2Controller : BaseController
@@ -92,7 +91,7 @@ namespace WebLayer.Controllers
 
             // GET /tankerpositions
             [HttpGet]
-            public async Task<IActionResult> GetTankerPositions(
+            public async Task<IActionResult> GetTankerPositionsV2(
                 [FromQuery] int page = 1,
                 [FromQuery] int pageSize = 50,
                 [FromQuery] int? tankerId = null,

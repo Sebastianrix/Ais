@@ -71,7 +71,6 @@ builder.Services.AddSwaggerGen(options =>
         Title = "api.aismap.dk",
         Version = "v1"
     });
-
     // v2
     options.SwaggerDoc("v2", new Microsoft.OpenApi.Models.OpenApiInfo
     {
