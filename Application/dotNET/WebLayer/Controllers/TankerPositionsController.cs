@@ -11,7 +11,7 @@ namespace WebLayer.Controllers
 
     [ApiVersion("1.0")]
     [ApiController]
-    [Route("[controller]")]
+    [Route("TankerPositions")]
     public class TankerPositionsV1Controller : BaseController
     {
         private readonly IDataService _dataService;
@@ -73,7 +73,7 @@ namespace WebLayer.Controllers
 
         [ApiVersion("2.0")]
         [ApiController]
-        [Route("[controller]")]
+        [Route("TankerPositions")]
         [EnableRateLimiting("fixed")]
 
         public class TankerPositionsV2Controller : BaseController
