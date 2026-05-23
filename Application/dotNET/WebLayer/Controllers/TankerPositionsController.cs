@@ -69,10 +69,10 @@ namespace WebLayer.Controllers
                 }
             }
         }
+    }
 
 
-
-        [ApiVersion("2.0")]
+[ApiVersion("2.0")]
         [ApiController]
         [Route("v{version:apiVersion}/TankerPositions")]
         [EnableRateLimiting("fixed")]
@@ -152,5 +152,4 @@ namespace WebLayer.Controllers
                 }
             }
         }
-    }
 }
