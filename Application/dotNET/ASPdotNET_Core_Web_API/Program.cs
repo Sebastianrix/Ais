@@ -31,12 +31,14 @@ builder.Services.AddApiVersioning(options =>
     options.ReportApiVersions = true;
     //(?api-version=2.0)So basiclly we combines reading from a quiery string to a request header.
     options.ApiVersionReader = ApiVersionReader.Combine(
+        new UrlSegmentApiVersionReader(),
         new QueryStringApiVersionReader("api-version"),
         new HeaderApiVersionReader("X-Version")
    );
 }).AddApiExplorer(options => {
     options.GroupNameFormat = "'v'VVV"; // This line is related to version string format
     options.SubstituteApiVersionInUrl = true;
+
 });
 
 builder.Services.Configure<RateLimitSettings>(builder.Configuration.GetSection("RateLimiting"));
