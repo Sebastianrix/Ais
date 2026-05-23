@@ -1,12 +1,8 @@
 ﻿using Asp.Versioning;
 using DataLayer;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.AspNetCore.Routing;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using WebLayer.DTOs;
 
 namespace WebLayer.Controllers

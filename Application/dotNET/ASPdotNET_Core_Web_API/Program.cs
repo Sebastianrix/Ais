@@ -1,8 +1,9 @@
-using DataLayer;
-using WebLayer;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Storage;
 using Asp.Versioning;
+using DataLayer;
+using Microsoft.AspNetCore.RateLimiting;
+using Microsoft.EntityFrameworkCore;
+using System.Threading.RateLimiting;
+using WebLayer.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -37,6 +38,29 @@ builder.Services.AddApiVersioning(options =>
     options.GroupNameFormat = "'v'VVV"; // This line is related to version string format
     options.SubstituteApiVersionInUrl = true;
 });
+
+builder.Services.Configure<RateLimitSettings>(builder.Configuration.GetSection("RateLimiting"));
+builder.Services.AddRateLimiter(options =>
+{
+    var rateLimitSettings =
+        builder.Configuration
+            .GetSection("RateLimiting")
+            .Get<RateLimitSettings>();
+
+    options.AddFixedWindowLimiter("fixed", limiterOptions =>
+    {
+        limiterOptions.PermitLimit = rateLimitSettings!.PermitLimit;
+
+        limiterOptions.Window =TimeSpan.FromMinutes(rateLimitSettings.WindowMinutes);
+
+        limiterOptions.QueueLimit = rateLimitSettings.QueueLimit;
+
+        limiterOptions.QueueProcessingOrder = QueueProcessingOrder.OldestFirst;
+    });
+
+    options.RejectionStatusCode = StatusCodes.Status429TooManyRequests;
+});
+
 
 
 builder.Services.AddSwaggerGen(options =>
