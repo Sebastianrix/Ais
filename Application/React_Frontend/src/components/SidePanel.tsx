@@ -242,8 +242,8 @@ export default function SidePanel() {
               Returns the latest AIS positions for tracked tanker vessels.
             </p>
             <EndpointCard
-              href="https://api.aismap.dk/TankerPositions"
-              path="/TankerPositions"
+              href="https://api.aismap.dk/TankerPositionsV1"
+              path="/TankerPositionsV1"
               onTry={send}
             />
           </section>
