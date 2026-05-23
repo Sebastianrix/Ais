@@ -3,6 +3,7 @@ using DataLayer;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Controllers;
+using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.AspNetCore.Routing;
 using System.Linq.Expressions;
 using WebLayer.DTOs;
@@ -77,6 +78,7 @@ namespace WebLayer.Controllers
         [ApiVersion("2.0")]
         [ApiController]
         [Route("[controller]")]
+        [EnableRateLimiting("fixed")]
 
         public class TankerPositionsV2Controller : BaseController
         {
