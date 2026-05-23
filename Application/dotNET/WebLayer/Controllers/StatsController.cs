@@ -11,6 +11,7 @@ using WebLayer.DTOs;
 namespace WebLayer.Controllers
 {
     [ApiVersion("1.0")]
+    [ApiVersion("2.0")]
     [ApiController]
     [Route("[controller]")]
     public class StatsController : BaseController
