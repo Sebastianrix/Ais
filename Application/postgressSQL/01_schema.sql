@@ -573,6 +573,8 @@ CREATE UNIQUE INDEX IF NOT EXISTS uq_tanker_position_known
 ON tanker_positions (tanker_id, timestamp_utc, latitude, longitude)
 WHERE tanker_id IS NOT NULL;
 
+CREATE INDEX IX_TankerPositions_Timestamp ON "TankerPositions" ("Timestamp" DESC);
+CREATE INDEX IX_TankerPositions_TankerId ON "TankerPositions" ("Tanker_Id");
 CREATE INDEX IF NOT EXISTS idx_tanker_staging_staging_id_desc 
   ON tanker_staging (staging_id DESC);
 
