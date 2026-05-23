@@ -27,7 +27,7 @@ namespace DataLayer
             {
 
             var query = _context.TankerPositions.AsNoTracking();
-
+            if (startDate == null) { startDate = DateTime.Now; } 
             if (tankerId.HasValue) query = query.Where(tp => tp.Tanker_Id == tankerId.Value);
             if (startDate.HasValue) query = query.Where(tp => tp.Timestamp >= startDate.Value);
             if (endDate.HasValue) query = query.Where(tp => tp.Timestamp <= endDate.Value);
