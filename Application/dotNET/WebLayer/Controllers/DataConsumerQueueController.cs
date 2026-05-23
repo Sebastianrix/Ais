@@ -15,6 +15,7 @@ namespace WebLayer.Controllers
     [ApiVersion("2.0")]
     [ApiController]
     [Route("[controller]")]
+    [EnableRateLimiting("fixed")]
     public class DataConsumerQueueController : BaseController
     {
         private readonly IDataService _dataService;

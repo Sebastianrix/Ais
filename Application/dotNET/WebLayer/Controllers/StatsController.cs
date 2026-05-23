@@ -1,3 +1,4 @@
+
 ﻿using Asp.Versioning;
 using DataLayer;
 using Microsoft.AspNetCore.Http.HttpResults;
@@ -14,6 +15,7 @@ namespace WebLayer.Controllers
     [ApiVersion("2.0")]
     [ApiController]
     [Route("[controller]")]
+    [EnableRateLimiting("fixed")]
     public class StatsController : BaseController
     {
         private readonly IDataService _dataService;

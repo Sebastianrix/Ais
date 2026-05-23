@@ -13,6 +13,7 @@ namespace WebLayer.Controllers
     [ApiVersion("1.0")]
     [ApiController]
     [Route("[controller]")]
+    [EnableRateLimiting("fixed")]
     public class TankerStagingController : BaseController
     {
         private readonly IDataService _dataService;
