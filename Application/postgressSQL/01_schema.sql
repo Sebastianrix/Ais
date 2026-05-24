@@ -594,6 +594,9 @@ ON anomaly_flags(tanker_id);
 CREATE INDEX IF NOT EXISTS idx_anomaly_flags_position_id
 ON anomaly_flags(position_id);
 
+CREATE INDEX idx_tanker_positions_tankerid_timestamp
+ON tanker_positions (tanker_id, timestamp_utc DESC);
+
 CREATE INDEX IF NOT EXISTS idx_anomaly_flags_type_id
 ON anomaly_flags(anomaly_type_id);
 
