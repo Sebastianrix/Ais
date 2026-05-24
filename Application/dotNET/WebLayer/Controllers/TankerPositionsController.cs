@@ -3,25 +3,24 @@ using DataLayer;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.AspNetCore.Routing;
+using Microsoft.Extensions.Hosting;
 using WebLayer.DTOs;
 
 
 namespace WebLayer.Controllers
 {
 
-    [ApiVersion("1.0")]
+    [ApiVersion("1.0")]//v1 always returns the 50 most recent positions(ordered by Timestamp)
     [ApiController]
     [Route("v{version:apiVersion}/TankerPositions")]
     [EnableRateLimiting("fixed")]
     public class TankerPositionsV1Controller : BaseController
     {
         private readonly IDataService _dataService;
-
         public TankerPositionsV1Controller(IDataService dataService, LinkGenerator linkGenerator) : base(linkGenerator)
         {
             _dataService = dataService;
         }
-
         [HttpGet]
         public async Task<IActionResult> GetTankerPositionsV1()
         {
@@ -70,9 +69,20 @@ namespace WebLayer.Controllers
             }
         }
     }
+    /*v2 is the with parameters exambles below
+    //?startDate=2025-01-01&endDate=2025-02-01
+    //? tankerId = 69
+    //?page=3&pageSize=100)
 
 
-[ApiVersion("2.0")]
+    Full url 
+    https://api.aismap.dk/v2/TankerPositions?startDate=2026-01-01&endDate=2026-02-01
+    https://api.aismap.dk/v2/TankerPositions?tankerId=42&startDate=2026-01-01&endDate=2026-02-01&page=2&pageSize=20
+    https://api.aismap.dk/v2/TankerPositions?startDate=2026-01-01&endDate=2026-02-01
+
+    */
+
+    [ApiVersion("2.0")]
         [ApiController]
         [Route("v{version:apiVersion}/TankerPositions")]
         [EnableRateLimiting("fixed")]
@@ -86,10 +96,6 @@ namespace WebLayer.Controllers
             {
                 _dataService = dataService;
             }
-
-
-
-
             // GET /tankerpositions
             [HttpGet]
             public async Task<IActionResult> GetTankerPositionsV2(
@@ -97,8 +103,9 @@ namespace WebLayer.Controllers
                 [FromQuery] int pageSize = 50,
                 [FromQuery] int? tankerId = null,
                 [FromQuery] DateTime? startDate = null,
-                [FromQuery] DateTime? endDate = null)
-            {
+                [FromQuery] DateTime? endDate = null,
+                [FromQuery] string? imo = null)
+        {
                 if (page < 1) page = 1;
                 if (pageSize < 1 || pageSize > 500) pageSize = 50;
 
@@ -110,7 +117,8 @@ namespace WebLayer.Controllers
                         pageSize,
                         tankerId,
                         startDate,
-                        endDate);
+                        endDate,
+                        imo);
 
                     return Ok(new PagedResult<TankerPositionDTO>
                     {

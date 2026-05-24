@@ -18,7 +18,8 @@ namespace DataLayer
             int pageSize,
             int? tankerId = null,
             DateTime? startDate = null,
-            DateTime? endDate = null);
+            DateTime? endDate = null,
+            string? imo = null);
         //   IList<TankerPosition> GetTankerPositionsByDateRange(DateTime startDate, DateTime endDate); //*Implement this
         //   IList<TankerPosition> GetTankerPositionByTanker(string tanker); //*Implement this
 
