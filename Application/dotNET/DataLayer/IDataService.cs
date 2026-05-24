@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 namespace DataLayer
 {
     public interface IDataService
-    {   // We need pagination so bad. Rn we are returning 1000 records, but it should be paged  
+    {  
 
 
 
@@ -25,11 +25,15 @@ namespace DataLayer
         //   IList<TankerPosition> GetTankerPositionByTanker(string tanker); //*Implement this
         Task<List<TankerPosition>> GetTankerPositionsSimpleAsync();
 
+        Task<List<Tanker>> GetTankersSimpleAsync();
+
         Task<PagedResult<Tanker>> GetTankersAsync(
             int page,
             int pageSize,
-            bool? isActive = null); // Optinal filter ( we do this for all version, so NOT filling parameters autobackfill to v1, parameters is v2 )
-
+            bool? isActive = null,
+            string? imo = null,
+            string? mmsi = null,
+            string? search = null);
         IList<TankerStaging> GetTankerStagings();
         //IList<TankerStaging> GetTankerStagingByDateRange(DateTime startDate, DateTime endDate);
         //IList<TankerStaging> GetTankerStagingByTanker(string tanker);

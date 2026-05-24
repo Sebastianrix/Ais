@@ -28,11 +28,22 @@ namespace DataLayer
             {
 
             var query = _context.TankerPositions.AsNoTracking();
-            if (tankerId.HasValue) query = query.Where(tp => tp.Tanker_Id == tankerId.Value);
-            if (startDate.HasValue) query = query.Where(tp => tp.Timestamp >= DateTime.SpecifyKind(startDate.Value, DateTimeKind.Utc));
-            if (endDate.HasValue) query = query.Where(tp => tp.Timestamp <= DateTime.SpecifyKind(endDate.Value, DateTimeKind.Utc));
 
-            var total = await query.CountAsync();
+
+            if (!string.IsNullOrWhiteSpace(imo)) 
+            { 
+                var matchedTankerId = await _context.Tankers.Where(t => t.Imo == imo).Select(t => (long?)t.Tanker_Id).FirstOrDefaultAsync(); 
+                if (matchedTankerId != null) return new PagedResult<TankerPosition> { Items = new List<TankerPosition>(), Page = page, PageSize = pageSize, TotalItems = 0 }
+                
+              query = query.Where(tp => tp.Tanker_Id == matchedTankerId.Value);
+            }
+       
+            if (tankerId.HasValue) query = query.Where(tp => tp.Tanker_Id == tankerId.Value);
+            if (startDate.HasValue) query = query.Where(tp => tp.Timestamp >= DateTime.SpecifyKind(startDate.Value, DateTimeKind.Unspecified));
+            if (endDate.HasValue) query = query.Where(tp => tp.Timestamp <= DateTime.SpecifyKind(endDate.Value, DateTimeKind.Unspecified));
+
+            var total = await query.CountAsync(); // I want to change this, but it's for the max page. Just for milions of row, it's expensive. Maybe Index will fix
+
 
             var items = await query.OrderByDescending(tp => tp.Timestamp).Skip((page - 1) * pageSize).Take(pageSize).ToListAsync();
 
@@ -43,7 +54,7 @@ namespace DataLayer
         }
 
         public async Task<List<TankerPosition>> GetTankerPositionsSimpleAsync()
-            {return await _context.TankerPositions.OrderByDescending(tp => tp.Timestamp).Take(50).ToListAsync(); }
+            {return await _context.TankerPositions.AsNoTracking().OrderByDescending(tp => tp.Timestamp).Take(50).ToListAsync(); }
 
 
 
