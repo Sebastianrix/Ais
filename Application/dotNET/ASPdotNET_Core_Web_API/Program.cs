@@ -79,6 +79,7 @@ builder.Services.AddSwaggerGen(options =>
         Title = "api.aismap.dk",
         Version = "v2"
     });
+
 });
 
 
@@ -121,6 +122,7 @@ app.UseSwaggerUI(options =>
     options.SwaggerEndpoint("/swagger/v2/swagger.json", "API v2.0");
     options.InjectStylesheet("/swagger.css");
     options.DocumentTitle = "api.aismap.dk - API Documentation";
+    options.RoutePrefix = string.Empty;
 });
 
 app.UseHttpsRedirection();
