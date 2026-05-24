@@ -283,7 +283,7 @@ export default function SidePanel() {
             <p className="prose">
               Interactive API explorer with request/response schemas. Swagger is on default URL.
             </p>
-            <EndpointCard href="https://api.aismap.dk/swagger" path="/" onTry={send} />
+            <EndpointCard href="https://api.aismap.dk/swagger" path="/swagger" onTry={send} />
             <p className="prose grey-text">More endpoints coming soon.</p>
           </section>
         </section>
