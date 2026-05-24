@@ -113,7 +113,6 @@ if (app.Environment.IsDevelopment())
 //    app.UseSwaggerUI();
 }
 // SWAGGER foreveryone!
-app.UseStaticFiles();
 app.UseSwagger();
 app.UseSwaggerUI(options =>
 {
@@ -130,7 +129,7 @@ app.MapGet("/", context =>
     context.Response.Redirect("/swagger");
     return Task.CompletedTask;
 });
-
+app.UseStaticFiles();
 app.UseHttpsRedirection();
 app.UseCors("AllowClientFrontend");
 app.UseAuthorization();
