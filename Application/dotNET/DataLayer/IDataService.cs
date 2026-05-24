@@ -20,9 +20,10 @@ namespace DataLayer
             DateTime? startDate = null,
             DateTime? endDate = null,
             string? imo = null);
+
         //   IList<TankerPosition> GetTankerPositionsByDateRange(DateTime startDate, DateTime endDate); //*Implement this
         //   IList<TankerPosition> GetTankerPositionByTanker(string tanker); //*Implement this
-
+        Task<List<TankerPosition>> GetTankerPositionsSimpleAsync();
 
         Task<PagedResult<Tanker>> GetTankersAsync(
             int page,

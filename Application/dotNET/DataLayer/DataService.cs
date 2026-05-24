@@ -42,6 +42,11 @@ namespace DataLayer
             };
         }
 
+        public async Task<List<TankerPosition>> GetTankerPositionsSimpleAsync()
+            {return await _context.TankerPositions.OrderByDescending(tp => tp.Timestamp).Take(5).ToListAsync(); }
+        
+
+
 
         public async Task<PagedResult<Tanker>> GetTankersAsync(int page, int pageSize, bool? isActive = null)
         {
