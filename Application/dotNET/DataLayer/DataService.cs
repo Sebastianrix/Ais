@@ -18,11 +18,13 @@ namespace DataLayer
         {
             _context = context;
         }
-   
+
+     //   Task<List<TankerPositionDTO>> GetLatestTankerPositionsAsync();
+
 
         public async Task<PagedResult<TankerPosition>> GetTankerPositionsAsync(
             int page, int pageSize,
-            int? tankerId = null, DateTime? startDate = null, DateTime? endDate = null)
+            int? tankerId = null, DateTime? startDate = null, DateTime? endDate = null, string? imo = null)
             {
 
             var query = _context.TankerPositions.AsNoTracking();
