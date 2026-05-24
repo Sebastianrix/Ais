@@ -32,8 +32,8 @@ namespace DataLayer
 
             if (!string.IsNullOrWhiteSpace(imo)) 
             { 
-                var matchedTankerId = await _context.Tankers.Where(t => t.Imo == imo).Select(t => (long?)t.Tanker_Id).FirstOrDefaultAsync(); 
-                if (matchedTankerId != null) return new PagedResult<TankerPosition> { Items = new List<TankerPosition>(), Page = page, PageSize = pageSize, TotalItems = 0 }
+                var matchedTankerId = await _context.Tankers.Where(t => t.Imo == imo).Select(t => (long?)t.Tanker_Id).FirstOrDefaultAsync();
+                if (matchedTankerId != null) return new PagedResult<TankerPosition> { Items = new List<TankerPosition>(), Page = page, PageSize = pageSize, TotalItems = 0 };
                 
               query = query.Where(tp => tp.Tanker_Id == matchedTankerId.Value);
             }
@@ -84,27 +84,12 @@ namespace DataLayer
                // Makes good sense if the user SEARCH a vessel name, capital or lowercase shouldnt matter.
                 query = query.Where(t => EF.Functions.ILike(t.Vessel_Name, $"%{s}%") || t.Imo == s || t.Mmsi == s);
             }
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
             var total = await query.CountAsync();
             var items = await query.OrderByDescending(t => t.Last_Seen_At).Skip((page - 1) * pageSize).Take(pageSize).ToListAsync();
 
             return new PagedResult<Tanker>
             {
-                Items = items,
-                Page = page,
-                PageSize = pageSize,
-                TotalItems = total
+                Items = items,Page = page, PageSize = pageSize, TotalItems = total
             };
         }
 
