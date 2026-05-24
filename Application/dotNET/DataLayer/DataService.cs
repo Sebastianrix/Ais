@@ -66,12 +66,36 @@ namespace DataLayer
                 .Take(50)
                 .ToListAsync();
         }
-        public async Task<PagedResult<Tanker>> GetTankersAsync(int page, int pageSize, bool? isActive = null)
+
+        public async Task<PagedResult<Tanker>> GetTankersAsync(int page, int pageSize, bool? isActive = null, string? imo = null, string? mmsi = null, string? search = null)
         {
             var query = _context.Tankers.AsNoTracking();
 
             if (isActive.HasValue) query = query.Where(t => t.Is_Active == isActive.Value);
 
+            if (!string.IsNullOrWhiteSpace(imo)) query = query.Where(t => t.Imo == imo);
+
+            if (!string.IsNullOrWhiteSpace(mmsi)) query = query.Where(t => t.Mmsi == mmsi);
+
+            if (!string.IsNullOrWhiteSpace(search))
+            {
+                var s = search.Trim();
+                // This line below looks add, but it's the builin case-insensitivity for Npgsql. 
+               // Makes good sense if the user SEARCH a vessel name, capital or lowercase shouldnt matter.
+                query = query.Where(t => EF.Functions.ILike(t.Vessel_Name, $"%{s}%") || t.Imo == s || t.Mmsi == s);
+            }
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             var total = await query.CountAsync();
             var items = await query.OrderByDescending(t => t.Last_Seen_At).Skip((page - 1) * pageSize).Take(pageSize).ToListAsync();
 
@@ -82,8 +106,6 @@ namespace DataLayer
                 PageSize = pageSize,
                 TotalItems = total
             };
-        
-        
         }
 
         public IList<TankerStaging> GetTankerStagings() {
