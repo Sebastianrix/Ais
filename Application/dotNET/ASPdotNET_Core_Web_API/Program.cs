@@ -90,7 +90,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowClientFrontend", policy =>
     {
 
-        policy.WithOrigins("http://localhost:5173", "https://localhost:5173", "https://aismap.dk", "http://aismap.dk",https://api.aismap.dk,http://api.aismap.dk)
+        policy.WithOrigins("http://localhost:5173", "https://localhost:5173", "https://aismap.dk", "http://aismap.dk", "https://api.aismap.dk", "http://api.aismap.dk")
        
         .AllowAnyMethod()
         .AllowAnyHeader();
