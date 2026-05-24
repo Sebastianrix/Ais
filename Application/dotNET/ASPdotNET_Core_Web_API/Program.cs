@@ -90,7 +90,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowClientFrontend", policy =>
     {
 
-        policy.WithOrigins("http://localhost:5173", "https://localhost:5173", "https://aismap.dk", "http://aismap.dk")
+        policy.WithOrigins("http://localhost:5173", "https://localhost:5173", "https://aismap.dk", "http://aismap.dk",https://api.aismap.dk,http://api.aismap.dk)
        
         .AllowAnyMethod()
         .AllowAnyHeader();
@@ -122,7 +122,13 @@ app.UseSwaggerUI(options =>
     options.SwaggerEndpoint("/swagger/v2/swagger.json", "API v2.0");
     options.InjectStylesheet("/swagger.css");
     options.DocumentTitle = "api.aismap.dk - API Documentation";
-    options.RoutePrefix = string.Empty;
+    options.RoutePrefix = "swagger";
+});
+
+app.MapGet("/", context =>
+{
+    context.Response.Redirect("/swagger");
+    return Task.CompletedTask;
 });
 
 app.UseHttpsRedirection();
