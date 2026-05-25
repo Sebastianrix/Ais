@@ -292,6 +292,7 @@ def ais_worker():
     job = check_budget(job)
     job = download_and_stage(job)
     job = promote(job)
+    job = detect_anomalies(job)
     finalize(job)
 
 
