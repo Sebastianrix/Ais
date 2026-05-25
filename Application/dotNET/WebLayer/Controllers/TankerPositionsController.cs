@@ -83,21 +83,21 @@ namespace WebLayer.Controllers
     */
 
     [ApiVersion("2.0")]
-        [ApiController]
-        [Route("v{version:apiVersion}/TankerPositions")]
-        [EnableRateLimiting("fixed")]
+    [ApiController]
+    [Route("v{version:apiVersion}/TankerPositions")]
+    [EnableRateLimiting("fixed")]
 
-        public class TankerPositionsV2Controller : BaseController
+    public class TankerPositionsV2Controller : BaseController
+    {
+        private readonly IDataService _dataService;
+
+        public TankerPositionsV2Controller(IDataService dataService, LinkGenerator linkGenerator)
+            : base(linkGenerator)
         {
-            private readonly IDataService _dataService;
-
-            public TankerPositionsV2Controller(IDataService dataService, LinkGenerator linkGenerator)
-                : base(linkGenerator)
-            {
-                _dataService = dataService;
-            }
-            // GET /tankerpositions
-            [HttpGet]
+            _dataService = dataService;
+        }
+       //GET /tankerpositions
+       [HttpGet]
             public async Task<IActionResult> GetTankerPositionsV2(
                 [FromQuery] int page = 1,
                 [FromQuery] int pageSize = 50,
@@ -106,58 +106,58 @@ namespace WebLayer.Controllers
                 [FromQuery] DateTime? endDate = null,
                 [FromQuery] string? imo = null)
         {
-                if (page < 1) page = 1;
-                if (pageSize < 1 || pageSize > 500) pageSize = 50;
+            if (page < 1) page = 1;
+            if (pageSize < 1 || pageSize > 500) pageSize = 50;
 
-                try
+            try
+            {
+
+                var results = await _dataService.GetTankerPositionsAsync(
+                    page,
+                    pageSize,
+                    tankerId,
+                    startDate,
+                    endDate,
+                    imo);
+
+                return Ok(new PagedResult<TankerPositionDTO>
                 {
+                    Page = results.Page,
+                    PageSize = results.PageSize,
+                    TotalItems = results.TotalItems,
 
-                    var results = await _dataService.GetTankerPositionsAsync(
-                        page,
-                        pageSize,
-                        tankerId,
-                        startDate,
-                        endDate,
-                        imo);
-
-                    return Ok(new PagedResult<TankerPositionDTO>
+                    Items = results.Items.Select(tp => new TankerPositionDTO
                     {
-                        Page = results.Page,
-                        PageSize = results.PageSize,
-                        TotalItems = results.TotalItems,
-
-                        Items = results.Items.Select(tp => new TankerPositionDTO
-                        {
-                            Position_Id = tp.Position_Id,
-                            Tanker_Id = tp.Tanker_Id,
-                            Voyage_Id = tp.Voyage_Id,
-                            Staging_Id = tp.Staging_Id,
-                            Timestamp = tp.Timestamp,
-                            Longitude = tp.Longitude,
-                            Latitude = tp.Latitude,
-                            Raw_Imo = tp.Raw_Imo,
-                            Imo_Status = tp.Imo_Status,
-                            Raw_Mmsi = tp.Raw_Mmsi,
-                            Mmsi_Status = tp.Mmsi_Status,
-                            Anomaly_Flag = tp.Anomaly_Flag,
-                            Navigational_Status = tp.Navigational_Status,
-                            Rot = tp.Rot,
-                            Sog = tp.Sog,
-                            Cog = tp.Cog,
-                            Heading = tp.Heading,
-                            Draught = tp.Draught,
-                            Destination = tp.Destination,
-                            Eta = tp.Eta,
-                            Position_Fixing_Device = tp.Position_Fixing_Device,
-                            Data_Source_Type = tp.Data_Source_Type
-                        }).ToList()
-                    });
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"[ERR] {ex}");
-                    return StatusCode(500, new { message = "ERROR TankerPositionsV2Controller", error = ex.ToString() });
-                }
+                        Position_Id = tp.Position_Id,
+                        Tanker_Id = tp.Tanker_Id,
+                        Voyage_Id = tp.Voyage_Id,
+                        Staging_Id = tp.Staging_Id,
+                        Timestamp = tp.Timestamp,
+                        Longitude = tp.Longitude,
+                        Latitude = tp.Latitude,
+                        Raw_Imo = tp.Raw_Imo,
+                        Imo_Status = tp.Imo_Status,
+                        Raw_Mmsi = tp.Raw_Mmsi,
+                        Mmsi_Status = tp.Mmsi_Status,
+                        Anomaly_Flag = tp.Anomaly_Flag,
+                        Navigational_Status = tp.Navigational_Status,
+                        Rot = tp.Rot,
+                        Sog = tp.Sog,
+                        Cog = tp.Cog,
+                        Heading = tp.Heading,
+                        Draught = tp.Draught,
+                        Destination = tp.Destination,
+                        Eta = tp.Eta,
+                        Position_Fixing_Device = tp.Position_Fixing_Device,
+                        Data_Source_Type = tp.Data_Source_Type
+                    }).ToList()
+                });
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"[ERR] {ex}");
+                return StatusCode(500, new { message = "ERROR TankerPositionsV2Controller", error = ex.ToString() });
             }
         }
+    }
 }

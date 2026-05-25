@@ -42,15 +42,12 @@ namespace DataLayer
             if (startDate.HasValue) query = query.Where(tp => tp.Timestamp >= DateTime.SpecifyKind(startDate.Value, DateTimeKind.Utc));
             if (endDate.HasValue) query = query.Where(tp => tp.Timestamp <= DateTime.SpecifyKind(endDate.Value, DateTimeKind.Utc));
 
-            var total = await query.CountAsync(); // I want to change this, but it's for the max page. Just for milions of row, it's expensive. Maybe Index will fix
-
+          //  var total = await query.CountAsync(); // This line broke the API, for milions of row, it's expensive. Maybe Index will fix
+           // regardless it's descarded.
 
             var items = await query.OrderByDescending(tp => tp.Timestamp).Skip((page - 1) * pageSize).Take(pageSize).ToListAsync();
 
-            return new PagedResult<TankerPosition>
-            {
-                Items = items, Page = page, PageSize = pageSize, TotalItems = total
-            };
+            return new PagedResult<TankerPosition>{Items = items, Page = page, PageSize = pageSize, TotalItems = -1};
         }
 
         public async Task<List<TankerPosition>> GetTankerPositionsSimpleAsync()

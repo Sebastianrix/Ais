@@ -8,7 +8,7 @@ using System.Linq;
 using WebLayer.DTOs;
 
 
-
+    /// api.aismap.dk/v2/Tankers?mmsi=123456789 <- Put a real mmsi number 
 
 namespace WebLayer.Controllers
 {
