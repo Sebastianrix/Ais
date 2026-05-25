@@ -1,9 +1,7 @@
 """
-ais_worker — pulls one job from data_consumer_queue, processes it end-to-end,
+ais_worker pulls one job from data_consumer_queue, processes it end-to-end,
 records results in data_date_archive.
 
-Triggered manually for now. Once stable, set schedule="*/15 * * * *" to drain
-the queue continuously.
 """
 from airflow.decorators import dag, task
 from airflow.exceptions import AirflowSkipException
@@ -240,6 +238,23 @@ def ais_worker():
             conn.close()
 
         return {**job, "positions_inserted": positions_inserted}
+
+    @task
+    def detect_anomalies(job: dict) -> dict:
+        """Run anomaly detection."""
+        with open('/opt/airflow/sql/03_anomaly_detection.sql', 'r') as f:
+            detect_sql = f.read()
+        conn = _connect()
+        try:
+            with conn.cursor() as cur:
+                cur.execute(detect_sql)        
+            conn.commit()
+            print(f"[{job['target_day']}] anomaly detection complete")
+        finally:
+            conn.close()
+        return job
+
+
 
     @task
     def finalize(job: dict):
