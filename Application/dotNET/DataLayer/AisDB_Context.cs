@@ -226,8 +226,8 @@ namespace DataLayer
             modelBuilder.Entity<MmsiCountryCode>().Property(mcc => mcc.Created_At).HasColumnName("created_at");
         }
         private static void MapVesselMapPosition(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<VesselMapPosition>().HasNoKey().ToView(null);
+        {//https://learn.microsoft.com/en-us/ef/core/modeling/keyless-entity-types?tabs=data-annotations
+            modelBuilder.Entity<VesselMapPosition>().HasNoKey(); // Since we dont have a table for this, we use "keyless entity types". 'which can be used to carry out database queries against data that doesn't contain key values.'- Microsoft.com
             modelBuilder.Entity<VesselMapPosition>().Property(v => v.Tanker_Id).HasColumnName("tanker_id");
             modelBuilder.Entity<VesselMapPosition>().Property(v => v.Mmsi).HasColumnName("mmsi");
             modelBuilder.Entity<VesselMapPosition>().Property(v => v.Vessel_Name).HasColumnName("vessel_name");

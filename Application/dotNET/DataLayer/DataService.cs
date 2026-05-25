@@ -19,7 +19,7 @@ namespace DataLayer
             _context = context;
         }
 
-     //   Task<List<TankerPositionDTO>> GetLatestTankerPositionsAsync();
+        Task<List<TankerPositionDTO>> GetLatestTankerPositionsAsync();
 
 
         public async Task<PagedResult<TankerPosition>> GetTankerPositionsAsync(
