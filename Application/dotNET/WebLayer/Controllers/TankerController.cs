@@ -45,50 +45,42 @@ namespace WebLayer.Controllers
 
             }
         } }
-        [ApiVersion("2.0")]
-        [ApiController]
-        [Route("v{version:apiVersion}/Tankers")]
-        [EnableRateLimiting("fixed")]
-        public class TankerV2Controller : BaseController
+    [ApiVersion("2.0")]
+    [ApiController]
+    [Route("v{version:apiVersion}/Tankers")]
+    [EnableRateLimiting("fixed")]
+    public class TankerV2Controller : BaseController
+    {
+        private readonly IDataService _dataService;
+
+        public TankerV2Controller(IDataService dataService, LinkGenerator linkGenerator) : base(linkGenerator) { _dataService = dataService; }
+        //GET api.aismap.dk/v2/Tankers
+        [HttpGet]
+        public async Task<IActionResult> GetTankersV1(
+        [FromQuery] int page = 1,
+        [FromQuery] int pageSize = 50,
+        [FromQuery] bool? isActive = null,
+        [FromQuery] string? imo = null,
+        [FromQuery] string? search = null)
         {
-            private readonly IDataService _dataService;
-
-            public TankerV2Controller(IDataService dataService, LinkGenerator linkGenerator) : base(linkGenerator) { _dataService = dataService; }
-            // GET api.aismap.dk/v2/Tankers
-            [HttpGet]
-            public async Task<IActionResult> GetTankersV1(
-                [FromQuery] int page = 1,
-                [FromQuery] int pageSize = 50,
-                [FromQuery] bool? isActive = null)
+            if (page < 1) page = 1;
+            if (pageSize < 1 || pageSize > 500) pageSize = 50;
+            try
             {
-                if (page < 1) page = 1;
-                if (pageSize < 1 || pageSize > 500) pageSize = 50;
-
-                try
+                var results = await _dataService.GetTankersAsync(page, pageSize, isActive, imo, mmsi, search);
+                return Ok(new PagedResult<TankerDTO>
                 {
-                    var results = await _dataService.GetTankersAsync(page, pageSize, isActive);
-                    return Ok(new PagedResult<TankerDTO>
-                    {
-                        Page = results.Page,
-                        PageSize = results.PageSize,
-                        TotalItems = results.TotalItems,
-                        Items = results.Items.Select(t => new TankerDTO
-                        {
-
-                        }).ToList()
-                    });
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"[ERR] {ex}");
-                    {
-                        return StatusCode(500, new { message = "Error GetTankers endpooint failed", error = ex.Message });
-                    }
-
-                }
+                    Page = results.Page,
+                    PageSize = results.PageSize,
+                    TotalItems = results.TotalItems,
+                    Items = results.Items.Select(TankerMapper.ToDto).ToList()
+                });
             }
-
+            catch (Exception ex) { Console.WriteLine($"[ERR] {ex}"); return StatusCode(500, new { message = "ERROR TankerV2Controller", error = ex.ToString() }); }
         }
+    }
+
+    }
 
         internal static class TankerMapper
         {
