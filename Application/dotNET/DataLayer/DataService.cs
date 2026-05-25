@@ -19,8 +19,37 @@ namespace DataLayer
             _context = context;
         }
 
-        Task<List<TankerPositionDTO>> GetLatestTankerPositionsAsync();
 
+        public async Task<List<VesselMapPosition>> GetLatestVesselPositionsAsync(int sinceHours = 168)
+        {
+            // Latest position per tanker. DISTINCT ON is PSQL only,. Meaning we need raw SQL.
+            // Of course this break some patterns, but it was the most practical solution since there is a capability gap betwen LINQ and PSQL.
+            // If we really wanted to stick with LINQ, we could have used GroupBy().Select(First()), which would be more fragile,so we choose raw SQL since we really needed that DISTINCT.
+            var sql = @"
+        SELECT DISTINCT ON (p.tanker_id)
+               p.tanker_id           AS tanker_id,
+               t.mmsi                AS mmsi,
+               t.vessel_name         AS vessel_name,
+               t.ship_type           AS ship_type,
+               t.flag                AS flag,
+               p.latitude            AS latitude,
+               p.longitude           AS longitude,
+               p.timestamp_utc       AS timestamp_utc,
+               p.sog                 AS sog,
+               p.cog                 AS cog,
+               p.heading             AS heading,
+               p.navigational_status AS navigational_status
+        FROM tanker_positions p
+        JOIN tankers t ON t.tanker_id = p.tanker_id
+        WHERE p.tanker_id IS NOT NULL
+          AND p.timestamp_utc >= NOW() - (@p0 || ' hours')::interval
+        ORDER BY p.tanker_id, p.timestamp_utc DESC";
+
+            return await _context.VesselMapPositions
+                .FromSqlRaw(sql, sinceHours)
+                .AsNoTracking()
+                .ToListAsync();
+        }
 
         public async Task<PagedResult<TankerPosition>> GetTankerPositionsAsync(
             int page, int pageSize,
