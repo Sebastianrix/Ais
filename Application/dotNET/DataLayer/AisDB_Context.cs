@@ -26,7 +26,7 @@ namespace DataLayer
         public DbSet<DataConsumerQueue> DataConsumerQueue { get; set; }
         public DbSet<DataDateArchive> DataDateArchive { get; set; }
         public DbSet<MmsiCountryCode> MmsiCountryCodes { get; set; }
-        //public DbSet<VesselMapPosition> VesselMapPositions { get; set; }
+        public DbSet<VesselMapPosition> VesselMapPositions { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -225,22 +225,23 @@ namespace DataLayer
             modelBuilder.Entity<MmsiCountryCode>().Property(mcc => mcc.Region).HasColumnName("region");
             modelBuilder.Entity<MmsiCountryCode>().Property(mcc => mcc.Created_At).HasColumnName("created_at");
         }
-        //private static void MapVesselMapPosition(ModelBuilder modelBuilder)
-        //{
-        //    modelBuilder.Entity<VesselMapPosition>().HasNoKey().ToView(null);
-        //    modelBuilder.Entity<VesselMapPosition>().Property(v => v.Tanker_Id).HasColumnName("tanker_id");
-        //    modelBuilder.Entity<VesselMapPosition>().Property(v => v.Mmsi).HasColumnName("mmsi");
-        //    modelBuilder.Entity<VesselMapPosition>().Property(v => v.Vessel_Name).HasColumnName("vessel_name");
-        //    modelBuilder.Entity<VesselMapPosition>().Property(v => v.Ship_Type).HasColumnName("ship_type");
-        //    modelBuilder.Entity<VesselMapPosition>().Property(v => v.Flag).HasColumnName("flag");
-        //    modelBuilder.Entity<VesselMapPosition>().Property(v => v.Latitude).HasColumnName("latitude");
-        //    modelBuilder.Entity<VesselMapPosition>().Property(v => v.Longitude).HasColumnName("longitude");
-        //    modelBuilder.Entity<VesselMapPosition>().Property(v => v.Timestamp_Utc).HasColumnName("timestamp_utc");
-        //    modelBuilder.Entity<VesselMapPosition>().Property(v => v.Sog).HasColumnName("sog");
-        //    modelBuilder.Entity<VesselMapPosition>().Property(v => v.Cog).HasColumnName("cog");
-        //    modelBuilder.Entity<VesselMapPosition>().Property(v => v.Heading).HasColumnName("heading");
-        //    modelBuilder.Entity<VesselMapPosition>().Property(v => v.Navigational_Status).HasColumnName("navigational_status");
-        //}
+        private static void MapVesselMapPosition(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<VesselMapPosition>().HasNoKey().ToView(null);
+            modelBuilder.Entity<VesselMapPosition>().Property(v => v.Tanker_Id).HasColumnName("tanker_id");
+            modelBuilder.Entity<VesselMapPosition>().Property(v => v.Mmsi).HasColumnName("mmsi");
+            modelBuilder.Entity<VesselMapPosition>().Property(v => v.Vessel_Name).HasColumnName("vessel_name");
+            modelBuilder.Entity<VesselMapPosition>().Property(v => v.Ship_Type).HasColumnName("ship_type");
+            modelBuilder.Entity<VesselMapPosition>().Property(v => v.Flag).HasColumnName("flag");
+            modelBuilder.Entity<VesselMapPosition>().Property(v => v.Latitude).HasColumnName("latitude");
+            modelBuilder.Entity<VesselMapPosition>().Property(v => v.Longitude).HasColumnName("longitude");
+            modelBuilder.Entity<VesselMapPosition>().Property(v => v.Timestamp_Utc).HasColumnName("timestamp_utc");
+            modelBuilder.Entity<VesselMapPosition>().Property(v => v.Sog).HasColumnName("sog");
+            modelBuilder.Entity<VesselMapPosition>().Property(v => v.Cog).HasColumnName("cog");
+            modelBuilder.Entity<VesselMapPosition>().Property(v => v.Heading).HasColumnName("heading");
+            modelBuilder.Entity<VesselMapPosition>().Property(v => v.Navigational_Status).HasColumnName("navigational_status");
+            modelBuilder.Entity<VesselMapPosition>().Property(v => v.Is_Anomalous).HasColumnName("is_anomalous");
+        }
     }
 }
 //List of tables

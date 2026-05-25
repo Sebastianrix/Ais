@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataLayer.Models
+namespace WebLayer.DTOs
 {
-    public class VesselMapPosition
+    public class VesselMapPositionDTO
     {
         public long Tanker_Id { get; set; }
         public string? Mmsi { get; set; }
