@@ -56,11 +56,12 @@ namespace WebLayer.Controllers
         public TankerV2Controller(IDataService dataService, LinkGenerator linkGenerator) : base(linkGenerator) { _dataService = dataService; }
         //GET api.aismap.dk/v2/Tankers
         [HttpGet]
-        public async Task<IActionResult> GetTankersV1(
+        public async Task<IActionResult> GetTankersV2(
         [FromQuery] int page = 1,
         [FromQuery] int pageSize = 50,
         [FromQuery] bool? isActive = null,
         [FromQuery] string? imo = null,
+        [FromQuery] string? mmsi = null,
         [FromQuery] string? search = null)
         {
             if (page < 1) page = 1;
@@ -108,7 +109,7 @@ namespace WebLayer.Controllers
                 Updated_At = t.Updated_At
             };
         }
-    }
+    
 
 
 
