@@ -21,7 +21,7 @@ def _connect():
 
 @dag(
     dag_id="weekly_mmsi_swap",
-    schedule="0 4 * * 0",          # 04:00 every Sunday (low-traffic window)
+    schedule="0 4 * * 0",         # 04:00 every Sunday
     start_date=datetime(2026, 1, 1),
     catchup=False,
     max_active_runs=1,
@@ -31,7 +31,7 @@ def weekly_mmsi_swap():
 
     @task
     def detect_swaps():
-        """Run the heavy swap-detection SQL. Idempotent (NOT EXISTS guard)."""
+        """Run the heavy swap-detection SQL / Idempotent"""
         with open('/opt/airflow/sql/04_mmsi_swap_detection.sql', 'r') as f:
             sql = f.read()
         conn = _connect()
