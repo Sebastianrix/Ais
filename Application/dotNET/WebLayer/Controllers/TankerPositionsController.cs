@@ -1,5 +1,6 @@
 ﻿using Asp.Versioning;
 using DataLayer;
+using DataLayer.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.AspNetCore.Routing;
@@ -32,31 +33,7 @@ namespace WebLayer.Controllers
                     Page = results.Page,
                     PageSize = results.PageSize,
                     TotalItems = results.TotalItems,
-                    Items = results.Items.Select(tp => new TankerPositionDTO
-                    {
-                        Position_Id = tp.Position_Id,
-                        Tanker_Id = tp.Tanker_Id,
-                        Voyage_Id = tp.Voyage_Id,
-                        Staging_Id = tp.Staging_Id,
-                        Timestamp = tp.Timestamp,
-                        Longitude = tp.Longitude,
-                        Latitude = tp.Latitude,
-                        Raw_Imo = tp.Raw_Imo,
-                        Imo_Status = tp.Imo_Status,
-                        Raw_Mmsi = tp.Raw_Mmsi,
-                        Mmsi_Status = tp.Mmsi_Status,
-                        Anomaly_Flag = tp.Anomaly_Flag,
-                        Navigational_Status = tp.Navigational_Status,
-                        Rot = tp.Rot,
-                        Sog = tp.Sog,
-                        Cog = tp.Cog,
-                        Heading = tp.Heading,
-                        Draught = tp.Draught,
-                        Destination = tp.Destination,
-                        Eta = tp.Eta,
-                        Position_Fixing_Device = tp.Position_Fixing_Device,
-                        Data_Source_Type = tp.Data_Source_Type
-                    }).ToList()
+                    Items = results.Items.Select(TankerPositionMapper.ToDto).ToList()
                 });
             }
             catch (Exception ex)
@@ -126,31 +103,7 @@ namespace WebLayer.Controllers
                     PageSize = results.PageSize,
                     TotalItems = results.TotalItems,
 
-                    Items = results.Items.Select(tp => new TankerPositionDTO
-                    {
-                        Position_Id = tp.Position_Id,
-                        Tanker_Id = tp.Tanker_Id,
-                        Voyage_Id = tp.Voyage_Id,
-                        Staging_Id = tp.Staging_Id,
-                        Timestamp = tp.Timestamp,
-                        Longitude = tp.Longitude,
-                        Latitude = tp.Latitude,
-                        Raw_Imo = tp.Raw_Imo,
-                        Imo_Status = tp.Imo_Status,
-                        Raw_Mmsi = tp.Raw_Mmsi,
-                        Mmsi_Status = tp.Mmsi_Status,
-                        Anomaly_Flag = tp.Anomaly_Flag,
-                        Navigational_Status = tp.Navigational_Status,
-                        Rot = tp.Rot,
-                        Sog = tp.Sog,
-                        Cog = tp.Cog,
-                        Heading = tp.Heading,
-                        Draught = tp.Draught,
-                        Destination = tp.Destination,
-                        Eta = tp.Eta,
-                        Position_Fixing_Device = tp.Position_Fixing_Device,
-                        Data_Source_Type = tp.Data_Source_Type
-                    }).ToList()
+                    Items = results.Items.Select(TankerPositionMapper.ToDto).ToList()
                 });
             }
             catch (Exception ex)
@@ -159,5 +112,33 @@ namespace WebLayer.Controllers
                 return StatusCode(500, new { message = "ERROR TankerPositionsV2Controller", error = ex.ToString() });
             }
         }
+    }
+    internal static class TankerPositionMapper
+    {
+        public static TankerPositionDTO ToDto(TankerPosition tp) => new TankerPositionDTO
+        {
+            Position_Id = tp.Position_Id,
+            Tanker_Id = tp.Tanker_Id,
+            Voyage_Id = tp.Voyage_Id,
+            Staging_Id = tp.Staging_Id,
+            Timestamp = tp.Timestamp,
+            Longitude = tp.Longitude,
+            Latitude = tp.Latitude,
+            Raw_Imo = tp.Raw_Imo,
+            Imo_Status = tp.Imo_Status,
+            Raw_Mmsi = tp.Raw_Mmsi,
+            Mmsi_Status = tp.Mmsi_Status,
+            Anomaly_Flag = tp.Anomaly_Flag,
+            Navigational_Status = tp.Navigational_Status,
+            Rot = tp.Rot,
+            Sog = tp.Sog,
+            Cog = tp.Cog,
+            Heading = tp.Heading,
+            Draught = tp.Draught,
+            Destination = tp.Destination,
+            Eta = tp.Eta,
+            Position_Fixing_Device = tp.Position_Fixing_Device,
+            Data_Source_Type = tp.Data_Source_Type
+        };
     }
 }

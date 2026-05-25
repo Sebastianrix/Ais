@@ -47,7 +47,7 @@ namespace DataLayer
 
             var items = await query.OrderByDescending(tp => tp.Timestamp).Skip((page - 1) * pageSize).Take(pageSize).ToListAsync();
 
-            return new PagedResult<TankerPosition>{Items = items, Page = page, PageSize = pageSize, TotalItems = -1};
+            return new PagedResult<TankerPosition>{Items = items, Page = page, PageSize = pageSize, TotalItems = -1}; // -1 means, do not compute (this was nesssesary becausee of our huge tablesize)
         }
 
         public async Task<List<TankerPosition>> GetTankerPositionsSimpleAsync()
