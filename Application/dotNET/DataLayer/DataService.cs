@@ -41,14 +41,15 @@ namespace DataLayer
                p.navigational_status AS navigational_status
         FROM tanker_positions p
         JOIN tankers t ON t.tanker_id = p.tanker_id
-        WHERE p.tanker_id IS NOT NULL
-          AND p.timestamp_utc >= NOW() - (@p0 || ' hours')::interval
+        WHERE p.timestamp_utc >= ((SELECT MAX(timestamp_utc) FROM tanker_positions) - (@p0 || ' hours')::interval)
         ORDER BY p.tanker_id, p.timestamp_utc DESC";
 
             return await _context.VesselMapPositions
                 .FromSqlRaw(sql, sinceHours)
                 .AsNoTracking()
                 .ToListAsync();
+
+
         }
 
         public async Task<PagedResult<TankerPosition>> GetTankerPositionsAsync(
