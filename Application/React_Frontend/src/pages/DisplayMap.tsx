@@ -42,7 +42,7 @@ function DisplayMap() {
                   <strong>{v.vessel_Name ?? "Unknown"}</strong><br />
                   Flag: {v.flag} · {v.ship_Type}<br />
                   SOG: {v.sog ?? "—"} kn · Heading: {v.heading ?? "—"}°<br />
-                  {v.is_Anomalous && <span style={{color:"#ef4444"}}> Flagged (invalid MMSI)</span>}
+                  {v.is_Anomalous && <span style={{color:"#ef4444"}}>⚠ Flagged (invalid MMSI)</span>}
                 </MarkerPopup>
               </MapMarker>
             ))}
