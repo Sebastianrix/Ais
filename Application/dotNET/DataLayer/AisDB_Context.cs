@@ -41,6 +41,7 @@ namespace DataLayer
             MapDataConsumerQueue(modelBuilder);
             MapDataDateArchive(modelBuilder);
             MapMmsiCountryCodes(modelBuilder);
+            MapVesselMapPosition(modelBuilder);
         }
         // Map of 'tanker_positions' table
         // Map of 'tanker_staging' table
