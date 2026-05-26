@@ -26,8 +26,7 @@ namespace DataLayer
             // Of course this break some patterns, but it was the most practical solution since there is a capability gap betwen LINQ and PSQL.
             // If we really wanted to stick with LINQ, we could have used GroupBy().Select(First()), which would be more fragile,so we choose raw SQL since we really needed that DISTINCT.
             var sql = @"
-        SELECT DISTINCT ON (p.tanker_id)
-               p.tanker_id           AS tanker_id,
+        SELECT t.tanker_id           AS tanker_id,
                t.mmsi                AS mmsi,
                t.vessel_name         AS vessel_name,
                t.ship_type           AS ship_type,
@@ -39,13 +38,19 @@ namespace DataLayer
                p.cog                 AS cog,
                p.heading             AS heading,
                p.navigational_status AS navigational_status
-        FROM tanker_positions p
-        JOIN tankers t ON t.tanker_id = p.tanker_id
-        WHERE p.timestamp_utc >= ((SELECT MAX(timestamp_utc) FROM tanker_positions) - (@p0 || ' hours')::interval)
-        ORDER BY p.tanker_id, p.timestamp_utc DESC";
+        FROM tankers t
+        CROSS JOIN LATERAL (
+            SELECT p.latitude, p.longitude, p.timestamp_utc,
+                   p.sog, p.cog, p.heading, p.navigational_status
+            FROM tanker_positions p
+            WHERE p.tanker_id = t.tanker_id
+            ORDER BY p.timestamp_utc DESC
+            LIMIT 1
+        ) p
+        WHERE t.is_active = TRUE";
 
             return await _context.VesselMapPositions
-                .FromSqlRaw(sql, sinceHours)
+                .FromSqlRaw(sql)
                 .AsNoTracking()
                 .ToListAsync();
 
