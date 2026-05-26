@@ -13,11 +13,8 @@ namespace DataLayer
 
 
 
-        Task<List<VesselMapPosition>> GetLatestVesselPositionsAsync(int sinceHours = 168); 
-        // 168 is limit for no-update = gone,
-        // basiclly to clean the board. Last thing we want is ships leaving or vanishing,
-        // staying forever stuck on our Map UI, because a new datapoint never arrived.
-
+        Task<List<VesselMapPosition>> GetLatestVesselPositionsAsync(int sinceHours);
+ 
 
 
         Task<PagedResult<TankerPosition>> GetTankerPositionsAsync(

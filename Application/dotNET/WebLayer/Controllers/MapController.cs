@@ -15,6 +15,13 @@ namespace WebLayer.Controllers
     [EnableRateLimiting("fixed")]
     public class MapController : BaseController
     {
+        private const int DefaultSinceHours = 168;   // 7-day default window
+        private const int MaxSinceHours = 8760;      //1-year ceiling, guards against huge user requested scans
+
+        // 168 hours is limit with no-update meaning the vessel is gone,
+        // basiclly to clean the board. Last thing we want is ships leaving or vanishing,
+        // staying forever stuck on our Map UI, because a new datapoint never arrived.
+
         private readonly IDataService _dataService;
         public MapController(IDataService dataService, LinkGenerator linkGenerator)
             : base(linkGenerator)
@@ -24,9 +31,10 @@ namespace WebLayer.Controllers
         // GET /v1/Map  latest position per active tanker
         // GET /v2/Map?sinceHours=24
         [HttpGet]
-        public async Task<IActionResult> GetMap([FromQuery] int sinceHours = 168)
+        public async Task<IActionResult> GetMap([FromQuery] int sinceHours = DefaultSinceHours)
         {
-            if (sinceHours < 1 || sinceHours > 8760) sinceHours = 168;
+            if (sinceHours < 1 || sinceHours > MaxSinceHours) sinceHours = DefaultSinceHours;
+
             try
             {
                 var positions = await _dataService.GetLatestVesselPositionsAsync(sinceHours);
