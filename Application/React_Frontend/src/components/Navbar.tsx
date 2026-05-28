@@ -35,15 +35,7 @@ const Navbar = () => {
 </div>
 
 
-<div className="navbar-right">
-  <a href="/search" className="search-logo">
-    <i className="fas fa-search"></i>
-    <span className="count">0</span>
-  </a>
-  <a href="/account" className="user-icon">
-    <i className="fas fa-user"></i>
-  </a>
-</div>
+<div className="navbar-right"></div>
 
 
 
