@@ -5,7 +5,7 @@ import Navbar from '../components/Navbar'
 
 
 import Menu from "@/components/Menu";
-import '../css/Overview.css';
+import styles from '../css/Overview.module.css';
 
 
 function Overview(){
