@@ -42,7 +42,7 @@ export default function FAQ() {
         },
         {
           q: "What technologies power the stack?",
-          a: "The infrastructure is containerized via Docker. It utilizes Apache Airflow for workflow orchestration, a PostgreSQL data warehouse layer, an ASP.NET Core (v8.0) web service layer, and an interactive React/TypeScript client application backed by MapLibre GL for hardware-accelerated spatial rendering."
+          a: "The infrastructure is containerized via Docker. It utilizes Apache Airflow for workflow orchestration, a PostgreSQL data warehouse layer, an ASP.NET Core (v8.0) web service layer, and an interactive React/TypeScript client application with MapLibre GL."
         }
       ]
     },
