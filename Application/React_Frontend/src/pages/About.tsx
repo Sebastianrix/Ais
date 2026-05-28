@@ -1,6 +1,6 @@
 import { useState, useEffect} from 'react'
 
-import '../css/About.css';
+import styles from '../css/About.module.css';
 import Navbar from '../components/Navbar'
 
 
@@ -11,7 +11,7 @@ function About(){
  <Navbar></Navbar>
     
  <div> <h1>About This Project</h1>
-  <div className='box'>
+  <div className={styles.box}>
 
         
         <ul>
