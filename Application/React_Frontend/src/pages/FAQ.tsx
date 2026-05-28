@@ -61,7 +61,7 @@ export default function FAQ() {
     }
   ];
 
-  //  index to ensure unique array position across all sections and questions.
+  //  Flat array index for only 1 FAQ open at a time
   let globalIndex = 0;
 
   return (
