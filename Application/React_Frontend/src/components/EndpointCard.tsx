@@ -19,12 +19,17 @@ export default function EndpointCard({
         <span className={`method method-${method.toLowerCase()}`}>{method}</span>
         <span className="endpoint-path">{path}</span>
       </div>
-      <button
-        className="try-button"
-        onClick={() => onTry?.(method, href)}
-      >
-        Try it →
-      </button>
+      
+      {/* Only render the Try button if an onTry handler is passed down */}
+      {onTry && (
+        <button
+          className="try-button"
+          onClick={() => onTry(method, href)}
+        >
+          Try it →
+        </button>
+      )}
+      
       <a
         className="external-link"
         href={href}

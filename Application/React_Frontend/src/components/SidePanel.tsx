@@ -221,6 +221,7 @@ export default function SidePanel() {
           </section>
 
           <section id="base-url" className="subsection">
+            <hr />
             <h2 className="section-label">Base URL</h2>
             <div className="code-block">
               <code>https://api.aismap.dk</code>
@@ -244,6 +245,7 @@ export default function SidePanel() {
 
         {/* ENDPOINTS V1 */}
         <section id="endpoints-v1">
+          <hr />
           <h2>Endpoints (v1)</h2>
           
           <section id="stats" className="subsection">
@@ -314,16 +316,18 @@ export default function SidePanel() {
           </section>
 
           <section id="swagger" className="subsection">
-            <h3 className="section-label">Swagger UI</h3>
-            <p className="prose">
-              Interactive API explorer with request/response schemas. Swagger is on default URL.
-            </p>
-            <EndpointCard href="https://api.aismap.dk/swagger" path="/swagger" onTry={send} />
-          </section>
+        <h3 className="section-label">Swagger UI</h3>
+        <p className="prose">
+        Interactive API explorer with request/response schemas. Swagger is on default URL.
+        </p>
+         {/* Removed onTry={send} so the Try It button hides automatically */}
+         <EndpointCard href="https://api.aismap.dk/swagger" path="/swagger" />
+        </section>
         </section>
 
         {/* ENDPOINTS V2 */}
         <section id="endpoints-v2">
+          <hr />
           <h2>Endpoints (v2)</h2>
           <div className="callout">
             <strong>v2 Updates:</strong> Version 2 endpoints introduce advanced filtering parameters alongside standard page pagination mechanisms.
@@ -372,7 +376,7 @@ export default function SidePanel() {
             </p>
             <div className="callout">
               <strong>Coming soon:</strong> API keys for higher rate limits and
-              access to Aanomaly_flag table and Anomaly_types table.
+              access to Anomaly_flag table and Anomaly_types table.
             </div>
           </section>
 
@@ -389,6 +393,7 @@ export default function SidePanel() {
         {/* RESPONSES */}
         <section id="responses">
           <section id="response-format" className="subsection">
+            <hr />
             <h2 className="section-label">Response Format</h2>
             <p className="prose">
               All responses are returned as JSON with{' '}
@@ -423,6 +428,7 @@ export default function SidePanel() {
         {/* ERRORS */}
         <section id="errors">
           <section id="status-codes" className="subsection">
+            <hr />
             <h2 className="section-label">Status Codes</h2>
             <table className="status-table">
               <thead>
