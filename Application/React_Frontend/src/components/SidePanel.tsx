@@ -17,16 +17,29 @@ const sections = [
     ],
   },
   {
-    id: 'endpoints',
-    title: 'Endpoints',
+    id: 'endpoints-v1',
+    title: 'Endpoints (v1)',
     Icon: Code,
     subsections: [
       { id: 'stats', title: 'Stats' },
-      { id: 'tanker-positions', title: 'Tanker Positions' },
-      { id: 'tankers', title: 'Tankers' },
+      { id: 'v1-tanker-positions', title: 'Tanker Positions v1' },
+      { id: 'v1-tankers', title: 'Tankers v1' },
+      { id: 'v1-map', title: 'Map v1' },
       { id: 'tanker-staging', title: 'Tanker Staging' },
       { id: 'tracked-tanker', title: 'Tracked Tanker' },
+      { id: 'data-consumer-queue', title: 'Data Consumer Queue' },
+      { id: 'data-date-archive', title: 'Data Date Archive' },
       { id: 'swagger', title: 'Swagger UI' },
+    ],
+  },
+  {
+    id: 'endpoints-v2',
+    title: 'Endpoints (v2)',
+    Icon: Code,
+    subsections: [
+      { id: 'v2-tanker-positions', title: 'Tanker Positions v2' },
+      { id: 'v2-tankers', title: 'Tankers v2' },
+      { id: 'v2-map', title: 'Map v2' },
     ],
   },
   {
@@ -115,8 +128,7 @@ export default function SidePanel() {
   };
 
   return (
-  <div className={`layout has-try-panel ${collapsed ? 'collapsed' : ''}`}>
-
+    <div className={`layout has-try-panel ${collapsed ? 'collapsed' : ''}`}>
       <aside className="side-panel">
         <button
           className="toggle-btn"
@@ -180,13 +192,14 @@ export default function SidePanel() {
 
       <main className="content api-content">
         <header className="api-header">
-          <span className="api-badge">v1</span>
+          <span className="api-badge">v1 & v2</span>
           <h1>AIS Map Public API</h1>
           <p className="api-subtitle">
             Free, open access to Baltic Sea tanker tracking data
           </p>
         </header>
 
+        {/* GETTING STARTED */}
         <section id="getting-started">
           <section id="overview" className="subsection">
             <h2 className="section-label">Overview</h2>
@@ -222,22 +235,25 @@ export default function SidePanel() {
             <p className="prose">
               Open this URL in your browser to verify connectivity:
             </p>
-            <EndpointCard href="https://api.aismap.dk/stats" path="/stats" onTry={send} />
+            <EndpointCard href="https://api.aismap.dk/Stats" path="/Stats" onTry={send} />
             <p className="prose grey-text">
               If you see a JSON response, you're good to go.
             </p>
           </section>
         </section>
 
-        <section id="endpoints">
+        {/* ENDPOINTS V1 */}
+        <section id="endpoints-v1">
+          <h2>Endpoints (v1)</h2>
+          
           <section id="stats" className="subsection">
             <h3 className="section-label">Stats</h3>
             <p className="prose">Returns aggregate statistics about the dataset.</p>
-            <EndpointCard href="https://api.aismap.dk/stats" path="/stats" onTry={send} />
+            <EndpointCard href="https://api.aismap.dk/Stats" path="/Stats" onTry={send} />
           </section>
 
-          <section id="tanker-positions" className="subsection">
-            <h3 className="section-label">Tanker Positions</h3>
+          <section id="v1-tanker-positions" className="subsection">
+            <h3 className="section-label">Tanker Positions (v1)</h3>
             <p className="prose">
               Returns the latest AIS positions for tracked tanker vessels.
             </p>
@@ -248,10 +264,17 @@ export default function SidePanel() {
             />
           </section>
 
-          <section id="tankers" className="subsection">
-            <h3 className="section-label">Tankers</h3>
+          <section id="v1-tankers" className="subsection">
+            <h3 className="section-label">Tankers (v1)</h3>
             <p className="prose">Returns the registry of known tanker vessels.</p>
-            <EndpointCard href="https://api.aismap.dk/tanker" path="/Tankers" onTry={send} />
+            <EndpointCard href="https://api.aismap.dk/v1/Tankers" path="/v1/Tankers" onTry={send} />
+          </section>
+
+          <section id="v1-map" className="subsection">
+            <h3 className="section-label">Map (v1)</h3>
+            <p className="prose">Returns geographic map data filters by duration window.</p>
+            <p className="prose parameters-text"><strong>Query parameters:</strong> <code>sinceHours</code> (default: 168)</p>
+            <EndpointCard href="https://api.aismap.dk/v1/Map" path="/v1/Map" onTry={send} />
           </section>
 
           <section id="tanker-staging" className="subsection">
@@ -260,7 +283,7 @@ export default function SidePanel() {
               Returns staged tanker position data prior to enrichment.
             </p>
             <EndpointCard
-              href="https://api.aismap.dk/tankerstaging"
+              href="https://api.aismap.dk/TankerStaging"
               path="/TankerStaging"
               onTry={send}
             />
@@ -272,10 +295,22 @@ export default function SidePanel() {
               Returns vessels currently flagged as being on the shadow fleet watchlist.
             </p>
             <EndpointCard
-              href="https://api.aismap.dk/trackedtanker"
+              href="https://api.aismap.dk/TrackedTanker"
               path="/TrackedTanker"
               onTry={send}
             />
+          </section>
+
+          <section id="data-consumer-queue" className="subsection">
+            <h3 className="section-label">Data Consumer Queue</h3>
+            <p className="prose">Access internal processing metrics for data ingest streaming queues.</p>
+            <EndpointCard href="https://api.aismap.dk/DataConsumerQueue" path="/DataConsumerQueue" onTry={send} />
+          </section>
+
+          <section id="data-date-archive" className="subsection">
+            <h3 className="section-label">Data Date Archive</h3>
+            <p className="prose">Provides lookups of archive sets broken down by specific execution dates.</p>
+            <EndpointCard href="https://api.aismap.dk/DataDateArchive" path="/DataDateArchive" onTry={send} />
           </section>
 
           <section id="swagger" className="subsection">
@@ -284,12 +319,52 @@ export default function SidePanel() {
               Interactive API explorer with request/response schemas. Swagger is on default URL.
             </p>
             <EndpointCard href="https://api.aismap.dk/swagger" path="/swagger" onTry={send} />
-            <p className="prose grey-text">More endpoints coming soon.</p>
           </section>
         </section>
 
+        {/* ENDPOINTS V2 */}
+        <section id="endpoints-v2">
+          <h2>Endpoints (v2)</h2>
+          <div className="callout">
+            <strong>v2 Updates:</strong> Version 2 endpoints introduce advanced filtering parameters alongside standard page pagination mechanisms.
+          </div>
+
+          <section id="v2-tanker-positions" className="subsection">
+            <h3 className="section-label">Tanker Positions (v2)</h3>
+            <p className="prose">
+              Returns paginated records of historic and active tracked positions. 
+            </p>
+            <p className="prose parameters-text">
+              <strong>Supported parameters:</strong> <code>page</code> (default: 1), <code>pageSize</code> (default: 50), <code>tankerId</code>, <code>startDate</code>, <code>endDate</code>, <code>imo</code>.
+            </p>
+            <EndpointCard
+              href="https://api.aismap.dk/v2/TankerPositions"
+              path="/v2/TankerPositions"
+              onTry={send}
+            />
+          </section>
+
+          <section id="v2-tankers" className="subsection">
+            <h3 className="section-label">Tankers (v2)</h3>
+            <p className="prose">Returns a query-optimized registry of known tanker vessels.</p>
+            <p className="prose parameters-text">
+              <strong>Supported parameters:</strong> <code>page</code> (default: 1), <code>pageSize</code> (default: 50), <code>isActive</code>, <code>imo</code>, <code>mmsi</code>, <code>search</code>.
+            </p>
+            <EndpointCard href="https://api.aismap.dk/v2/Tankers" path="/v2/Tankers" onTry={send} />
+          </section>
+
+          <section id="v2-map" className="subsection">
+            <h3 className="section-label">Map (v2)</h3>
+            <p className="prose">Returns complex geographic trace points filtered by hourly visibility windows.</p>
+            <p className="prose parameters-text"><strong>Query parameters:</strong> <code>sinceHours</code> (default: 168)</p>
+            <EndpointCard href="https://api.aismap.dk/v2/Map" path="/v2/Map" onTry={send} />
+          </section>
+        </section>
+
+        {/* AUTHENTICATION */}
         <section id="authentication">
           <section id="auth-overview" className="subsection">
+            <hr />
             <h2 className="section-label">Authentication</h2>
             <p className="prose">
               The AIS Map API is currently public and requires no authentication.
@@ -297,20 +372,21 @@ export default function SidePanel() {
             </p>
             <div className="callout">
               <strong>Coming soon:</strong> API keys for higher rate limits and
-              access to historical position queries.
+              access to Aanomaly_flag table and Anomaly_types table.
             </div>
           </section>
 
           <section id="rate-limits" className="subsection">
             <h2 className="section-label">Rate Limits</h2>
             <p className="prose">
-              Unauthenticated requests are limited to a fair-use threshold. Excessive
+              Requests are limited to a fair-use threshold. Currently permittted 150 requests per minutte. Excessive
               polling may be temporarily blocked. If you have a research use case
               that requires bulk access, please get in touch.
             </p>
           </section>
         </section>
 
+        {/* RESPONSES */}
         <section id="responses">
           <section id="response-format" className="subsection">
             <h2 className="section-label">Response Format</h2>
@@ -324,7 +400,7 @@ export default function SidePanel() {
           <section id="example-response" className="subsection">
             <h2 className="section-label">Example Response</h2>
             <p className="prose">
-              A trimmed response from <code>/TankerPositions</code>:
+              A trimmed response from <code>/v1/TankerPositions</code>:
             </p>
             <pre className="code-block code-block-multiline">
 {`[
@@ -344,6 +420,7 @@ export default function SidePanel() {
           </section>
         </section>
 
+        {/* ERRORS */}
         <section id="errors">
           <section id="status-codes" className="subsection">
             <h2 className="section-label">Status Codes</h2>
@@ -365,7 +442,6 @@ export default function SidePanel() {
           </section>
         </section>
       </main>
-
       <TryItPanel response={response} loading={loading} />
     </div>
   );
