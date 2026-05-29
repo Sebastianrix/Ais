@@ -131,15 +131,6 @@ app.MapGet("/", context =>
 });
 app.UseStaticFiles();
 
-// Log IP, Lets see who visit. HOPE THIS IS LEGAL??
-app.Use(async (context, next) =>
-{
-    var ip = context.Connection.RemoteIpAddress?.ToString();
-
-    Console.WriteLine($"[{DateTime.Now}] Request from IP: {ip} | Path: {context.Request.Path}");
-
-    await next();
-});
 
 
 app.UseHttpsRedirection();
