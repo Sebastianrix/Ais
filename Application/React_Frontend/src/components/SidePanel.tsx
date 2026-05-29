@@ -206,7 +206,7 @@ export default function SidePanel() {
             <div className="prose">
               <p>
                 Welcome to the AIS Map API. This is where you can find information
-                about our endpoints for accessing Baltic Sea tanker tracking data.
+                about our endpoints for accessing tanker tracking data within Danish strait and territorial waters.
               </p>
               <p>
                 We provide this platform free of charge. If you are a scientist,
