@@ -361,7 +361,7 @@
 }
  
 /* Responsive: hide the right panel on narrow screens */
-@media (max-width: 1280px) {
+@media (max-width: 1024px) {
   .layout {
     grid-template-columns: auto 1fr;
   }
