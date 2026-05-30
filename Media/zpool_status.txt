@@ -1,0 +1,21 @@
+  pool: datapool
+ state: ONLINE
+  scan: scrub repaired 0B in 00:02:07 with 0 errors on Sun May 10 00:26:09 2026
+config:
+
+	NAME        STATE     READ WRITE CKSUM
+	datapool    ONLINE       0     0     0
+	  raidz1-0  ONLINE       0     0     0
+	    sdb     ONLINE       0     0     0
+	    sdc     ONLINE       0     0     0
+	    sdd     ONLINE       0     0     0
+	    sde     ONLINE       0     0     0
+
+errors: No known data errors
+NAME         SIZE  ALLOC   FREE  CKPOINT  EXPANDSZ   FRAG    CAP  DEDUP    HEALTH  ALTROOT
+datapool    3.62T   355G  3.28T        -         -    10%     9%  1.00x    ONLINE  -
+  raidz1-0  3.62T   355G  3.28T        -         -    10%  9.55%      -    ONLINE
+    sdb      932G      -      -        -         -      -      -      -    ONLINE
+    sdc      932G      -      -        -         -      -      -      -    ONLINE
+    sdd      932G      -      -        -         -      -      -      -    ONLINE
+    sde      932G      -      -        -         -      -      -      -    ONLINE
