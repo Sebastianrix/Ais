@@ -195,7 +195,7 @@ export default function SidePanel() {
           <span className="api-badge">v1 & v2</span>
           <h1>AIS Map Public API</h1>
           <p className="api-subtitle">
-            Free, open access to Baltic Sea tanker tracking data
+              Free, open access to Danish strait and territorial waters tanker tracking data 
           </p>
         </header>
 
