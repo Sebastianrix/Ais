@@ -4,7 +4,10 @@ import styles from '../css/EntryBrowserMenu.module.css';
 function Menu() {
   return (
     <div className={styles.box}>
-    <p>Lubis limos latin roman exquesisit</p>
+    <p><p>
+The system processes AIS tanker data and presents it through an interactive map and web interface.
+</p>
+</p>
     </div>
   );
 }
