@@ -16,11 +16,32 @@ function Overview(){
  
  
  
- <div> 
+ <div className={styles.overviewHeader}> 
    <h1>System Overview</h1>
 <Menu>
              
 </Menu>
+<div className={styles.cards}>
+  <div className={styles.card}>
+    <h3>Data Processing</h3>
+    <p>Cleans and stores AIS tanker data.</p>
+  </div>
+
+  <div className={styles.card}>
+    <h3>Interactive Map</h3>
+    <p>Displays vessel positions on an interactive map.</p>
+  </div>
+
+  <div className={styles.card}>
+    <h3>Anomaly Detection</h3>
+    <p>Identifies suspicious AIS records.</p>
+  </div>
+
+  <div className={styles.card}>
+    <h3>REST API</h3>
+    <p>Provides access to processed data.</p>
+  </div>
+</div>
         </div>
 </>
     )
