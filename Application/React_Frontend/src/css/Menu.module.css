@@ -1,0 +1,49 @@
+p {
+  padding: 10px;
+}
+.box {
+  background: #23232a;
+  text-align: center;
+
+  padding: 24px;
+  border: 2px solid #5b5b5b;
+  border-radius: 8px;
+  margin: 5% 15%;
+}
+h1 {
+  color: white;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.cards {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+.card {
+  width: 220px;
+  padding: 15px;
+  border: 1px solid #5b5b5b;
+  border-radius: 8px;
+  background: #23232a;
+  text-align: center;
+}
+
+.card h3 {
+  color: white;
+  margin-bottom: 10px;
+}
+
+.card p {
+  color: #d0d0d0;
+  font-size: 14px;
+}
+
+.overviewHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
