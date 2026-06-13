@@ -1,9 +1,13 @@
-import { api } from "./Api";
-import type { DataDateArchive } from "../types/DataDateArchive";
+import { apiV2 } from "./Api";
 
 export const dataDateArchiveService = {
-  getAll: async (): Promise<DataDateArchive[]> => {
-    const res = await api.get("/DataDateArchive");
+  getAll: async () => {
+    const res = await apiV2.get("/DataDateArchive", {
+      params: {
+        "api-version": "2",
+      },
+    });
+
     return res.data;
   },
 };

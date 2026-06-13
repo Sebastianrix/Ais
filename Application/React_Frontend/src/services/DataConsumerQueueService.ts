@@ -1,9 +1,13 @@
-import { api } from "./Api";
-import type { DataConsumerQueue } from "../types/DataConsumerQueue";
+import { apiV2 } from "./Api";
 
 export const dataConsumerQueueService = {
-  getAll: async (): Promise<DataConsumerQueue[]> => {
-    const res = await api.get("/DataConsumerQueue");
+  getAll: async () => {
+    const res = await apiV2.get("/DataConsumerQueue", {
+      params: {
+        "api-version": "2",
+      },
+    });
+
     return res.data;
   },
 };

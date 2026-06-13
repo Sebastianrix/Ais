@@ -1,9 +1,14 @@
-import { api } from "./Api";
+import { apiV2 } from "./Api";
 import type { Stats } from "../types/Stats";
 
 export const statsService = {
-  getStats: async (): Promise<Stats> => {
-    const res = await api.get("/Stats");
+  get: async (): Promise<Stats> => {
+    const res = await apiV2.get("/Stats", {
+      params: {
+        "api-version": "2",
+      },
+    });
+
     return res.data;
   },
 };
