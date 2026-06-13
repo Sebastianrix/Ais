@@ -1,15 +1,16 @@
 export interface Stats {
- TankerCount: number;
- TrackedTankerCount: number;
+  TankerCount: number;
+  TrackedTankerCount: number;
 
- TotalPositionsProcessed: number;
- TotalStagingRowsProcessed: number;
- DatesProcessed: number;
- LatestBatchDa: Date;
- OldestBatchDate: Date;
+  TotalPositionsProcessed: number;
+  TotalStagingRowsProcessed: number;
+  DatesProcessed: number;
 
- PendingBatches: Date;
- InProgressBatches: Date;
+  LatestBatchDa: string;
+  OldestBatchDate: string;
+
+  PendingBatches: string;
+  InProgressBatches: string;
 }
 
        // public int TankerCount { get; set; }
