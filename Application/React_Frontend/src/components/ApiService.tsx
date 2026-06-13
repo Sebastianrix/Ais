@@ -1,18 +1,8 @@
-import axios from 'axios';
-import type { Tankers } from '../types/Tankers';
+import axios from "axios";
 
-
-const url_Base_DOTNET = "https://aismap.dk/";
-//const API_URL_PYTHON = 
-
-const URL_DOTNET = ['Stats', 'Tanker', 'TankerPositions','TankerStaging','TrackedTanker'];
-
-
-
-
-export const getTankers = async (): Promise<Tankers[]> =>{
-    const res = await axios.get(url_Base_DOTNET + URL_DOTNET[1]);
-    return res.data;
-};
-
-export default getTankers;
+export const api = axios.create({
+  baseURL: "https://aismap.dk",
+  headers: {
+    "Content-Type": "application/json",
+  },
+});
