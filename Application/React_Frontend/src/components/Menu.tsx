@@ -1,5 +1,5 @@
 //import getTankers from 'ApiService.tsx';
-import getTankers from "@/services/Api";
+//import getTankers from "@/services/Api";
 import styles from '../css/EntryBrowserMenu.module.css';
 function Menu() {
   return (

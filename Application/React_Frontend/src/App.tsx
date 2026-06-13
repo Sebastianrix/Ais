@@ -8,7 +8,6 @@ import Navbar from './components/Navbar'
 import aisDKlogo from './assets/3kpxl_Logo.png'
 
 
-import getWeather from './components/ApiService';
 import './css/App.css'
 
 function App() {
