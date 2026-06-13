@@ -18,9 +18,14 @@ function Overview(){
  
  <div className={styles.overviewHeader}> 
    <h1>System Overview</h1>
-<Menu>
-             
-</Menu>
+
+      <div className={styles.box}>
+    <p><p>
+The system processes AIS tanker data and presents it through an interactive map and web interface.
+</p>
+</p>
+    </div>        
+
 <div className={styles.cards}>
   <div className={styles.card}>
     <h3>Data Processing</h3>
@@ -42,6 +47,11 @@ function Overview(){
     <p>Provides access to processed data.</p>
   </div>
 </div>
+
+    <Menu>   
+</Menu>
+
+
         </div>
 </>
     )
