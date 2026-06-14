@@ -2,20 +2,18 @@ import { useState, useEffect} from 'react'
 import { Search } from "lucide-react";
 
 
-
 import styles from '../css/Menu.module.css';
 
-import { statsService } from "../services/StatsService";
-import type { Stats } from "../types/Stats";
-
+import { tankerService } from "../services/tankerService";
+import type { Tanker } from "../types/Tankers";
 
 
 
 function Menu() {
+  
+  const [tankers, setTankers] = useState<Tanker[]>([]);
 
-
-
-  const [stats, setStats] = useState<Stats | null>(null);
+  
   const [loading, setLoading] = useState(true);
   const [query, setQuery] = useState({
   page: 1,
@@ -30,37 +28,11 @@ const load = async () => {
 };
 
 
-
-
 useEffect(() => {
   load();
 }, [query]);
 
 
-  useEffect(() => {
-    const loadStats = async () => {
-      try {
-        const data = await statsService.get();
-        setStats(data);
-       
-      } catch (err) {
-        console.error("Failed to load stats", err);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    loadStats();
-  }, []);
-
-  
-
-
-
-
-
-
-  
 return (
   <div className={styles.box}>
     <div className={styles.searchBox}>
@@ -96,6 +68,17 @@ return (
     >
       Next
     </button>
+
+<div>
+  {tankers.map((tanker) => (
+<div className={styles.resultRow}>
+  <span>{tanker.vessel_Name}</span>
+  <span>{tanker.imo}</span>
+  <span>{tanker.flag}</span>
+</div>
+  ))}
+</div>
+
   </div>
 );
 }

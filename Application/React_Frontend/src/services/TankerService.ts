@@ -18,6 +18,6 @@ export const tankerService = {
       params: query,
     });
 
-    return res.data;
+    return res.data.items;
   },
 };
