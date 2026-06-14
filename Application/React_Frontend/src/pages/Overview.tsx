@@ -92,10 +92,15 @@ function Overview(){
   </div>
 
 
-  {/*This card shows total tankers positions */}
+  {/*This card shows current data opporations */}
   <div className={styles.card}>
-      <h3>Tankers</h3>
-      {loading ? (<p>Loading...</p>) : (<p>{stats?.tankerCount.toLocaleString()} tankers found</p>)}
+      <h3>Active pipline</h3>
+      {loading ? (<p>Loading...</p>) : (
+        <>
+      <p><strong>{stats?.pendingBatches.toLocaleString()}</strong> pending batches in queue</p>
+      <p><strong>{stats?.inProgressBatches.toLocaleString()}</strong> batches in progress</p>
+        </>
+        )}
   </div>
 </div>
 
