@@ -47,17 +47,22 @@ function Overview(){
  <div className={styles.overviewHeader}> 
    <h1>Data Overview</h1>
 
-      <div >
-    <p><p>
-This pages allows you to browse and search data.
-</p>
-</p>
+    <div >
+        <p>
+          This pages allows you to browse and search data.
+        </p>
     </div>        
+
+
 
 <div className={styles.cards}>
   <div className={styles.card}>
-    <h3>Data Processing</h3>
-    <p>Cleans and stores AIS tanker data.</p>
+      <h3>Tankers</h3>
+      {loading ? (
+        <p>Loading...</p>
+     ) : (
+        <p>{stats?.TankerCount.toLocaleString()} tankers found</p>
+      )}
   </div>
 
   <div className={styles.card}>
