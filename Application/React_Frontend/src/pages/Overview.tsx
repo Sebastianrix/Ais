@@ -63,8 +63,8 @@ function Overview(){
       <h3>Tankers</h3>
       {loading ? (<p>Loading...</p>) : (
         <>
-      <p>{stats?.tankerCount.toLocaleString()} tankers found</p>
-      <p>{stats?.totalPositionsProcessed.toLocaleString()} tanker positions</p>
+      <p><strong>{stats?.tankerCount.toLocaleString()}</strong> tankers found</p>
+      <p><strong>{stats?.totalPositionsProcessed.toLocaleString()}</strong> tanker positions</p>
         </>
         )}
   </div>
@@ -74,7 +74,7 @@ function Overview(){
       <h3>Raw data</h3>
       {loading ? (<p>Loading...</p>) : (
         <>
-      <p>{stats?.totalStagingRowsProcessed.toLocaleString()} raw data points processed</p>
+      <p><strong>{stats?.totalStagingRowsProcessed.toLocaleString()}</strong> raw data points processed</p>
         </>
         )}
   </div>
@@ -84,9 +84,9 @@ function Overview(){
       <h3>Dates</h3>
       {loading ? (<p>Loading...</p>) : (
       <>
-      <p>{stats?.datesProcessed.toLocaleString()} days total  processed</p>
-      <p>{stats?.latestBatchDate.toLocaleString().split("T")[0]} is newest date</p>
-      <p>{stats?.oldestBatchDate.toLocaleString().split("T")[0]} is oldest date</p>
+      <p><strong>{stats?.datesProcessed.toLocaleString()}</strong> days total  processed</p>
+      <p><strong>{stats?.latestBatchDate.toLocaleString().split("T")[0]}</strong> is newest date</p>
+      <p><strong>{stats?.oldestBatchDate.toLocaleString().split("T")[0]}</strong> is oldest date</p>
       </>
       )}
   </div>
