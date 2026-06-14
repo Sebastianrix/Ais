@@ -31,7 +31,6 @@ function Overview(){
       } finally {
         setLoading(false);
       }
-       console.log("Hey look here: "+stats);
     };
 
     loadStats();
@@ -106,7 +105,6 @@ function Overview(){
 
     <Menu >   
 </Menu>
-
 
         </div>
 </>
