@@ -1,5 +1,5 @@
 import { useState, useEffect} from 'react'
-import { Button } from "@/components/ui/button";
+
 import Navbar from '../components/Navbar'
 
 
@@ -8,7 +8,35 @@ import Menu from "@/components/Menu";
 import styles from '../css/Overview.module.css';
 
 
+import { statsService } from "../services/statsService";
+import type { Stats } from "../types/Stats";
+
+
+
+
 function Overview(){
+
+
+  const [stats, setStats] = useState<Stats | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const loadStats = async () => {
+      try {
+        const data = await statsService.get();
+        setStats(data);
+      } catch (err) {
+        console.error("Failed to load stats", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadStats();
+  }, []);
+
+  
+
   return (
 <>  
 
