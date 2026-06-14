@@ -4,11 +4,11 @@ import Navbar from '../components/Navbar'
 
 
 
-import Menu from "@/components/Menu";
-import styles from '../css/Overview.module.css';
+import Menu from "../components/Menu";
+import styles from "../css/Overview.module.css";
 
 
-import { statsService } from "../services/statsService";
+import { statsService } from "../services/StatsService";
 import type { Stats } from "../types/Stats";
 
 
