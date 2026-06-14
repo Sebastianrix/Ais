@@ -4,7 +4,7 @@ import { Search } from "lucide-react";
 
 import styles from '../css/Menu.module.css';
 
-import { tankerService } from "../services/tankerService";
+import { tankerService } from "../services/TankerService";
 import type { Tanker } from "../types/Tankers";
 
 
