@@ -6,9 +6,8 @@ function Menu() {
   return (
    <div className={styles.box}>
 
-    <p><p>
+<p>
 Now this is gonna be the data-browser-list-thing
-</p>
 </p>
     </div>
   );

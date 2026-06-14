@@ -25,11 +25,13 @@ function Overview(){
       try {
         const data = await statsService.get();
         setStats(data);
+       
       } catch (err) {
         console.error("Failed to load stats", err);
       } finally {
         setLoading(false);
       }
+       console.log("Hey look here: "+stats);
     };
 
     loadStats();
@@ -58,13 +60,8 @@ function Overview(){
 <div className={styles.cards}>
   <div className={styles.card}>
       <h3>Tankers</h3>
-      {loading ? (
-        <p>Loading...</p>
-     ) : (
-        <p>{stats?.TankerCount.toLocaleString()} tankers found</p>
-      )}
+      {loading ? (<p>Loading...</p>) : (<p>{stats?.tankerCount.toLocaleString()} tankers found</p>)}
   </div>
-
   <div className={styles.card}>
     <h3>Interactive Map</h3>
     <p>Displays vessel positions on an interactive map.</p>
