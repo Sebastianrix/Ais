@@ -58,23 +58,34 @@ function Overview(){
 
 
 <div className={styles.cards}>
+  {/*This card shows total tankers found */}
+  <div className={styles.card}>
+      <h3>Tankers</h3>
+      {loading ? (<p>Loading...</p>) : (
+        <>
+      <p>{stats?.tankerCount.toLocaleString()} tankers found</p>
+      <p>{stats?.totalPositionsProcessed.toLocaleString()} tanker positions</p>
+        </>
+        )}
+  </div>
+
+  {/*This card shows total tankers positions */}
   <div className={styles.card}>
       <h3>Tankers</h3>
       {loading ? (<p>Loading...</p>) : (<p>{stats?.tankerCount.toLocaleString()} tankers found</p>)}
   </div>
+
+  {/*This card shows total tankers positions */}
   <div className={styles.card}>
-    <h3>Interactive Map</h3>
-    <p>Displays vessel positions on an interactive map.</p>
+      <h3>Tankers</h3>
+      {loading ? (<p>Loading...</p>) : (<p>{stats?.tankerCount.toLocaleString()} tankers found</p>)}
   </div>
 
-  <div className={styles.card}>
-    <h3>Anomaly Detection</h3>
-    <p>Identifies suspicious AIS records.</p>
-  </div>
 
+  {/*This card shows total tankers positions */}
   <div className={styles.card}>
-    <h3>REST API</h3>
-    <p>Provides access to processed data.</p>
+      <h3>Tankers</h3>
+      {loading ? (<p>Loading...</p>) : (<p>{stats?.tankerCount.toLocaleString()} tankers found</p>)}
   </div>
 </div>
 
