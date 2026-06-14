@@ -51,6 +51,43 @@ function About(){
         </li>
         </ul>     
         </div>
+
+
+
+
+{/* I moved the system overview here, since I wanted overview page to dispaly FETCHED API data instead*/}
+ <h1>System Overview</h1>
+<div className={styles.cards}>
+  <div className={styles.card}>
+    <h3>Data Processing</h3>
+    <p>Cleans and stores AIS tanker data.</p>
+  </div>
+
+  <div className={styles.card}>
+    <h3>Interactive Map</h3>
+    <p>Displays vessel positions on an interactive map.</p>
+  </div>
+
+  <div className={styles.card}>
+    <h3>Anomaly Detection</h3>
+    <p>Identifies suspicious AIS records.</p>
+  </div>
+
+  <div className={styles.card}>
+    <h3>REST API</h3>
+    <p>Provides access to processed data.</p>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
         </div>
 
 </>

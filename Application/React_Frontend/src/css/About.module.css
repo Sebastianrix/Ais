@@ -11,7 +11,46 @@ p {
   margin: 30px 15%;
 }
 
+p {
+  padding: 10px;
+}
+
 h1 {
-  text-align: left;
-  margin: 1% 15% 0;  
+  color: white;
+   text-align: center;
+  margin-bottom: 20px 15% 0;  
+}
+.cards {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 30px;
+  margin-bottom: 20px 15% 0;  
+}
+
+.card {
+  width: 220px;
+  padding: 15px;
+  border: 1px solid #5b5b5b;
+  border-radius: 8px;
+  background: #23232a;
+  text-align: center;
+  margin-bottom: 20px 
+}
+
+.card h3 {
+  color: white;
+  margin-bottom: 10px;
+}
+
+.card p {
+  color: #d0d0d0;
+  font-size: 14px;
+}
+
+.overviewHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
