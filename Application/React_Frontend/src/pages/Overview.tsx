@@ -69,16 +69,26 @@ function Overview(){
         )}
   </div>
 
-  {/*This card shows total tankers positions */}
+ {/*This card shows raw data */}
   <div className={styles.card}>
-      <h3>Tankers</h3>
-      {loading ? (<p>Loading...</p>) : (<p>{stats?.tankerCount.toLocaleString()} tankers found</p>)}
+      <h3>Raw data</h3>
+      {loading ? (<p>Loading...</p>) : (
+        <>
+      <p>{stats?.totalStagingRowsProcessed.toLocaleString()} raw data points processed</p>
+        </>
+        )}
   </div>
 
-  {/*This card shows total tankers positions */}
+  {/*This card shows how many days of data we processed*/}
   <div className={styles.card}>
-      <h3>Tankers</h3>
-      {loading ? (<p>Loading...</p>) : (<p>{stats?.tankerCount.toLocaleString()} tankers found</p>)}
+      <h3>Dates</h3>
+      {loading ? (<p>Loading...</p>) : (
+      <>
+      <p>{stats?.datesProcessed.toLocaleString()} days total  processed</p>
+      <p>{stats?.latestBatchDate.toLocaleString().split("T")[0]} is newest date</p>
+      <p>{stats?.oldestBatchDate.toLocaleString().split("T")[0]} is oldest date</p>
+      </>
+      )}
   </div>
 
 
