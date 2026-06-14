@@ -1,30 +1,30 @@
 export interface Tanker {
-  Tanker_Id: number;
-  Imo: string;
-  Mmsi: string;
-  Vessel: string;
-  Callsign: string;
-  Ship_Type: string;
-  Cargo_Type: string;
-  Type_Of_Mobil: string;
+  tanker_Id: number;
+  imo: string;
+  mmsi: string;
+  vessel_Name: string;
+  callsign: string;
+  ship_Type: string;
+  cargo_Type: string;
+  type_Of_Mobil: string;
 
-  Width: number;
-  Length: number;
+  width: number;
+  length: number;
 
-  Size_A: number;
-  Size_B: number;
-  Size_C: number;
-  Size_D: number;
+  size_A: number;
+  size_B: number;
+  size_C: number;
+  size_D: number;
 
-  Flag: string;
+  flag: string;
 
-  First_Seen_At: string;
-  Last_Seen_At: string;
+  first_Seen_At: string;
+  last_Seen_At: string;
 
-  Is_Active: boolean;
+  is_Active: boolean;
 
-  Created_At: string;
-  Updated_At: string;
+  created_At: string;
+  updated_At: string;
 }
 //      Column     |            Type             | Collation | Nullable |                  Default
 // ----------------+-----------------------------+-----------+----------+--------------------------------------------
