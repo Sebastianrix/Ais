@@ -39,7 +39,10 @@ namespace DataLayer
             string? mmsi = null,
             string? search = null);
 
-        IList<TankerStaging> GetTankerStagings();
+        Task<PagedResult<TankerStaging>> GetTankerStagingsAsync(
+            int page, int pageSize,
+            string? mmsi = null, string? imo = null,
+            DateTime? startDate = null, DateTime? endDate = null);
         //IList<TankerStaging> GetTankerStagingByDateRange(DateTime startDate, DateTime endDate);
         //IList<TankerStaging> GetTankerStagingByTanker(string tanker);
 

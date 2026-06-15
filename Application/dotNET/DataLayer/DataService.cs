@@ -125,13 +125,39 @@ namespace DataLayer
             };
         }
 
-        public IList<TankerStaging> GetTankerStagings() {
-        return _context.TankerStagings
-                .OrderByDescending(ts => ts.Timestamp_Raw)
-                .Take(5) // Remove this after Paging, This hack>
-                .ToList();
-         }
-	
+        public async Task<PagedResult<TankerStaging>> GetTankerStagingsAsync(
+            int page, int pageSize,
+            string? mmsi = null, string? imo = null,
+            DateTime? startDate = null, DateTime? endDate = null)
+        {
+            var query = _context.TankerStagings.AsNoTracking().AsQueryable();
+
+            if (!string.IsNullOrWhiteSpace(mmsi))
+                query = query.Where(s => s.Mmsi == mmsi);
+            if (!string.IsNullOrWhiteSpace(imo))
+                query = query.Where(s => s.Imo == imo);
+            if (startDate.HasValue)
+                query = query.Where(s => s.Source_Batch_Date >= startDate.Value);
+            if (endDate.HasValue)
+                query = query.Where(s => s.Source_Batch_Date <= endDate.Value);
+
+            var totalItems = await query.CountAsync();
+
+            var items = await query
+                .OrderByDescending(s => s.Staging_Id)
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToListAsync();
+
+            return new PagedResult<TankerStaging>
+            {
+                Page = page,
+                PageSize = pageSize,
+                TotalItems = totalItems,
+                Items = items
+            };
+        }
+
 	
         public IList<TrackedTanker> GetTrackedTankers() {
         return _context.TrackedTankers
