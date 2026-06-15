@@ -43,18 +43,29 @@ useEffect(() => {
             {vessels.map(v => (
               <MapMarker key={v.tanker_Id} longitude={v.longitude} latitude={v.latitude}>
                 <MarkerContent>
-                  <div className={styles.markerCircle}
-    style={{
-      width: "22px",
-      height: "22px",
-      borderColor: v.is_Anomalous ? "#ef4444" : "#3b82f6",
-      fontSize: "12px",
-    }}
-  >
-    {v.flag}
-  </div>
-      </MarkerContent>
-          <MarkerPopup className={styles.popUp}  closeButton>
+                  <div style={{ position: "relative", width: "28px", height: "28px" }}>
+
+                  {/* Rotating triangle */}
+                  <div style={{position: "absolute", top: 0, left: 0, transform: `rotate(${(!v.heading || v.heading === 511) ? (v.cog ?? 0) : v.heading}deg)`,transition: "transform 0.3s ease",}}>    
+                    <svg width="28" height="28" viewBox="0 0 25 25" xmlns="http://www.w3.org/2000/svg">
+                    <polygon points="12.5,0 20,25 5,25" 
+                    fill="rgba(30, 41, 59, 0.5)"
+                    stroke={v.is_Anomalous ? "#ef4444" : "#3b82f6"}
+                    strokeWidth="1.5"
+                    strokeLinejoin="round"
+                    />
+                   </svg>
+                 </div>
+
+                {/* Non-rotating text (flag) */}
+                <div className={styles.flagText}>
+               {v.flag}
+                </div>
+              </div>
+
+              {/* The pop-up on click */}
+              </MarkerContent>
+                   <MarkerPopup className={styles.popUp}  closeButton>
               <strong>({v.flag}) {v.vessel_Name ?? "Unknown"}</strong>
               <br />
               Flag: {countryCodeToName[v.flag]}

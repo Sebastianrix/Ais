@@ -1,5 +1,5 @@
 export const countryCodeToName: Record<string, string> = {
-  UN: "UNKOWN - Ghost ship",
+  UN: "UNKNOWN - Ghost ship",
   AL: "Albania",
   AD: "Andorra",
   AT: "Austria",
