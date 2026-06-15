@@ -18,8 +18,11 @@
   pointer-events: none;
 }
 
-.resultRow{
-  text-align: justify;
+.resultRow {
+  display: grid;
+  grid-template-columns: 1fr 120px 80px;
+  gap: 12px;
+  padding: 6px 10px;
 }
 
 p {
