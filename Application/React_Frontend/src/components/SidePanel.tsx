@@ -285,7 +285,7 @@ export default function SidePanel() {
               Returns staged tanker position data prior to enrichment.
             </p>
             <EndpointCard
-              href="https://api.aismap.dk/TankerStaging"
+              href="https://api.aismap.dk/v1/TankerStaging"
               path="/TankerStaging"
               onTry={send}
             />
