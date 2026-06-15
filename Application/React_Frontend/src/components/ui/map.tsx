@@ -25,25 +25,25 @@ const defaultStyles = {
   light: "https://basemaps.cartocdn.com/gl/positron-gl-style/style.json",
 };
 
-type Theme = "light" | "dark";
+type Theme = "dark" | "dark";
 
 // Check document class for theme (works with next-themes, etc.)
 function getDocumentTheme(): Theme | null {
   if (typeof document === "undefined") return null;
   if (document.documentElement.classList.contains("dark")) return "dark";
-  if (document.documentElement.classList.contains("light")) return "light";
+  if (document.documentElement.classList.contains("dark")) return "dark";
   return null;
 }
 
 // Get system preference
 function getSystemTheme(): Theme {
-  if (typeof window === "undefined") return "light";
+  if (typeof window === "undefined") return "dark";
   return window.matchMedia("(prefers-color-scheme: dark)").matches
     ? "dark"
     : "light";
 }
 
-function useResolvedTheme(themeProp?: "light" | "dark"): Theme {
+function useResolvedTheme(themeProp?: "dark" | "dark"): Theme {
   const [detectedTheme, setDetectedTheme] = useState<Theme>(
     () => getDocumentTheme() ?? getSystemTheme(),
   );
@@ -225,7 +225,7 @@ const Map = forwardRef<MapRef, MapProps>(function Map(
       style: initialStyle,
       renderWorldCopies: false,
       attributionControl: {
-        compact: true,
+      compact: false,
       },
       ...props,
       ...viewport,
@@ -765,7 +765,7 @@ function ControlButton({
       className={cn(
         "flex size-8 items-center justify-center transition-all",
         "first:rounded-t-md last:rounded-b-md",
-        "hover:bg-accent dark:hover:bg-accent/40",
+        "bg-background/80 hover:bg-muted/80 backdrop-blur-sm",
         "focus-visible:ring-ring focus-visible:ring-2 focus-visible:outline-none focus-visible:ring-inset",
         "disabled:pointer-events-none disabled:opacity-50",
       )}
@@ -855,13 +855,9 @@ function MapControls({
       )}
       {showCompass && (
         <ControlGroup>
-          <CompassButton onClick={handleResetBearing} />
-             <CompassButton onClick={handleResetBearing} />
-                <CompassButton onClick={handleResetBearing} />
-                   <CompassButton onClick={handleResetBearing} />
-                      <CompassButton onClick={handleResetBearing} />
-        </ControlGroup>
-      )}
+           <CompassButton onClick={handleResetBearing} />
+         </ControlGroup>
+        )}
       {showLocate && (
         <ControlGroup>
           <ControlButton

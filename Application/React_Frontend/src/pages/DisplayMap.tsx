@@ -37,9 +37,15 @@ useEffect(() => {
     <>
       <Navbar />
       <div className={styles.mapContainer}>
-        <Card className="p-0 rounded-none ring-0 border-0 w-[850px] h-[700px] overflow-hidden">
+        <Card className="p-0 rounded-none ring-0 border-0 w-full h-full overflow-hidden">
           <Map center={[11.0, 56.0]} zoom={6} loading={loading}>
-            <MapControls position="top-left" />
+            <MapControls 
+             position="bottom-left"
+             showZoom={true}
+             showCompass={true}  
+             showLocate={false}
+             showFullscreen={true}
+            />
             {vessels.map(v => (
               <MapMarker key={v.tanker_Id} longitude={v.longitude} latitude={v.latitude}>
                 <MarkerContent>

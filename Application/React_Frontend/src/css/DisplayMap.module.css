@@ -1,25 +1,19 @@
 .mapContainer {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  width: 100vw;
+  height: calc(100vh - 60px);
 }
 
 .popUp {
   text-align: left;
-
   background: rgba(15, 23, 42, 0.92); /* slate-900 glass */
   color: #e5e7eb;
-
   padding: 10px 12px;
   border-radius: 10px;
-
   border: 1px solid rgba(148, 163, 184, 0.25);
-
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-
   font-size: 12px;
   line-height: 1.4;
-
   backdrop-filter: blur(8px);
 }
 
@@ -28,15 +22,11 @@
   border: none;
   outline: none;
   box-shadow: none;
-
   color: rgba(255, 0, 43, 0.65);
-
   width: 20px;
   height: 20px;
-
   font-size: 16px;
   line-height: 1;
-
   cursor: pointer;
   opacity: 0.7;
 }
