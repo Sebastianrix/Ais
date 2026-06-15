@@ -27,27 +27,29 @@ namespace DataLayer
             // If we really wanted to stick with LINQ, we could have used GroupBy().Select(First()), which would be more fragile,so we choose raw SQL since we really needed that DISTINCT.
             var sql = @"
         SELECT t.tanker_id           AS tanker_id,
-               t.mmsi                AS mmsi,
-               t.vessel_name         AS vessel_name,
-               t.ship_type           AS ship_type,
-               t.flag                AS flag,
-               p.latitude            AS latitude,
-               p.longitude           AS longitude,
-               p.timestamp_utc       AS timestamp_utc,
-               p.sog                 AS sog,
-               p.cog                 AS cog,
-               p.heading             AS heading,
-               p.navigational_status AS navigational_status
-        FROM tankers t
-        CROSS JOIN LATERAL (
-            SELECT p.latitude, p.longitude, p.timestamp_utc,
-                   p.sog, p.cog, p.heading, p.navigational_status
-            FROM tanker_positions p
-            WHERE p.tanker_id = t.tanker_id
-            ORDER BY p.timestamp_utc DESC
-            LIMIT 1
-        ) p
-        WHERE t.is_active = TRUE";
+       t.mmsi                AS mmsi,
+       t.vessel_name         AS vessel_name,
+       t.ship_type           AS ship_type,
+       t.flag                AS flag,
+       p.latitude            AS latitude,
+       p.longitude           AS longitude,
+       p.timestamp_utc       AS timestamp_utc,
+       p.sog                 AS sog,
+       p.cog                 AS cog,
+       p.heading             AS heading,
+       p.navigational_status AS navigational_status,
+       p.is_anomalous        AS is_anomalous
+FROM tankers t
+CROSS JOIN LATERAL (
+    SELECT p.latitude, p.longitude, p.timestamp_utc,
+           p.sog, p.cog, p.heading, p.navigational_status,
+           COALESCE(p.anomaly_flag, FALSE) AS is_anomalous
+    FROM tanker_positions p
+    WHERE p.tanker_id = t.tanker_id
+    ORDER BY p.timestamp_utc DESC
+    LIMIT 1
+) p
+WHERE t.is_active = TRUE";
 
             return await _context.VesselMapPositions
                 .FromSqlRaw(sql)
