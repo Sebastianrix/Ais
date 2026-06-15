@@ -5,10 +5,10 @@ namespace WebLayer.DTOs
 {
     public class TankerPositionDTO
     {
-        public int? Position_Id { get; set; }
+        public long? Position_Id { get; set; }
         public int? Tanker_Id { get; set; }
-        public int? Voyage_Id { get; set; }
-        public int? Staging_Id { get; set; }
+        public long? Voyage_Id { get; set; }
+        public long? Staging_Id { get; set; }
         public DateTime Timestamp { get; set; }
         public double Longitude { get; set; }
         public double Latitude { get; set; }
