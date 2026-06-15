@@ -50,7 +50,7 @@ return (
       />
     </div>
 
-    <button
+    <button className={styles.pagePaddles}
       onClick={() =>
         setQuery((p) => ({ ...p, page: p.page - 1 }))
       }
@@ -59,9 +59,9 @@ return (
       Prev
     </button>
 
-    <span>Page {query.page}</span>
+    <span className={styles.pageIndexNumber}> <strong>{query.page}</strong></span>
 
-    <button
+    <button className={styles.pagePaddles}
       onClick={() =>
         setQuery((p) => ({ ...p, page: p.page + 1 }))
       }

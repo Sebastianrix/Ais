@@ -1,12 +1,13 @@
 .searchBox {
   position: relative;
   display: inline-block;
-
+  margin-bottom: 8px;
+  margin-right: 10px;
 }
 
 .searchBox input {
   padding-left: 35px;
-    border: 3px solid #5b5b5b;
+  border: 3px solid #5b5b5b;
 }
 
 .icon {
@@ -15,6 +16,10 @@
   top: 50%;
   transform: translateY(-50%);
   pointer-events: none;
+}
+
+.resultRow{
+  text-align: justify;
 }
 
 p {
@@ -29,7 +34,20 @@ p {
   border-radius: 8px;
   margin: 5% 15%;
 }
+.pagePaddles{
+  border: 3px solid #5b5b5b;
+}
 
+.pagePaddles:hover{
+  color: #ffffff;
+  background: rgba(200, 16, 46, 0.1);     /* Danish red, very faint wash */
+  border-color: rgba(200, 16, 46, 0.65);  /* Danish red border */
+  transform: translateY(-1px);
+}
+
+.pageIndexNumber{
+  padding-right: 5px;
+}
 h1 {
   color: white;
   text-align: center;
