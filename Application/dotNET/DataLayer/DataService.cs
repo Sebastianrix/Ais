@@ -141,13 +141,27 @@ namespace DataLayer
             if (endDate.HasValue)
                 query = query.Where(s => s.Source_Batch_Date <= endDate.Value);
 
-            var totalItems = await query.CountAsync();
+            bool hasFilter = !string.IsNullOrWhiteSpace(mmsi)|| !string.IsNullOrWhiteSpace(imo)||startDate.HasValue||endDate.HasValue;
+
+            long totalItems;
+            if (hasFilter)
+            {
+                totalItems = await query.CountAsync();
+            }
+            else
+            {
+                totalItems = await _context.Database
+                    .SqlQueryRaw<long>(
+                        "SELECT reltuples::bigint AS \"Value\" FROM pg_class WHERE relname = 'tanker_staging'")
+                    .SingleAsync();
+            }
 
             var items = await query
                 .OrderByDescending(s => s.Staging_Id)
                 .Skip((page - 1) * pageSize)
                 .Take(pageSize)
                 .ToListAsync();
+
 
             return new PagedResult<TankerStaging>
             {
@@ -157,7 +171,13 @@ namespace DataLayer
                 Items = items
             };
         }
-
+        public IList<TankerStaging> GetTankerStagings() {
+        return _context.TankerStagings
+                .OrderByDescending(ts => ts.Timestamp_Raw)
+                .Take(5) // Remove this after Paging, This hack>
+                .ToList();
+         }
+	
 	
         public IList<TrackedTanker> GetTrackedTankers() {
         return _context.TrackedTankers
