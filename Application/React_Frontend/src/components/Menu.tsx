@@ -49,7 +49,7 @@ return (
         placeholder="Search..."
       />
     </div>
-
+        
     <button className={styles.pagePaddles}
       onClick={() =>
         setQuery((p) => ({ ...p, page: p.page - 1 }))
@@ -69,11 +69,19 @@ return (
       Next
     </button>
 
+<div className={styles.columnHeader}>
+  <span><strong>Vessel name</strong></span>
+  <span><strong>IMO</strong></span>
+  <span><strong>MMSI</strong></span>
+  <span><strong>Flag</strong></span>
+</div>
+
 <div>
   {tankers.map((tanker) => (
 <div className={styles.resultRow}>
   <span>{tanker.vessel_Name}</span>
   <span>{tanker.imo}</span>
+  <span>{tanker.mmsi}</span>
   <span>{tanker.flag}</span>
 </div>
   ))}
@@ -83,3 +91,4 @@ return (
 );
 }
 export default Menu;
+

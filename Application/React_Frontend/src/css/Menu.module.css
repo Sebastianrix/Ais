@@ -6,8 +6,12 @@
 }
 
 .searchBox input {
-  padding-left: 35px;
-  border: 3px solid #5b5b5b;
+  padding: 6px 10px 6px 35px;
+  background: transparent;
+  color: #d0d0d0;
+  border: 2px solid #5b5b5b;
+  border-radius: 6px;
+  font-size: 13px;
 }
 
 .icon {
@@ -20,14 +24,29 @@
 
 .resultRow {
   display: grid;
-  grid-template-columns: 1fr 120px 80px;
+  grid-template-columns: 1fr 120px 120px 80px;
   gap: 12px;
   padding: 6px 10px;
 }
 
+.columnHeader {
+  display: grid;
+  grid-template-columns: 1fr 120px 120px 80px;
+  gap: 12px;
+  padding: 6px 10px;
+  color: #888;
+  font-size: 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid #3d3d44;
+}
 p {
   padding: 10px;
 }
+
+
+
+
 .box {
   background: #23232a;
   text-align: center;
@@ -37,10 +56,15 @@ p {
   border-radius: 8px;
   margin: 5% 15%;
 }
-.pagePaddles{
-  border: 3px solid #5b5b5b;
+.pagePaddles {
+  padding: 6px 14px;
+  background: transparent;
+  color: #d0d0d0;
+  border: 2px solid #5b5b5b;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
 }
-
 .pagePaddles:hover{
   color: #ffffff;
   background: rgba(200, 16, 46, 0.1);     /* Danish red, very faint wash */
