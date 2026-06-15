@@ -4,7 +4,7 @@ import { Map, MapControls, MapMarker, MarkerContent, MarkerPopup } from "@/compo
 import styles from '../css/DisplayMap.module.css';
 import Navbar from '../components/Navbar'
 import { mapService } from "../services/MapService";
-
+import { countryCodeToName} from "../components/helpers/countryCodes"
 
 
 type Vessel = {
@@ -57,7 +57,7 @@ useEffect(() => {
           <MarkerPopup className={styles.popUp}  closeButton>
               <strong>({v.flag}) {v.vessel_Name ?? "Unknown"}</strong>
               <br />
-              Flag: (v.flag) {v.flag}
+              Flag: {countryCodeToName[v.flag]}
               <br />
               Type: {v.ship_Type}
               <br />

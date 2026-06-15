@@ -15,6 +15,11 @@ h1 {
   text-align: center;
   margin-bottom: 20px;
 }
+
+.card strong {
+  color: #FFCE1B;
+}
+
 .cards {
   display: flex;
   gap: 20px;

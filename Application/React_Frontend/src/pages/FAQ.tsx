@@ -2,8 +2,16 @@ import { useState } from 'react';
 import Navbar from '../components/Navbar';
 import Footbar from '../components/Footbar';
 import styles from '../css/FAQ.module.css';
+import { statsService } from "../services/StatsService";
+import type { Stats } from "../types/Stats";
 
 export default function FAQ() {
+
+
+
+    const [stats, setStats] = useState<Stats | null>(null);
+  const [loading, setLoading] = useState(true);
+  
   // Simple state array to handle accordion toggles independently
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
@@ -25,7 +33,7 @@ export default function FAQ() {
         },
         {
           q: "Is this a real-time vessel tracking network?",
-          a: "No. The platform operates with a fixed 72-hour delay dictated directly by the upstream data provider's release schedule. Our pipeline is specifically engineered to align with this 3-day synchronization window, ensuring that we ingest fully finalized daily archives from the maritime authorities rather than dealing with incomplete or missing data fragments. This optimizes the platform for stable, deep historical analytics rather than live tracking."
+          a: "No. The platform operates with a fixed 72-hour delay dictated directly by the upstream data provider's release schedule. Our pipeline is specifically engineered to align with this 3-day synchronization window."
         }
       ]
     },
