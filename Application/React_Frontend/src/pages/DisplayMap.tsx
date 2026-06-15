@@ -3,6 +3,9 @@ import { Card } from "@/components/ui/card";
 import { Map, MapControls, MapMarker, MarkerContent, MarkerPopup } from "@/components/ui/map";
 import '../css/DisplayMap.css';
 import Navbar from '../components/Navbar'
+import { mapService } from "../services/MapService";
+
+
 
 type Vessel = {
   tanker_Id: number; mmsi: string; vessel_Name: string; ship_Type: string;
@@ -12,16 +15,16 @@ type Vessel = {
 };
 
 function DisplayMap() {
-  const [vessels, setVessels] = useState<Vessel[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [vessels, setVessels] = useState<Vessel[]>([]);+
 
-  useEffect(() => {
-    fetch("https://api.aismap.dk/v1/Map")
-      .then(res => res.json())
-      .then((data: Vessel[]) => setVessels(data))
-      .catch(err => console.error("Map fetch failed:", err))
-      .finally(() => setLoading(false));
-  }, []);
+
+
+useEffect(() => {
+  mapService.get(168)
+    .then(setVessels)
+    .catch(err => console.error("Map fetch failed:", err))
+    .finally(() => setLoading(false));
+}, []);
 
   return (
     <>
