@@ -58,7 +58,7 @@ BUDGET_BYTES = 1_800 * 1024**3   # 1.8 TB ( We should put abit higher, but our Z
 #DAG
 @dag(
     dag_id="ais_worker",
-    schedule="*/15 * * * *",                  # 30 seconds 
+    schedule="*/15 * * * *",                  # every 15 minutes
     start_date=datetime(2026, 1, 1),
     catchup=False,
     max_active_runs=1,                    # one worker run at a time
