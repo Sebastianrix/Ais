@@ -38,7 +38,7 @@ useEffect(() => {
       <Navbar />
       <div className={styles.mapContainer}>
         <Card className="p-0 rounded-none ring-0 border-0 w-full h-full overflow-hidden">
-          <Map center={[11.0, 56.0]} zoom={6} loading={loading}>
+          <Map center={[11.0, 56.0]} zoom={6} loading={loading} theme="dark">
             <MapControls 
              position="bottom-left"
              showZoom={true}

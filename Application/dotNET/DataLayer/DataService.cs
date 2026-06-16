@@ -114,7 +114,7 @@ WHERE t.is_active = TRUE";
             if (!string.IsNullOrWhiteSpace(search))
             {
                 var s = search.Trim();
-                // This line below looks add, but it's the builin case-insensitivity for Npgsql. 
+                // This line below looks odd, but it's the builin case-insensitivity for Npgsql. 
                // Makes good sense if the user SEARCH a vessel name, capital or lowercase shouldnt matter.
                 query = query.Where(t => EF.Functions.ILike(t.Vessel_Name, $"%{s}%") || t.Imo == s || t.Mmsi == s);
             }
