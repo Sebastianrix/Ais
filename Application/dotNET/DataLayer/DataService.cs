@@ -22,7 +22,7 @@ namespace DataLayer
 
         public async Task<List<VesselMapPosition>> GetLatestVesselPositionsAsync(int sinceHours = 168)
         {
-            // Latest position per tanker. DISTINCT ON is PSQL only,. Meaning we need raw SQL.
+            // Latest position per tanker. we use CROSS JOIN LATERAL and raw SQL.
             // Of course this break some patterns, but it was the most practical solution since there is a capability gap betwen LINQ and PSQL.
             // If we really wanted to stick with LINQ, we could have used GroupBy().Select(First()), which would be more fragile,so we choose raw SQL since we really needed that DISTINCT.
             var sql = @"
