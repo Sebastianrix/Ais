@@ -11,7 +11,7 @@ type Vessel = {
   tanker_Id: number; mmsi: string; vessel_Name: string; ship_Type: string;
   flag: string; latitude: number; longitude: number; timestamp_Utc: string;
   sog?: number; cog?: number; heading?: number; navigational_Status?: string;
-  is_Anomalous: boolean;
+  is_Anomalous: boolean; imo: string; callsign: string; cargo_Type: string;
 };
 
 
@@ -78,7 +78,17 @@ useEffect(() => {
               <br />
               Type: {v.ship_Type}
               <br />
-              SOG: {v.sog ?? "—"} kn 
+              SOG: {v.sog}
+              <br />
+              Heading: {v.heading}
+              <br />
+              IMO: {v.imo}
+              <br />
+              MMSI: {v.heading}
+              <br />
+              callsign: {v.callsign}
+              <br />
+              cargo_Type: {v.cargo_Type}
               <br />
               Heading: {v.heading ?? "—"}°
               <br />
