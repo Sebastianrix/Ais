@@ -76,6 +76,10 @@ useEffect(() => {
               <br />
               Flag: {countryCodeToName[v.flag]}
               <br />
+              longitude: {v.longitude}
+              <br />
+              latitude: {v.latitude}
+              <br />
               Type: {v.ship_Type}
               <br />
               SOG: {v.sog}
